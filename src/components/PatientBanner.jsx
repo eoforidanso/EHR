@@ -31,6 +31,7 @@ export default function PatientBanner() {
             {p.lastName}, {p.firstName}
             <span className="patient-banner-mrn">MRN {p.mrn}</span>
             {p.isBTG && <span className="badge badge-danger">🔒 BTG</span>}
+            {p.flags?.includes('VIP') && <span className="badge badge-purple">VIP</span>}
           </div>
           <div className="patient-banner-chips">
             {p.flags && p.flags.map((f, i) => (

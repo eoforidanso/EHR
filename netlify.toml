@@ -6,6 +6,16 @@
   NODE_VERSION = "20"
 
 [[redirects]]
+  from   = "/thumbnail.html"
+  to     = "/thumbnail.html"
+  status = 200
+
+[[redirects]]
+  from   = "/og-image.png"
+  to     = "/og-image.png"
+  status = 200
+
+[[redirects]]
   from   = "/*"
   to     = "/index.html"
   status = 200

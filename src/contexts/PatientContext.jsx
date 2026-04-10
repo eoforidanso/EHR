@@ -20,6 +20,8 @@ const PatientContext = createContext(null);
 export function PatientProvider({ children }) {
   const [patients] = useState(patientsData);
   const [selectedPatient, setSelectedPatient] = useState(null);
+  const MAX_OPEN_CHARTS = 4;
+  const [openCharts, setOpenCharts] = useState([]);
   const [allergies, setAllergies] = useState(allergiesData);
   const [problemList, setProblemList] = useState(problemsData);
   const [vitalSigns, setVitalSigns] = useState(vitalsData);
@@ -33,11 +35,38 @@ export function PatientProvider({ children }) {
   const [btgAuditLog, setBtgAuditLog] = useState(btgData);
   const [btgAccessGranted, setBtgAccessGranted] = useState({});
   const [encounters, setEncounters] = useState(encountersData);
+  const [blockedDays, setBlockedDays] = useState([]);
 
   const selectPatient = useCallback((patientId) => {
     const p = patientsData.find((pt) => pt.id === patientId);
     setSelectedPatient(p || null);
   }, []);
+
+  const openChart = useCallback((patientId) => {
+    const p = patientsData.find((pt) => pt.id === patientId);
+    if (!p) return;
+    setSelectedPatient(p);
+    setOpenCharts((prev) => {
+      if (prev.some((c) => c.id === patientId)) return prev;
+      const next = [...prev, p];
+      if (next.length > MAX_OPEN_CHARTS) next.shift();
+      return next;
+    });
+  }, []);
+
+  const closeChart = useCallback((patientId) => {
+    setOpenCharts((prev) => {
+      const next = prev.filter((c) => c.id !== patientId);
+      return next;
+    });
+    setSelectedPatient((current) => {
+      if (current?.id === patientId) {
+        const remaining = openCharts.filter((c) => c.id !== patientId);
+        return remaining.length > 0 ? remaining[remaining.length - 1] : null;
+      }
+      return current;
+    });
+  }, [openCharts]);
 
   const addAllergy = useCallback((patientId, allergy) => {
     setAllergies((prev) => ({
@@ -159,12 +188,23 @@ export function PatientProvider({ children }) {
     }));
   }, []);
 
+  const addBlockedDay = useCallback((entry) => {
+    setBlockedDays((prev) => [...prev, { ...entry, id: `bd-${Date.now()}-${Math.random()}` }]);
+  }, []);
+
+  const removeBlockedDay = useCallback((id) => {
+    setBlockedDays((prev) => prev.filter((b) => b.id !== id));
+  }, []);
+
   return (
     <PatientContext.Provider
       value={{
         patients,
         selectedPatient,
         selectPatient,
+        openCharts,
+        openChart,
+        closeChart,
         allergies,
         addAllergy,
         problemList,
@@ -189,6 +229,9 @@ export function PatientProvider({ children }) {
         encounters,
         addEncounter,
         updateEncounter,
+        blockedDays,
+        addBlockedDay,
+        removeBlockedDay,
         btgAuditLog,
         requestBTGAccess,
         hasBTGAccess,

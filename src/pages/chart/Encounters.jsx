@@ -976,28 +976,11 @@ export default function Encounters({ patientId }) {
           </div>
         </div>
 
-        {/* Section tab bar */}
-        <div style={{ display: 'flex', background: '#eef1f5', borderBottom: '1px solid var(--border)', overflowX: 'auto' }}>
-          {SECTIONS.map((s) => (
-            <button key={s.id} type="button" onClick={() => setActiveSection(s.id)}
-              style={{
-                padding: '7px 15px', fontSize: 11.5, fontWeight: activeSection === s.id ? 700 : 500,
-                background: activeSection === s.id ? '#fff' : 'transparent',
-                color: activeSection === s.id ? 'var(--primary)' : 'var(--text-secondary)',
-                border: 'none', borderBottom: activeSection === s.id ? '2px solid var(--primary)' : '2px solid transparent',
-                cursor: 'pointer', whiteSpace: 'nowrap', transition: 'all 0.1s',
-              }}>
-              {s.label}
-            </button>
-          ))}
-        </div>
-
         {/* ─ Section content ─ */}
         <div style={{ padding: '18px' }}>
 
           {/* CHIEF COMPLAINT & SUBJECTIVE */}
-          {activeSection === 'subjective' && (
-            <div className="fade-in">
+          <div>
               <SectionHeader icon="🗣️" title="Chief Complaint" color="#0060b6" />
               <div style={{ marginBottom: 18 }}>
                 <label className="form-label">
@@ -1018,11 +1001,9 @@ export default function Encounters({ patientId }) {
                   style={{ resize: 'vertical' }} />
               </div>
             </div>
-          )}
 
           {/* MSE */}
-          {activeSection === 'mse' && (
-            <div className="fade-in">
+          <div>
               <SectionHeader icon="🧠" title="Mental Status Examination (MSE)" color="#7c3aed" />
 
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 12, marginBottom: 16 }}>
@@ -1079,11 +1060,9 @@ export default function Encounters({ patientId }) {
                   style={{ resize: 'vertical' }} />
               </div>
             </div>
-          )}
 
           {/* ASSESSMENT & PLAN */}
-          {activeSection === 'assessment' && (
-            <div className="fade-in">
+          <div>
               <SectionHeader icon="📊" title="Assessment / Clinical Impression" color="#d97706" />
               <div style={{ marginBottom: 20 }}>
                 <label className="form-label">Assessment</label>
@@ -1103,21 +1082,17 @@ export default function Encounters({ patientId }) {
                   style={{ resize: 'vertical' }} />
               </div>
             </div>
-          )}
 
           {/* DIAGNOSES */}
-          {activeSection === 'diagnoses' && (
-            <div className="fade-in">
+          <div>
               <SectionHeader icon="🔖" title="Diagnoses — ICD-10 Codes" color="#0891b2" />
               <DiagnosesEditor
                 diagnoses={d.diagnoses || []}
                 onChange={(diags) => setD((p) => ({ ...p, diagnoses: diags }))} />
             </div>
-          )}
 
           {/* CPT & BILLING */}
-          {activeSection === 'billing' && (
-            <div className="fade-in">
+          <div>
               <SectionHeader icon="💳" title="CPT Codes & Billing" color="#1a7f4b" />
               {billingError && (
                 <div style={{
@@ -1196,17 +1171,14 @@ export default function Encounters({ patientId }) {
                   style={{ resize: 'vertical' }} />
               </div>
             </div>
-          )}
 
           {/* FOLLOW-UP */}
-          {activeSection === 'followup' && (
-            <div className="fade-in">
+          <div>
               <SectionHeader icon="📅" title="Follow-Up Scheduling" color="#0a8a7e" />
               <FollowUpScheduler
                 value={d.followUp || { needed: false, date: '', time: '', duration: 30, note: '' }}
                 onChange={(fu) => setD((p) => ({ ...p, followUp: fu }))} />
             </div>
-          )}
         </div>
 
         {/* Bottom save bar */}

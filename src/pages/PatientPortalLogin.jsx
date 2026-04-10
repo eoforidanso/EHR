@@ -29,10 +29,12 @@ export default function PatientPortalLogin() {
   };
 
   const demoAccounts = [
-    { name: 'James Anderson', username: 'james.anderson' },
-    { name: 'Maria Garcia',   username: 'maria.garcia' },
-    { name: 'Robert Chen',    username: 'robert.chen' },
-    { name: 'Ashley Kim',     username: 'ashley.kim' },
+    { name: 'James Anderson',  username: 'james.anderson' },
+    { name: 'Maria Garcia',    username: 'maria.garcia' },
+    { name: 'Robert Chen',     username: 'robert.chen' },
+    { name: 'Ashley Kim',      username: 'ashley.kim' },
+    { name: 'Dorothy Wilson',  username: 'dorothy.wilson' },
+    { name: 'Marcus Brown',    username: 'marcus.brown' },
   ];
 
   return (
@@ -179,12 +181,12 @@ export default function PatientPortalLogin() {
             marginTop: 28, paddingTop: 20, borderTop: '1px solid #e4e9f0',
           }}>
             <p style={{ fontSize: 11, color: '#8a9bb0', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.8px', marginBottom: 10 }}>
-              Demo patient accounts (password: Patient1!)
+              Demo patient accounts (password: Patient1!!)
             </p>
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 6 }}>
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: 6 }}>
               {demoAccounts.map((a) => (
                 <button key={a.username}
-                  onClick={() => { setUsername(a.username); setPassword('Patient1!'); }}
+                  onClick={() => { setUsername(a.username); setPassword(''); }}
                   style={{
                     padding: '7px 10px', textAlign: 'left', border: '1px solid #e4e9f0',
                     borderRadius: 6, background: '#f7f9fc', cursor: 'pointer',

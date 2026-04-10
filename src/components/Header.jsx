@@ -5,7 +5,7 @@ import { usePatient } from '../contexts/PatientContext';
 
 export default function Header() {
   const { currentUser } = useAuth();
-  const { patients, selectPatient, selectedPatient, inboxMessages } = usePatient();
+  const { patients, selectPatient, openChart, closeChart, openCharts, selectedPatient, inboxMessages } = usePatient();
   const [search, setSearch] = useState('');
   const [showResults, setShowResults] = useState(false);
   const [now, setNow] = useState(new Date());
@@ -58,26 +58,29 @@ export default function Header() {
   }, []);
 
   const handleSelectPatient = useCallback((patient) => {
-    selectPatient(patient.id);
+    openChart(patient.id);
     setSearch('');
     setShowResults(false);
     navigate(`/chart/${patient.id}/summary`);
-  }, [selectPatient, navigate]);
+  }, [openChart, navigate]);
 
   // Page title from current route
   const getPageTitle = () => {
     const path = location.pathname;
-    if (path.includes('/dashboard')) return 'Dashboard';
-    if (path.includes('/schedule')) return 'Schedule';
-    if (path.includes('/patients')) return 'Patient Search';
-    if (path.includes('/chart/'))   return 'Patient Chart';
-    if (path.includes('/inbox'))    return 'Clinical Inbox';
-    if (path.includes('/prescribe')) return 'E-Prescribe';
-    if (path.includes('/telehealth')) return 'Telehealth';
-    if (path.includes('/smart-phrases')) return 'Smart Phrases';
-    if (path.includes('/btg-audit')) return 'BTG Audit Log';
-    if (path.includes('/admin-toolkit')) return 'Admin Toolkit';
-    if (path.includes('/session/')) return 'Clinical Session';
+    if (path.includes('/dashboard')) return '🏠 Dashboard';
+    if (path.includes('/schedule')) return '📅 Schedule';
+    if (path.includes('/patients')) return '🔍 Patient Search';
+    if (path.includes('/chart/'))   return '📋 Patient Chart';
+    if (path.includes('/inbox'))    return '📥 Clinical Inbox';
+    if (path.includes('/prescribe')) return '💊 E-Prescribe';
+    if (path.includes('/telehealth')) return '📹 Telehealth';
+    if (path.includes('/smart-phrases')) return '⚡ Smart Phrases';
+    if (path.includes('/btg-audit')) return '🔒 BTG Audit Log';
+    if (path.includes('/admin-toolkit')) return '🛠️ Admin Toolkit';
+    if (path.includes('/session/')) return '🩺 Clinical Session';
+    if (path.includes('/analytics')) return '📊 Analytics';
+    if (path.includes('/care-gaps')) return '🎯 Care Gaps';
+    if (path.includes('/staff-messaging')) return '💬 Staff Messaging';
     return 'MindCare';
   };
 
@@ -133,34 +136,99 @@ export default function Header() {
         )}
       </div>
 
-      {/* Active patient chip */}
-      {selectedPatient && (
+      {/* Open chart tabs */}
+      {openCharts.length > 0 && (
         <>
           <div className="header-divider" />
-          <div
-            className="header-patient-chip"
-            onClick={() => navigate(`/chart/${selectedPatient.id}/summary`)}
-            title="Open chart"
-          >
-            <div className="header-chip-avatar">
-              {selectedPatient.firstName[0]}{selectedPatient.lastName[0]}
-            </div>
-            <div>
-              <div className="header-chip-name">
-                {selectedPatient.lastName}, {selectedPatient.firstName}
-              </div>
-              <div className="header-chip-sub">MRN {selectedPatient.mrn}</div>
-            </div>
+          <div style={{ display: 'flex', gap: 4, alignItems: 'center', overflow: 'hidden', maxWidth: 520, minWidth: 0 }}>
+            {openCharts.map((p) => {
+              const isActive = selectedPatient?.id === p.id;
+              return (
+                <div
+                  key={p.id}
+                  onClick={() => { selectPatient(p.id); navigate(`/chart/${p.id}/summary`); }}
+                  title={`${p.lastName}, ${p.firstName} — MRN ${p.mrn}`}
+                  style={{
+                    display: 'flex', alignItems: 'center', gap: 6,
+                    padding: '4px 8px 4px 6px',
+                    borderRadius: 8,
+                    cursor: 'pointer',
+                    background: isActive ? 'var(--primary)' : 'var(--bg)',
+                    color: isActive ? 'white' : 'var(--text-primary)',
+                    border: isActive ? '1px solid var(--primary)' : '1px solid var(--border)',
+                    fontSize: 12, fontWeight: isActive ? 700 : 500,
+                    whiteSpace: 'nowrap',
+                    transition: 'all 0.15s',
+                    minWidth: 0,
+                    flexShrink: 1,
+                  }}
+                >
+                  <div style={{
+                    width: 22, height: 22, borderRadius: '50%',
+                    background: isActive ? 'rgba(255,255,255,0.25)' : 'linear-gradient(135deg,#6366f1,#8b5cf6)',
+                    color: 'white', display: 'flex', alignItems: 'center', justifyContent: 'center',
+                    fontSize: 9, fontWeight: 800, flexShrink: 0,
+                  }}>
+                    {p.firstName[0]}{p.lastName[0]}
+                  </div>
+                  <span style={{ overflow: 'hidden', textOverflow: 'ellipsis' }}>
+                    {p.lastName}, {p.firstName[0]}.
+                  </span>
+                  <span
+                    onClick={(e) => { e.stopPropagation(); closeChart(p.id); }}
+                    title="Close chart"
+                    style={{
+                      marginLeft: 2, fontSize: 13, lineHeight: 1,
+                      opacity: 0.6, cursor: 'pointer', fontWeight: 400,
+                      borderRadius: 4, width: 16, height: 16,
+                      display: 'flex', alignItems: 'center', justifyContent: 'center',
+                      flexShrink: 0,
+                    }}
+                    onMouseEnter={(e) => { e.currentTarget.style.opacity = '1'; e.currentTarget.style.background = isActive ? 'rgba(255,255,255,0.2)' : 'var(--border)'; }}
+                    onMouseLeave={(e) => { e.currentTarget.style.opacity = '0.6'; e.currentTarget.style.background = 'transparent'; }}
+                  >
+                    ✕
+                  </span>
+                </div>
+              );
+            })}
+            {openCharts.length < 4 && (
+              <span style={{ fontSize: 10, color: 'var(--text-muted)', whiteSpace: 'nowrap', flexShrink: 0 }}>
+                {4 - openCharts.length} slot{4 - openCharts.length !== 1 ? 's' : ''}
+              </span>
+            )}
           </div>
         </>
       )}
 
       {/* Right actions */}
       <div className="header-actions">
+        <button className="header-btn" title="Staff Messaging" onClick={() => navigate('/staff-messaging')}>
+          💬
+        </button>
         <button className="header-btn" title="Notifications" onClick={() => navigate('/inbox')}>
           🔔
           {unreadCount > 0 && <span className="badge-count">{unreadCount}</span>}
         </button>
+        <div className="header-divider" />
+        <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+          <div style={{
+            width: 30, height: 30, borderRadius: '50%',
+            background: 'linear-gradient(135deg, #3b82f6, #6366f1)',
+            display: 'flex', alignItems: 'center', justifyContent: 'center',
+            color: 'white', fontSize: 10, fontWeight: 800, flexShrink: 0,
+          }}>
+            {currentUser?.firstName?.[0]}{currentUser?.lastName?.[0]}
+          </div>
+          <div style={{ textAlign: 'left', lineHeight: 1.2 }}>
+            <div style={{ fontSize: 11.5, fontWeight: 700, color: 'var(--text-primary)' }}>
+              {currentUser?.firstName} {currentUser?.lastName?.[0]}.
+            </div>
+            <div style={{ fontSize: 10, color: 'var(--text-muted)' }}>
+              {currentUser?.credentials || currentUser?.role}
+            </div>
+          </div>
+        </div>
         <div className="header-divider" />
         <div style={{ textAlign: 'right', userSelect: 'none' }}>
           <div className="header-clock-time">{timeStr}</div>

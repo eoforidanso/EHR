@@ -73,31 +73,32 @@ export default function PatientSearch() {
     <div className="fade-in">
       <div className="page-header">
         <h1>🔍 Patient Search</h1>
-        <p>Search and select a patient to open their chart · {patients.length} patients in system</p>
+        <p>Search and select a patient to open their chart · <strong>{patients.length}</strong> patients in system</p>
       </div>
 
-      <div className="card mb-4">
-        <div className="card-body" style={{ padding: '12px 16px' }}>
+      <div className="card mb-4" style={{ overflow: 'visible' }}>
+        <div className="card-body" style={{ padding: '14px 16px' }}>
           <div style={{ position: 'relative' }}>
             <span style={{ position: 'absolute', left: 14, top: '50%', transform: 'translateY(-50%)', fontSize: 16, opacity: 0.4, pointerEvents: 'none' }}>🔍</span>
             <input
               ref={inputRef}
               type="text"
               className="form-input"
-              placeholder="Type a name, MRN, or date of birth..."
+              placeholder="Search by name, MRN, or date of birth..."
               value={search}
               onChange={(e) => setSearch(e.target.value)}
-              style={{ fontSize: 15, padding: '11px 16px 11px 42px' }}
+              style={{ fontSize: 15, padding: '12px 16px 12px 42px', borderRadius: 'var(--radius-md)', background: 'var(--bg)', border: '2px solid var(--border)', transition: 'all var(--t)' }}
             />
             {search && (
               <button
                 onClick={() => setSearch('')}
-                style={{ position: 'absolute', right: 12, top: '50%', transform: 'translateY(-50%)', background: 'none', border: 'none', cursor: 'pointer', color: 'var(--text-muted)', fontSize: 14 }}
+                style={{ position: 'absolute', right: 12, top: '50%', transform: 'translateY(-50%)', background: 'var(--bg-hover)', border: 'none', cursor: 'pointer', color: 'var(--text-muted)', fontSize: 12, width: 22, height: 22, borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
               >✕</button>
             )}
           </div>
-          <div style={{ marginTop: 6, fontSize: 12, color: 'var(--text-muted)' }}>
-            {filtered.length} result{filtered.length !== 1 ? 's' : ''} {search ? 'found' : ''}
+          <div style={{ marginTop: 8, fontSize: 12, color: 'var(--text-muted)', display: 'flex', alignItems: 'center', gap: 12 }}>
+            <span>{filtered.length} result{filtered.length !== 1 ? 's' : ''} {search ? `for "${search}"` : ''}</span>
+            {search && <span style={{ color: 'var(--primary)', fontWeight: 600, cursor: 'pointer' }} onClick={() => setSearch('')}>Clear search</span>}
           </div>
         </div>
       </div>

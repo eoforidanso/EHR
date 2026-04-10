@@ -2,6 +2,9 @@ import React, { useMemo, useState, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
 import { usePatient } from '../contexts/PatientContext';
+import { users as allUsers } from '../data/mockData';
+
+const PROVIDERS = allUsers.filter(u => u.role === 'prescriber' || u.role === 'nurse');
 
 /* ── helpers ── */
 const TODAY = new Date();
@@ -40,12 +43,54 @@ const getTypeColor = (apt) => {
 
 export default function Schedule() {
   const { currentUser } = useAuth();
-  const { appointments, updateAppointmentStatus, selectPatient } = usePatient();
+  const { appointments, updateAppointmentStatus, selectPatient, blockedDays, addBlockedDay, removeBlockedDay } = usePatient();
   const navigate = useNavigate();
   const [statusFilter, setStatusFilter] = useState('All');
-  const [view, setView] = useState('calendar');          // 'calendar' | 'list'
+  const [view, setView] = useState('calendar');          // 'calendar' | 'list' | 'block'
   const [calendarBase, setCalendarBase] = useState(() => new Date(TODAY.getFullYear(), TODAY.getMonth(), 1));
-  const [selectedDate, setSelectedDate] = useState(null); // date key or null
+  const [selectedDate, setSelectedDate] = useState(null);
+
+  // Block Days state
+  const [blockProvider, setBlockProvider] = useState(currentUser?.id || PROVIDERS[0]?.id || '');
+  const [blockDateFrom, setBlockDateFrom] = useState('');
+  const [blockDateTo, setBlockDateTo] = useState('');
+  const [blockReason, setBlockReason] = useState('');
+  const [blockType, setBlockType] = useState('full');   // 'full' | 'am' | 'pm'
+  const [blockSaved, setBlockSaved] = useState(false);
+
+  /* build a lookup: dateKey -> array of blocked entries for quick calendar lookup */
+  const blockedByDate = useMemo(() => {
+    const map = {};
+    blockedDays.forEach(b => {
+      const from = new Date(b.dateFrom + 'T00:00:00');
+      const to   = new Date(b.dateTo   + 'T00:00:00');
+      for (let d = new Date(from); d <= to; d.setDate(d.getDate() + 1)) {
+        const k = toKey(d);
+        (map[k] = map[k] || []).push(b);
+      }
+    });
+    return map;
+  }, [blockedDays]);
+
+  const handleAddBlock = () => {
+    if (!blockDateFrom || !blockDateTo || !blockProvider) return;
+    if (blockDateTo < blockDateFrom) return;
+    const provider = PROVIDERS.find(p => p.id === blockProvider);
+    addBlockedDay({
+      providerId: blockProvider,
+      providerName: provider ? `${provider.firstName} ${provider.lastName}`.trim() : blockProvider,
+      dateFrom: blockDateFrom,
+      dateTo:   blockDateTo,
+      type: blockType,
+      reason: blockReason.trim(),
+    });
+    setBlockDateFrom('');
+    setBlockDateTo('');
+    setBlockReason('');
+    setBlockType('full');
+    setBlockSaved(true);
+    setTimeout(() => setBlockSaved(false), 3000);
+  };
 
   /* all appointments visible to current user */
   const allAppts = useMemo(() => appointments.filter(
@@ -129,12 +174,12 @@ export default function Schedule() {
         </div>
         {/* View toggle */}
         <div style={{ display: 'flex', gap: 4, background: 'var(--bg-secondary)', borderRadius: 10, padding: 3 }}>
-          {[{ key: 'calendar', icon: '📆', label: 'Calendar' }, { key: 'list', icon: '📋', label: 'List' }].map(v => (
+          {[{ key: 'calendar', icon: '📆', label: 'Calendar' }, { key: 'list', icon: '📋', label: 'List' }, { key: 'block', icon: '⛔', label: 'Block Days' }].map(v => (
             <button key={v.key} onClick={() => setView(v.key)}
               style={{
                 padding: '6px 16px', borderRadius: 8, fontSize: 13, fontWeight: view === v.key ? 700 : 500, cursor: 'pointer',
                 border: 'none',
-                background: view === v.key ? 'var(--primary)' : 'transparent',
+                background: view === v.key ? (v.key === 'block' ? '#c92b2b' : 'var(--primary)') : 'transparent',
                 color: view === v.key ? '#fff' : 'var(--text-secondary)',
                 transition: 'all 0.15s',
               }}>
@@ -184,13 +229,15 @@ export default function Schedule() {
                       const isToday = isSame(day, TODAY);
                       const isSelected = selectedDate === key;
                       const isWeekend = day.getDay() === 0 || day.getDay() === 6;
+                      const dayBlocks = blockedByDate[key] || [];
+                      const isBlocked = dayBlocks.length > 0;
                       return (
                         <div key={di}
                           onClick={() => setSelectedDate(isSelected ? null : key)}
                           style={{
                             minHeight: 56, padding: '3px 4px', cursor: 'pointer', position: 'relative',
-                            background: isSelected ? '#ede9fe' : isToday ? '#eff6ff' : isWeekend ? '#fafafa' : 'transparent',
-                            borderLeft: isSelected ? '3px solid #7c3aed' : isToday ? '3px solid #3b82f6' : '3px solid transparent',
+                            background: isBlocked ? 'repeating-linear-gradient(45deg,rgba(201,43,43,0.07) 0px,rgba(201,43,43,0.07) 4px,transparent 4px,transparent 10px)' : isSelected ? '#ede9fe' : isToday ? '#eff6ff' : isWeekend ? '#fafafa' : 'transparent',
+                            borderLeft: isBlocked ? '3px solid #c92b2b' : isSelected ? '3px solid #7c3aed' : isToday ? '3px solid #3b82f6' : '3px solid transparent',
                             transition: 'all 0.12s',
                           }}
                           onMouseEnter={e => { if (!isSelected && !isToday) e.currentTarget.style.background = '#f5f3ff'; }}
@@ -225,6 +272,11 @@ export default function Schedule() {
                           {dayAppts.length > 3 && (
                             <div style={{ fontSize: 9, color: 'var(--primary)', fontWeight: 700, paddingLeft: 4 }}>+{dayAppts.length - 3} more</div>
                           )}
+                          {isBlocked && (
+                            <div style={{ fontSize: 8.5, color: '#c92b2b', fontWeight: 700, paddingLeft: 2, marginTop: 1, lineHeight: 1.2 }}>
+                              ⛔ {dayBlocks.map(b => b.type === 'full' ? 'Blocked' : b.type === 'am' ? 'AM Off' : 'PM Off').join(', ')}
+                            </div>
+                          )}
                         </div>
                       );
                     })}
@@ -236,7 +288,7 @@ export default function Schedule() {
 
           {/* Legend */}
           <div style={{ display: 'flex', gap: 16, marginBottom: 16, flexWrap: 'wrap', fontSize: 11, color: 'var(--text-muted)' }}>
-            {[{ label: 'Follow-Up', color: '#3b82f6' }, { label: 'New Patient', color: '#f59e0b' }, { label: 'Telehealth', color: '#8b5cf6' }].map(l => (
+            {[{ label: 'Follow-Up', color: '#3b82f6' }, { label: 'New Patient', color: '#f59e0b' }, { label: 'Telehealth', color: '#8b5cf6' }, { label: 'Blocked Day', color: '#c92b2b' }].map(l => (
               <span key={l.label} style={{ display: 'flex', alignItems: 'center', gap: 5 }}>
                 <span style={{ width: 10, height: 10, borderRadius: 3, background: l.color, display: 'inline-block' }} />
                 {l.label}
@@ -310,6 +362,122 @@ export default function Schedule() {
             </div>
           )}
         </>
+      )}
+
+      {/* ── Block Days View ── */}
+      {view === 'block' && (
+        <div className="fade-in">
+          {/* Add Block Form */}
+          <div style={{ background: 'var(--bg-white)', border: '1.5px solid #c92b2b', borderRadius: 12, overflow: 'hidden', marginBottom: 20, boxShadow: 'var(--shadow-sm)' }}>
+            <div style={{ padding: '12px 18px', background: 'linear-gradient(135deg,#c92b2b,#ef4444)', color: '#fff', display: 'flex', alignItems: 'center', gap: 10 }}>
+              <span style={{ fontSize: 18 }}>⛔</span>
+              <div>
+                <div style={{ fontWeight: 800, fontSize: 14 }}>Block Provider Days</div>
+                <div style={{ fontSize: 11, opacity: 0.85 }}>Mark dates as unavailable for scheduling — blocked days appear on the calendar.</div>
+              </div>
+            </div>
+            <div style={{ padding: '18px', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))', gap: 14 }}>
+              {/* Provider */}
+              <div>
+                <label style={{ display: 'block', fontSize: 11, fontWeight: 700, color: 'var(--text-secondary)', textTransform: 'uppercase', letterSpacing: '0.4px', marginBottom: 4 }}>Provider</label>
+                <select className="form-input" value={blockProvider} onChange={e => setBlockProvider(e.target.value)}>
+                  {PROVIDERS.map(p => (
+                    <option key={p.id} value={p.id}>{p.firstName} {p.lastName} {p.credentials ? `(${p.credentials})` : ''}</option>
+                  ))}
+                </select>
+              </div>
+              {/* Date From */}
+              <div>
+                <label style={{ display: 'block', fontSize: 11, fontWeight: 700, color: 'var(--text-secondary)', textTransform: 'uppercase', letterSpacing: '0.4px', marginBottom: 4 }}>From Date</label>
+                <input type="date" className="form-input" value={blockDateFrom}
+                  onChange={e => { setBlockDateFrom(e.target.value); if (!blockDateTo || e.target.value > blockDateTo) setBlockDateTo(e.target.value); }} />
+              </div>
+              {/* Date To */}
+              <div>
+                <label style={{ display: 'block', fontSize: 11, fontWeight: 700, color: 'var(--text-secondary)', textTransform: 'uppercase', letterSpacing: '0.4px', marginBottom: 4 }}>To Date</label>
+                <input type="date" className="form-input" value={blockDateTo} min={blockDateFrom}
+                  onChange={e => setBlockDateTo(e.target.value)} />
+              </div>
+              {/* Block Type */}
+              <div>
+                <label style={{ display: 'block', fontSize: 11, fontWeight: 700, color: 'var(--text-secondary)', textTransform: 'uppercase', letterSpacing: '0.4px', marginBottom: 4 }}>Block Type</label>
+                <div style={{ display: 'flex', gap: 6 }}>
+                  {[{ val: 'full', label: 'Full Day' }, { val: 'am', label: 'AM Only' }, { val: 'pm', label: 'PM Only' }].map(t => (
+                    <button key={t.val} type="button" onClick={() => setBlockType(t.val)}
+                      style={{
+                        flex: 1, padding: '7px 4px', borderRadius: 6, fontSize: 11.5, fontWeight: 700,
+                        cursor: 'pointer', border: `1.5px solid ${blockType === t.val ? '#c92b2b' : 'var(--border)'}`,
+                        background: blockType === t.val ? '#c92b2b' : '#fff',
+                        color: blockType === t.val ? '#fff' : 'var(--text-secondary)',
+                      }}>
+                      {t.label}
+                    </button>
+                  ))}
+                </div>
+              </div>
+              {/* Reason */}
+              <div style={{ gridColumn: 'span 2' }}>
+                <label style={{ display: 'block', fontSize: 11, fontWeight: 700, color: 'var(--text-secondary)', textTransform: 'uppercase', letterSpacing: '0.4px', marginBottom: 4 }}>Reason (optional)</label>
+                <input type="text" className="form-input" placeholder="e.g., PTO, Conference, Holiday, Sick Leave..."
+                  value={blockReason} onChange={e => setBlockReason(e.target.value)} />
+              </div>
+            </div>
+            <div style={{ padding: '12px 18px', borderTop: '1px solid var(--border)', background: '#fafbfc', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+              {blockSaved && <span style={{ fontSize: 12.5, color: '#166534', fontWeight: 600 }}>✅ Block saved successfully.</span>}
+              {!blockSaved && <span />}
+              <button className="btn btn-primary" onClick={handleAddBlock}
+                disabled={!blockDateFrom || !blockDateTo || !blockProvider}
+                style={{ background: '#c92b2b', borderColor: '#c92b2b', opacity: (!blockDateFrom || !blockDateTo || !blockProvider) ? 0.5 : 1 }}>
+                ⛔ Add Block
+              </button>
+            </div>
+          </div>
+
+          {/* Existing Blocks List */}
+          <div style={{ background: 'var(--bg-white)', border: '1px solid var(--border)', borderRadius: 12, overflow: 'hidden', boxShadow: 'var(--shadow-sm)' }}>
+            <div style={{ padding: '12px 18px', borderBottom: '1px solid var(--border)', display: 'flex', justifyContent: 'space-between', alignItems: 'center', background: '#f7f9fc' }}>
+              <div style={{ fontWeight: 800, fontSize: 14 }}>🗓️ Scheduled Blocks</div>
+              <span style={{ fontSize: 12, color: 'var(--text-muted)' }}>{blockedDays.length} block{blockedDays.length !== 1 ? 's' : ''}</span>
+            </div>
+            {blockedDays.length === 0 ? (
+              <div style={{ padding: 32, textAlign: 'center', color: 'var(--text-muted)' }}>
+                No blocked days scheduled. Use the form above to add one.
+              </div>
+            ) : (
+              <div>
+                {[...blockedDays].sort((a,b) => a.dateFrom.localeCompare(b.dateFrom)).map((b, i) => {
+                  const sameDay = b.dateFrom === b.dateTo;
+                  const fromLabel = new Date(b.dateFrom + 'T00:00:00').toLocaleDateString('en-US', { weekday:'short', month:'short', day:'numeric', year:'numeric' });
+                  const toLabel   = new Date(b.dateTo   + 'T00:00:00').toLocaleDateString('en-US', { weekday:'short', month:'short', day:'numeric', year:'numeric' });
+                  return (
+                    <div key={b.id} style={{
+                      display: 'flex', alignItems: 'center', gap: 14, padding: '12px 18px',
+                      borderBottom: i < blockedDays.length - 1 ? '1px solid var(--border-light)' : 'none',
+                    }}>
+                      <div style={{ width: 40, height: 40, borderRadius: 8, background: 'rgba(201,43,43,0.1)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 18, flexShrink: 0 }}>⛔</div>
+                      <div style={{ flex: 1, minWidth: 0 }}>
+                        <div style={{ fontWeight: 700, fontSize: 13, color: 'var(--text-primary)' }}>
+                          {b.providerName}
+                          <span style={{ marginLeft: 8, fontSize: 11, fontWeight: 600, padding: '1px 8px', borderRadius: 10, background: b.type === 'full' ? 'rgba(201,43,43,0.12)' : 'rgba(251,146,60,0.15)', color: b.type === 'full' ? '#c92b2b' : '#c2410c' }}>
+                            {b.type === 'full' ? 'Full Day' : b.type === 'am' ? 'AM Only' : 'PM Only'}
+                          </span>
+                        </div>
+                        <div style={{ fontSize: 12, color: 'var(--text-secondary)', marginTop: 2 }}>
+                          {sameDay ? fromLabel : `${fromLabel} → ${toLabel}`}
+                          {b.reason && <span style={{ marginLeft: 8, fontStyle: 'italic', color: 'var(--text-muted)' }}>— {b.reason}</span>}
+                        </div>
+                      </div>
+                      <button onClick={() => removeBlockedDay(b.id)}
+                        style={{ background: 'none', border: '1px solid var(--border)', borderRadius: 6, padding: '4px 10px', cursor: 'pointer', fontSize: 12, color: 'var(--danger)', fontWeight: 600 }}>
+                        Remove
+                      </button>
+                    </div>
+                  );
+                })}
+              </div>
+            )}
+          </div>
+        </div>
       )}
 
       {/* ── List View (original table) ── */}

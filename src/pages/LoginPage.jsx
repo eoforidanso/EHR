@@ -36,34 +36,31 @@ export default function LoginPage() {
 
   const handleDemoLogin = (u) => {
     setUsername(u.username);
-    setPassword(u.password);
-    setLoading(true);
-    setTimeout(() => {
-      const success = login(u.username, u.password);
-      if (success) navigate('/dashboard');
-      setLoading(false);
-    }, 300);
+    setPassword('');
   };
 
   return (
     <div className="login-page">
+      <div className="login-orb login-orb-1" />
+      <div className="login-orb login-orb-2" />
+      <div className="login-orb login-orb-3" />
       <div className="login-container">
         <div className="login-header">
           <div className="logo-icon">🧠</div>
           <h1>MindCare EHR</h1>
           <p>Outpatient Behavioral Health Platform</p>
-          <div style={{ marginTop: 8, display: 'flex', justifyContent: 'center', gap: 16 }}>
-            <span style={{ fontSize: 10, color: '#475569', letterSpacing: '0.5px', textTransform: 'uppercase', fontWeight: 600 }}>
-              HIPAA Compliant
-            </span>
-            <span style={{ fontSize: 10, color: '#334155' }}>•</span>
-            <span style={{ fontSize: 10, color: '#475569', letterSpacing: '0.5px', textTransform: 'uppercase', fontWeight: 600 }}>
-              EPCS Certified
-            </span>
-            <span style={{ fontSize: 10, color: '#334155' }}>•</span>
-            <span style={{ fontSize: 10, color: '#475569', letterSpacing: '0.5px', textTransform: 'uppercase', fontWeight: 600 }}>
-              ONC Certified
-            </span>
+          <div style={{ marginTop: 10, display: 'flex', justifyContent: 'center', gap: 8, flexWrap: 'wrap' }}>
+            {['HIPAA Compliant', 'EPCS Certified', 'ONC Certified', '42 CFR Part 2'].map((cert, i) => (
+              <span key={cert} style={{
+                fontSize: 9.5, padding: '3px 10px', borderRadius: 20,
+                background: 'rgba(59,130,246,0.1)', color: '#60a5fa',
+                letterSpacing: '0.5px', textTransform: 'uppercase', fontWeight: 700,
+                border: '1px solid rgba(59,130,246,0.15)',
+                animation: `fadeInUp 0.4s var(--ease) ${0.2 + i * 0.1}s both`,
+              }}>
+                {cert}
+              </span>
+            ))}
           </div>
         </div>
 
@@ -106,18 +103,31 @@ export default function LoginPage() {
 
           <div className="login-demo">
             <h3>Quick Access — Demo Accounts</h3>
-            {users.map((u) => (
+            {users.filter(u => u.role !== 'patient').map((u, idx) => (
               <div
                 key={u.id}
                 className="login-demo-account"
                 onClick={() => handleDemoLogin(u)}
+                style={{ animationDelay: `${0.3 + idx * 0.05}s` }}
               >
-                <span>
-                  {ROLE_ICONS[u.role] || '👤'}{' '}
-                  <span style={{ fontWeight: 600 }}>{u.firstName} {u.lastName}</span>
-                  {u.credentials && <span style={{ marginLeft: 4, opacity: 0.6, fontSize: 11 }}>{u.credentials}</span>}
+                <span style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+                  <span style={{
+                    width: 28, height: 28, borderRadius: '50%',
+                    background: u.role === 'prescriber' ? 'linear-gradient(135deg,#3b82f6,#6366f1)' :
+                               u.role === 'nurse' ? 'linear-gradient(135deg,#10b981,#059669)' :
+                               u.role === 'front_desk' ? 'linear-gradient(135deg,#f59e0b,#d97706)' :
+                               'linear-gradient(135deg,#8b5cf6,#7c3aed)',
+                    display: 'flex', alignItems: 'center', justifyContent: 'center',
+                    fontSize: 12, flexShrink: 0,
+                  }}>
+                    {ROLE_ICONS[u.role] || '👤'}
+                  </span>
+                  <span>
+                    <span style={{ fontWeight: 700, color: '#e2e8f0' }}>{u.firstName} {u.lastName}</span>
+                    {u.credentials && <span style={{ marginLeft: 4, opacity: 0.5, fontSize: 11 }}>{u.credentials}</span>}
+                  </span>
                 </span>
-                <span style={{ fontSize: 11, opacity: 0.7 }}>
+                <span style={{ fontSize: 11, opacity: 0.6, fontWeight: 500 }}>
                   {u.role === 'prescriber' ? u.specialty : ROLE_LABELS[u.role] || u.role}
                 </span>
               </div>
@@ -125,12 +135,18 @@ export default function LoginPage() {
           </div>
         </div>
 
-        <div style={{ textAlign: 'center', marginTop: 20 }}>
-          <p style={{ color: '#334155', fontSize: 11 }}>
+        <div style={{ textAlign: 'center', marginTop: 24 }}>
+          <p style={{ color: '#94a3b8', fontSize: 12, marginBottom: 8 }}>
+            Are you a patient?{' '}
+            <a href="/patient-portal-login" style={{ color: '#60a5fa', fontWeight: 600, textDecoration: 'none' }}>
+              Sign in to the Patient Portal →
+            </a>
+          </p>
+          <p style={{ color: '#64748b', fontSize: 11, fontWeight: 500 }}>
             © {new Date().getFullYear()} MindCare Health System — Academic Medical Center
           </p>
-          <p style={{ color: '#1e293b', fontSize: 10, marginTop: 4, opacity: 0.5 }}>
-            Authorized use only. All access is monitored and logged.
+          <p style={{ color: '#475569', fontSize: 10, marginTop: 6, opacity: 0.6 }}>
+            Authorized use only · All access is monitored and logged · v2.4.1
           </p>
         </div>
       </div>

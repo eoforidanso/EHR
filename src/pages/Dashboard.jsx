@@ -70,14 +70,15 @@ export default function Dashboard() {
   return (
     <div className="fade-in">
       {/* Greeting */}
-      <div style={{ marginBottom: 20, display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
+      <div style={{ marginBottom: 22, display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
         <div>
-          <h1 style={{ fontSize: 22, fontWeight: 800, letterSpacing: '-0.3px' }}>
+          <h1 style={{ fontSize: 24, fontWeight: 800, letterSpacing: '-0.5px' }}>
             {greeting}, {currentUser?.firstName}
           </h1>
-          <p style={{ color: 'var(--text-secondary)', fontSize: 13, marginTop: 3 }}>
+          <p style={{ color: 'var(--text-secondary)', fontSize: 13, marginTop: 4, display: 'flex', alignItems: 'center', gap: 8 }}>
             {new Date().toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' })}
-            {remaining > 0 && <span style={{ marginLeft: 8, color: 'var(--primary)', fontWeight: 600 }}>· {remaining} remaining today</span>}
+            {remaining > 0 && <span style={{ color: 'var(--primary)', fontWeight: 600 }}>· {remaining} remaining today</span>}
+            <span style={{ fontSize: 9, padding: '2px 6px', borderRadius: 4, background: 'var(--purple-light)', color: 'var(--purple)', fontWeight: 700, letterSpacing: 0.5, textTransform: 'uppercase' }}>Academic Medical Center</span>
           </p>
         </div>
         <div style={{ display: 'flex', gap: 8 }}>
@@ -98,9 +99,9 @@ export default function Dashboard() {
       )}
 
       {/* Stat strip */}
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(5,1fr)', gap: 14, marginBottom: 22 }}>
+      <div className="stagger" style={{ display: 'grid', gridTemplateColumns: 'repeat(5,1fr)', gap: 14, marginBottom: 24 }}>
         {stats.map((s) => (
-          <div key={s.label} className={`stat-card row ${s.color}`}>
+          <div key={s.label} className={`stat-card row ${s.color} fade-in`}>
             <div className={`stat-icon ${s.color}`}>{s.icon}</div>
             <div className="stat-info">
               <h3>{s.value}</h3>
@@ -267,6 +268,7 @@ export default function Dashboard() {
                     width: `${todayAppts.length > 0 ? (completed / todayAppts.length) * 100 : 0}%`,
                     background: 'var(--primary)',
                     borderRadius: 4,
+                    transition: 'width 0.8s cubic-bezier(0.16, 1, 0.3, 1)',
                   }}
                 />
               </div>
@@ -274,6 +276,42 @@ export default function Dashboard() {
                 <span>🟢 Checked in: {checkedIn}</span>
                 <span>🟡 In session: {inProgress}</span>
                 <span>✅ Done: {completed}</span>
+              </div>
+            </div>
+          </div>
+
+          {/* Staff Chat Preview */}
+          <div className="card card-hover" style={{ cursor: 'pointer' }} onClick={() => navigate('/staff-messaging')}>
+            <div className="card-header">
+              <h2 style={{ fontSize: 13 }}>💬 Staff Chat</h2>
+              <button className="btn btn-sm btn-ghost" onClick={(e) => { e.stopPropagation(); navigate('/staff-messaging'); }}>Open</button>
+            </div>
+            <div className="card-body" style={{ padding: '10px 16px' }}>
+              <div style={{ fontSize: 12, color: 'var(--text-secondary)', marginBottom: 8 }}>
+                Team communications channel
+              </div>
+              <div style={{ display: 'flex', gap: -6, marginBottom: 8 }}>
+                {[
+                  { initials: 'CL', bg: 'linear-gradient(135deg, #3b82f6, #1d4ed8)' },
+                  { initials: 'J', bg: 'linear-gradient(135deg, #8b5cf6, #6d28d9)' },
+                  { initials: 'IS', bg: 'linear-gradient(135deg, #10b981, #059669)' },
+                  { initials: 'KC', bg: 'linear-gradient(135deg, #f59e0b, #d97706)' },
+                ].map((a, i) => (
+                  <div key={i} style={{
+                    width: 26, height: 26, borderRadius: '50%', background: a.bg,
+                    display: 'flex', alignItems: 'center', justifyContent: 'center',
+                    color: 'white', fontSize: 9, fontWeight: 700, border: '2px solid var(--bg-white)',
+                    marginLeft: i > 0 ? -6 : 0, position: 'relative', zIndex: 4 - i,
+                  }}>
+                    {a.initials}
+                  </div>
+                ))}
+                <div style={{ display: 'flex', alignItems: 'center', marginLeft: 8, fontSize: 11, color: 'var(--text-muted)' }}>
+                  5 team members online
+                </div>
+              </div>
+              <div style={{ fontSize: 11, color: 'var(--primary)', fontWeight: 600 }}>
+                Open Staff Chat →
               </div>
             </div>
           </div>

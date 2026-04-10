@@ -16,6 +16,11 @@ import BTGAuditLog from './pages/BTGAuditLog';
 import HealthAdminToolkit from './pages/HealthAdminToolkit';
 import GoToSession from './pages/GoToSession';
 import PatientChat from './pages/PatientChat';
+import Analytics from './pages/Analytics';
+import CareGaps from './pages/CareGaps';
+import StaffMessaging from './pages/StaffMessaging';
+import PatientPortalLogin from './pages/PatientPortalLogin';
+import PatientPortal from './pages/PatientPortal';
 
 import Sidebar from './components/Sidebar';
 import Header from './components/Header';
@@ -40,9 +45,28 @@ function ProtectedLayout() {
 }
 
 function LoginRoute() {
-  const { isAuthenticated } = useAuth();
+  const { isAuthenticated, currentUser } = useAuth();
+  if (isAuthenticated && currentUser?.role === 'patient') return <Navigate to="/patient-portal" replace />;
   if (isAuthenticated) return <Navigate to="/dashboard" replace />;
   return <LoginPage />;
+}
+
+function PatientPortalLoginRoute() {
+  const { isAuthenticated, currentUser } = useAuth();
+  if (isAuthenticated && currentUser?.role === 'patient') return <Navigate to="/patient-portal" replace />;
+  if (isAuthenticated) return <Navigate to="/dashboard" replace />;
+  return <PatientPortalLogin />;
+}
+
+function PatientPortalRoute() {
+  const { isAuthenticated, currentUser } = useAuth();
+  if (!isAuthenticated) return <Navigate to="/patient-portal-login" replace />;
+  if (currentUser?.role !== 'patient') return <Navigate to="/dashboard" replace />;
+  return (
+    <PatientProvider>
+      <PatientPortal />
+    </PatientProvider>
+  );
 }
 
 export default function App() {
@@ -51,6 +75,8 @@ export default function App() {
       <AuthProvider>
         <Routes>
           <Route path="/login" element={<LoginRoute />} />
+          <Route path="/patient-portal-login" element={<PatientPortalLoginRoute />} />
+          <Route path="/patient-portal" element={<PatientPortalRoute />} />
 
           <Route element={<ProtectedLayout />}>
             <Route path="/dashboard" element={<Dashboard />} />
@@ -66,6 +92,9 @@ export default function App() {
             <Route path="/admin-toolkit" element={<HealthAdminToolkit />} />
             <Route path="/patient-chat" element={<PatientChat />} />
             <Route path="/session/:aptId" element={<GoToSession />} />
+            <Route path="/analytics" element={<Analytics />} />
+            <Route path="/care-gaps" element={<CareGaps />} />
+            <Route path="/staff-messaging" element={<StaffMessaging />} />
             <Route path="/" element={<Navigate to="/dashboard" replace />} />
           </Route>
 

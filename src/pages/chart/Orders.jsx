@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import { useAuth } from '../../contexts/AuthContext';
 import { usePatient } from '../../contexts/PatientContext';
-import { labOrderDatabase, labFacilities } from '../../data/mockData';
+import { labOrderDatabase, labFacilities, users } from '../../data/mockData';
 
 export default function Orders({ patientId }) {
   const { currentUser } = useAuth();
-  const { orders, addOrder } = usePatient();
+  const { orders, addOrder, addInboxMessage } = usePatient();
   const [showAdd, setShowAdd] = useState(false);
   const [orderType, setOrderType] = useState('Lab');
   const [search, setSearch] = useState('');
@@ -13,6 +13,10 @@ export default function Orders({ patientId }) {
   const [labFacilitySearch, setLabFacilitySearch] = useState('');
   const [selectedLabFacility, setSelectedLabFacility] = useState(null);
   const [labFacilityFocused, setLabFacilityFocused] = useState(false);
+  const [forwardTo, setForwardTo] = useState('');
+
+  const isAdmin = currentUser?.role === 'admin';
+  const providers = users.filter(u => u.role === 'prescriber');
 
   const patientOrders = orders[patientId] || [];
 
@@ -22,16 +26,38 @@ export default function Orders({ patientId }) {
 
   const handleAdd = () => {
     if (!form.description.trim()) return;
+    if (isAdmin && !forwardTo) return;
+
+    const forwardProvider = isAdmin ? providers.find(p => p.id === forwardTo) : null;
+
     addOrder(patientId, {
       ...form,
       labFacility: form.type === 'Lab' && selectedLabFacility ? `${selectedLabFacility.name} — ${selectedLabFacility.city}` : '',
-      status: 'Pending',
+      status: isAdmin ? 'Pending Provider Review' : 'Pending',
       orderedDate: new Date().toISOString().split('T')[0],
-      orderedBy: `${currentUser.firstName} ${currentUser.lastName}`,
+      orderedBy: isAdmin
+        ? `${currentUser.firstName} ${currentUser.lastName} → ${forwardProvider.firstName} ${forwardProvider.lastName}`
+        : `${currentUser.firstName} ${currentUser.lastName}`,
+      forwardedTo: forwardProvider ? `${forwardProvider.firstName} ${forwardProvider.lastName}` : null,
     });
+
+    if (isAdmin && forwardProvider) {
+      addInboxMessage({
+        type: 'Order Forward',
+        from: `${currentUser.firstName} ${currentUser.lastName} (Admin)`,
+        subject: `Order Forwarded: ${form.type} — ${form.description}`,
+        body: `Admin ${currentUser.firstName} ${currentUser.lastName} has forwarded a ${form.priority} ${form.type} order for your review and signature.\n\nOrder: ${form.description}\nPriority: ${form.priority}\nNotes: ${form.notes || 'None'}\n\nPlease review and sign this order in the patient's chart.`,
+        patient: patientId,
+        date: new Date().toISOString().split('T')[0],
+        status: 'Unread',
+        urgent: form.priority === 'STAT',
+      });
+    }
+
     setForm({ type: 'Lab', description: '', priority: 'Routine', notes: '' });
     setSelectedLabFacility(null);
     setLabFacilitySearch('');
+    setForwardTo('');
     setShowAdd(false);
   };
 
@@ -144,8 +170,22 @@ export default function Orders({ patientId }) {
               <label className="form-label">Clinical Notes</label>
               <textarea className="form-textarea" rows={2} value={form.notes} onChange={(e) => setForm({ ...form, notes: e.target.value })} placeholder="Additional notes..." />
             </div>
+            {isAdmin && (
+              <div className="form-group">
+                <label className="form-label">Forward to Provider *</label>
+                <select className="form-select" value={forwardTo} onChange={(e) => setForwardTo(e.target.value)}>
+                  <option value="">— Select a provider —</option>
+                  {providers.map(p => (
+                    <option key={p.id} value={p.id}>{p.firstName} {p.lastName}{p.credentials ? `, ${p.credentials}` : ''} — {p.specialty}</option>
+                  ))}
+                </select>
+                {!forwardTo && <span style={{ fontSize: 11, color: 'var(--text-muted)', marginTop: 4, display: 'block' }}>Admin staff cannot place orders directly. Select a provider to forward this order for review and signature.</span>}
+              </div>
+            )}
             <div style={{ display: 'flex', gap: 8 }}>
-              <button className="btn btn-sm btn-primary" onClick={handleAdd}>Place Order</button>
+              <button className="btn btn-sm btn-primary" onClick={handleAdd} disabled={isAdmin && !forwardTo}>
+                {isAdmin ? '📨 Forward to Provider' : 'Place Order'}
+              </button>
               <button className="btn btn-sm btn-secondary" onClick={() => setShowAdd(false)}>Cancel</button>
             </div>
           </div>
@@ -166,6 +206,7 @@ export default function Orders({ patientId }) {
                       o.status === 'Completed' ? 'badge-success' :
                       o.status === 'Pending' ? 'badge-warning' :
                       o.status === 'Pending EPCS Auth' ? 'badge-danger' :
+                      o.status === 'Pending Provider Review' ? 'badge-purple' :
                       o.status === 'Active' ? 'badge-info' : 'badge-gray'
                     }`}>{o.status}</span>
                   </td>

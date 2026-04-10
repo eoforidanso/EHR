@@ -5,7 +5,7 @@ import { usePatient } from '../contexts/PatientContext';
 
 export default function Sidebar() {
   const { currentUser, logout } = useAuth();
-  const { inboxMessages, selectedPatient, appointments } = usePatient();
+  const { inboxMessages, selectedPatient, openCharts, appointments } = usePatient();
   const location = useLocation();
   const navigate = useNavigate();
   const [chartExpanded, setChartExpanded] = useState(true);
@@ -72,20 +72,31 @@ export default function Sidebar() {
         </div>
       </div>
 
-      {/* Active patient context */}
-      {selectedPatient && (
-        <div
-          className="sidebar-patient-ctx"
-          onClick={() => navigate(`/chart/${selectedPatient.id}/summary`)}
-          title="Go to chart"
-        >
-          <div className="sidebar-patient-ctx-label">📌 Active Patient</div>
-          <div className="sidebar-patient-ctx-name">
-            {selectedPatient.lastName}, {selectedPatient.firstName}
-          </div>
-          <div className="sidebar-patient-ctx-detail">
-            MRN {selectedPatient.mrn} · DOB {selectedPatient.dob}
-          </div>
+      {/* Open patient charts */}
+      {openCharts.length > 0 && (
+        <div className="sidebar-patient-ctx" style={{ cursor: 'default', padding: '8px 14px' }}>
+          <div className="sidebar-patient-ctx-label">📌 Open Charts ({openCharts.length}/4)</div>
+          {openCharts.map((p) => (
+            <div
+              key={p.id}
+              onClick={() => navigate(`/chart/${p.id}/summary`)}
+              title={`Go to ${p.firstName} ${p.lastName}'s chart`}
+              style={{
+                cursor: 'pointer',
+                padding: '4px 0',
+                borderBottom: p.id !== openCharts[openCharts.length - 1]?.id ? '1px solid rgba(255,255,255,0.06)' : 'none',
+                opacity: selectedPatient?.id === p.id ? 1 : 0.7,
+                fontWeight: selectedPatient?.id === p.id ? 700 : 400,
+              }}
+            >
+              <div className="sidebar-patient-ctx-name" style={{ fontSize: 12 }}>
+                {selectedPatient?.id === p.id ? '▸ ' : ''}{p.lastName}, {p.firstName}
+              </div>
+              <div className="sidebar-patient-ctx-detail" style={{ fontSize: 10 }}>
+                MRN {p.mrn}
+              </div>
+            </div>
+          ))}
         </div>
       )}
 
@@ -97,6 +108,7 @@ export default function Sidebar() {
           {navItem('/schedule',  '📅', 'Schedule', todayApptCount)}
           {navItem('/inbox',     '📬', 'Clinical Inbox', unreadCount)}
           {navItem('/patients',  '🔍', 'Patient Search')}
+          {navItem('/staff-messaging', '💬', 'Staff Messaging')}
         </ul>
       </div>
 
@@ -143,6 +155,15 @@ export default function Sidebar() {
           </ul>
         </div>
       )}
+
+      {/* Reporting */}
+      <div className="sidebar-section">
+        <div className="sidebar-section-title">Reporting</div>
+        <ul className="sidebar-nav">
+          {navItem('/analytics',  '📈', 'Analytics')}
+          {navItem('/care-gaps',  '🎯', 'Care Gaps')}
+        </ul>
+      </div>
 
       {/* Admin Toolkit — all roles */}
       <div className="sidebar-section">

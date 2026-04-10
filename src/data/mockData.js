@@ -6,7 +6,7 @@ export const users = [
   {
     id: 'u1',
     username: 'dr.chris',
-    password: 'Pass123!',
+    password: 'Pass123!!',
     firstName: 'Chris',
     lastName: 'L.',
     role: 'prescriber',
@@ -21,7 +21,7 @@ export const users = [
   {
     id: 'u2',
     username: 'np.joseph',
-    password: 'Pass123!',
+    password: 'Pass123!!',
     firstName: 'Joseph',
     lastName: '',
     role: 'prescriber',
@@ -36,7 +36,7 @@ export const users = [
   {
     id: 'u3',
     username: 'irina.s',
-    password: 'Pass123!',
+    password: 'Pass123!!',
     firstName: 'Irina',
     lastName: 'S.',
     role: 'prescriber',
@@ -51,7 +51,7 @@ export const users = [
   {
     id: 'u4',
     username: 'nurse.kelly',
-    password: 'Pass123!',
+    password: 'Pass123!!',
     firstName: 'Kelly',
     lastName: 'Chen',
     role: 'nurse',
@@ -63,7 +63,7 @@ export const users = [
   {
     id: 'u5',
     username: 'admin',
-    password: 'Pass123!',
+    password: 'Pass123!!',
     firstName: 'Admin',
     lastName: 'User',
     role: 'admin',
@@ -74,12 +74,12 @@ export const users = [
   },
 
   // ── Patient portal accounts ──────────────────────────────────
-  { id: 'pat-p1', username: 'james.anderson', password: 'Patient1!', firstName: 'James', lastName: 'Anderson', role: 'patient', patientId: 'p1', email: 'james.anderson@email.com' },
-  { id: 'pat-p2', username: 'maria.garcia',   password: 'Patient1!', firstName: 'Maria', lastName: 'Garcia',   role: 'patient', patientId: 'p2', email: 'maria.garcia@email.com' },
-  { id: 'pat-p3', username: 'robert.chen',    password: 'Patient1!', firstName: 'Robert', lastName: 'Chen',   role: 'patient', patientId: 'p3', email: 'robert.chen@email.com' },
-  { id: 'pat-p4', username: 'ashley.kim',     password: 'Patient1!', firstName: 'Ashley', lastName: 'Kim',    role: 'patient', patientId: 'p4', email: 'ashley.kim@email.com' },
-  { id: 'pat-p5', username: 'dorothy.wilson', password: 'Patient1!', firstName: 'Dorothy', lastName: 'Wilson', role: 'patient', patientId: 'p5', email: 'dorothy.wilson@email.com' },
-  { id: 'pat-p6', username: 'marcus.brown',   password: 'Patient1!', firstName: 'Marcus', lastName: 'Brown',  role: 'patient', patientId: 'p6', email: 'marcus.brown@email.com' },
+  { id: 'pat-p1', username: 'james.anderson', password: 'Patient1!!', firstName: 'James', lastName: 'Anderson', role: 'patient', patientId: 'p1', email: 'james.anderson@email.com' },
+  { id: 'pat-p2', username: 'maria.garcia',   password: 'Patient1!!', firstName: 'Maria', lastName: 'Garcia',   role: 'patient', patientId: 'p2', email: 'maria.garcia@email.com' },
+  { id: 'pat-p3', username: 'robert.chen',    password: 'Patient1!!', firstName: 'Robert', lastName: 'Chen',   role: 'patient', patientId: 'p3', email: 'robert.chen@email.com' },
+  { id: 'pat-p4', username: 'ashley.kim',     password: 'Patient1!!', firstName: 'Ashley', lastName: 'Kim',    role: 'patient', patientId: 'p4', email: 'ashley.kim@email.com' },
+  { id: 'pat-p5', username: 'dorothy.wilson', password: 'Patient1!!', firstName: 'Dorothy', lastName: 'Wilson', role: 'patient', patientId: 'p5', email: 'dorothy.wilson@email.com' },
+  { id: 'pat-p6', username: 'marcus.brown',   password: 'Patient1!!', firstName: 'Marcus', lastName: 'Brown',  role: 'patient', patientId: 'p6', email: 'marcus.brown@email.com' },
 ];
 
 // ========== PATIENTS ==========
@@ -914,56 +914,833 @@ export const btgAuditLog = [
 
 // ========== MEDICATION DATABASE (for ordering) ==========
 export const medicationDatabase = [
-  // SSRIs
+  // ══════════════════════════════════════════════════════════════
+  //  PSYCHIATRY / BEHAVIORAL HEALTH
+  // ══════════════════════════════════════════════════════════════
+
+  // ── SSRIs ──────────────────────────────────────────────────
   { name: 'Sertraline (Zoloft)', class: 'SSRI', doses: ['25mg', '50mg', '100mg', '150mg', '200mg'], routes: ['Oral'], isControlled: false },
   { name: 'Fluoxetine (Prozac)', class: 'SSRI', doses: ['10mg', '20mg', '40mg', '60mg'], routes: ['Oral'], isControlled: false },
   { name: 'Escitalopram (Lexapro)', class: 'SSRI', doses: ['5mg', '10mg', '20mg'], routes: ['Oral'], isControlled: false },
   { name: 'Paroxetine (Paxil)', class: 'SSRI', doses: ['10mg', '20mg', '30mg', '40mg'], routes: ['Oral'], isControlled: false },
   { name: 'Citalopram (Celexa)', class: 'SSRI', doses: ['10mg', '20mg', '40mg'], routes: ['Oral'], isControlled: false },
-  // SNRIs
+  { name: 'Fluvoxamine (Luvox)', class: 'SSRI', doses: ['25mg', '50mg', '100mg', '150mg', '200mg', '300mg'], routes: ['Oral'], isControlled: false },
+  { name: 'Vilazodone (Viibryd)', class: 'SSRI', doses: ['10mg', '20mg', '40mg'], routes: ['Oral'], isControlled: false },
+  { name: 'Vortioxetine (Trintellix)', class: 'Serotonin Modulator', doses: ['5mg', '10mg', '20mg'], routes: ['Oral'], isControlled: false },
+
+  // ── SNRIs ─────────────────────────────────────────────────
   { name: 'Venlafaxine XR (Effexor XR)', class: 'SNRI', doses: ['37.5mg', '75mg', '150mg', '225mg'], routes: ['Oral'], isControlled: false },
   { name: 'Duloxetine (Cymbalta)', class: 'SNRI', doses: ['20mg', '30mg', '60mg', '90mg', '120mg'], routes: ['Oral'], isControlled: false },
   { name: 'Desvenlafaxine (Pristiq)', class: 'SNRI', doses: ['25mg', '50mg', '100mg'], routes: ['Oral'], isControlled: false },
-  // Atypical Antidepressants
+  { name: 'Levomilnacipran (Fetzima)', class: 'SNRI', doses: ['20mg', '40mg', '80mg', '120mg'], routes: ['Oral'], isControlled: false },
+  { name: 'Milnacipran (Savella)', class: 'SNRI', doses: ['12.5mg', '25mg', '50mg', '100mg'], routes: ['Oral'], isControlled: false },
+
+  // ── Atypical Antidepressants ──────────────────────────────
   { name: 'Bupropion XL (Wellbutrin XL)', class: 'Atypical Antidepressant', doses: ['150mg', '300mg', '450mg'], routes: ['Oral'], isControlled: false },
+  { name: 'Bupropion SR (Wellbutrin SR)', class: 'Atypical Antidepressant', doses: ['100mg', '150mg', '200mg'], routes: ['Oral'], isControlled: false },
   { name: 'Mirtazapine (Remeron)', class: 'Atypical Antidepressant', doses: ['7.5mg', '15mg', '30mg', '45mg'], routes: ['Oral'], isControlled: false },
   { name: 'Trazodone', class: 'Atypical Antidepressant', doses: ['25mg', '50mg', '100mg', '150mg', '200mg', '300mg'], routes: ['Oral'], isControlled: false },
-  // Antipsychotics
+  { name: 'Nefazodone', class: 'Atypical Antidepressant', doses: ['50mg', '100mg', '150mg', '200mg', '250mg'], routes: ['Oral'], isControlled: false },
+
+  // ── Tricyclic Antidepressants ─────────────────────────────
+  { name: 'Amitriptyline (Elavil)', class: 'Tricyclic Antidepressant', doses: ['10mg', '25mg', '50mg', '75mg', '100mg', '150mg'], routes: ['Oral'], isControlled: false },
+  { name: 'Nortriptyline (Pamelor)', class: 'Tricyclic Antidepressant', doses: ['10mg', '25mg', '50mg', '75mg', '100mg', '150mg'], routes: ['Oral'], isControlled: false },
+  { name: 'Doxepin (Sinequan)', class: 'Tricyclic Antidepressant', doses: ['10mg', '25mg', '50mg', '75mg', '100mg', '150mg'], routes: ['Oral'], isControlled: false },
+  { name: 'Imipramine (Tofranil)', class: 'Tricyclic Antidepressant', doses: ['10mg', '25mg', '50mg', '75mg', '100mg', '150mg'], routes: ['Oral'], isControlled: false },
+  { name: 'Clomipramine (Anafranil)', class: 'Tricyclic Antidepressant', doses: ['25mg', '50mg', '75mg', '100mg', '150mg', '200mg', '250mg'], routes: ['Oral'], isControlled: false },
+  { name: 'Desipramine (Norpramin)', class: 'Tricyclic Antidepressant', doses: ['10mg', '25mg', '50mg', '75mg', '100mg', '150mg'], routes: ['Oral'], isControlled: false },
+
+  // ── MAOIs ─────────────────────────────────────────────────
+  { name: 'Phenelzine (Nardil)', class: 'MAOI', doses: ['15mg', '30mg', '45mg', '60mg', '90mg'], routes: ['Oral'], isControlled: false },
+  { name: 'Tranylcypromine (Parnate)', class: 'MAOI', doses: ['10mg', '20mg', '30mg', '40mg', '60mg'], routes: ['Oral'], isControlled: false },
+  { name: 'Selegiline Patch (Emsam)', class: 'MAOI', doses: ['6mg/24hr', '9mg/24hr', '12mg/24hr'], routes: ['Transdermal'], isControlled: false },
+
+  // ── Atypical Antipsychotics ───────────────────────────────
   { name: 'Quetiapine (Seroquel)', class: 'Atypical Antipsychotic', doses: ['25mg', '50mg', '100mg', '200mg', '300mg', '400mg'], routes: ['Oral'], isControlled: false },
+  { name: 'Quetiapine XR (Seroquel XR)', class: 'Atypical Antipsychotic', doses: ['50mg', '150mg', '200mg', '300mg', '400mg'], routes: ['Oral'], isControlled: false },
   { name: 'Aripiprazole (Abilify)', class: 'Atypical Antipsychotic', doses: ['2mg', '5mg', '10mg', '15mg', '20mg', '30mg'], routes: ['Oral'], isControlled: false },
+  { name: 'Aripiprazole Lauroxil (Aristada)', class: 'Atypical Antipsychotic', doses: ['441mg', '662mg', '882mg', '1064mg'], routes: ['IM'], isControlled: false },
   { name: 'Olanzapine (Zyprexa)', class: 'Atypical Antipsychotic', doses: ['2.5mg', '5mg', '10mg', '15mg', '20mg'], routes: ['Oral'], isControlled: false },
   { name: 'Risperidone (Risperdal)', class: 'Atypical Antipsychotic', doses: ['0.5mg', '1mg', '2mg', '3mg', '4mg'], routes: ['Oral'], isControlled: false },
-  // Mood Stabilizers
+  { name: 'Paliperidone ER (Invega)', class: 'Atypical Antipsychotic', doses: ['1.5mg', '3mg', '6mg', '9mg', '12mg'], routes: ['Oral'], isControlled: false },
+  { name: 'Paliperidone Palmitate (Invega Sustenna)', class: 'Atypical Antipsychotic', doses: ['39mg', '78mg', '117mg', '156mg', '234mg'], routes: ['IM'], isControlled: false },
+  { name: 'Ziprasidone (Geodon)', class: 'Atypical Antipsychotic', doses: ['20mg', '40mg', '60mg', '80mg'], routes: ['Oral'], isControlled: false },
+  { name: 'Lurasidone (Latuda)', class: 'Atypical Antipsychotic', doses: ['20mg', '40mg', '60mg', '80mg', '120mg', '160mg'], routes: ['Oral'], isControlled: false },
+  { name: 'Brexpiprazole (Rexulti)', class: 'Atypical Antipsychotic', doses: ['0.25mg', '0.5mg', '1mg', '2mg', '3mg', '4mg'], routes: ['Oral'], isControlled: false },
+  { name: 'Cariprazine (Vraylar)', class: 'Atypical Antipsychotic', doses: ['1.5mg', '3mg', '4.5mg', '6mg'], routes: ['Oral'], isControlled: false },
+  { name: 'Pimozide (Orap)', class: 'Atypical Antipsychotic', doses: ['1mg', '2mg', '4mg', '10mg'], routes: ['Oral'], isControlled: false },
+  { name: 'Clozapine (Clozaril)', class: 'Atypical Antipsychotic', doses: ['25mg', '50mg', '100mg', '200mg'], routes: ['Oral'], isControlled: false },
+
+  // ── Typical Antipsychotics ────────────────────────────────
+  { name: 'Haloperidol (Haldol)', class: 'Typical Antipsychotic', doses: ['0.5mg', '1mg', '2mg', '5mg', '10mg', '20mg'], routes: ['Oral', 'IM'], isControlled: false },
+  { name: 'Haloperidol Decanoate', class: 'Typical Antipsychotic', doses: ['50mg/mL', '100mg/mL'], routes: ['IM'], isControlled: false },
+  { name: 'Chlorpromazine (Thorazine)', class: 'Typical Antipsychotic', doses: ['10mg', '25mg', '50mg', '100mg', '200mg'], routes: ['Oral', 'IM'], isControlled: false },
+  { name: 'Fluphenazine Decanoate (Prolixin)', class: 'Typical Antipsychotic', doses: ['12.5mg', '25mg'], routes: ['IM'], isControlled: false },
+  { name: 'Thiothixene (Navane)', class: 'Typical Antipsychotic', doses: ['1mg', '2mg', '5mg', '10mg', '20mg'], routes: ['Oral'], isControlled: false },
+  { name: 'Perphenazine (Trilafon)', class: 'Typical Antipsychotic', doses: ['2mg', '4mg', '8mg', '16mg'], routes: ['Oral'], isControlled: false },
+
+  // ── Mood Stabilizers ──────────────────────────────────────
   { name: 'Lamotrigine (Lamictal)', class: 'Mood Stabilizer', doses: ['25mg', '50mg', '100mg', '150mg', '200mg', '250mg', '300mg'], routes: ['Oral'], isControlled: false },
   { name: 'Lithium Carbonate', class: 'Mood Stabilizer', doses: ['150mg', '300mg', '600mg', '900mg'], routes: ['Oral'], isControlled: false },
+  { name: 'Lithium Citrate (Liquid)', class: 'Mood Stabilizer', doses: ['8mEq/5mL'], routes: ['Oral'], isControlled: false },
   { name: 'Valproic Acid (Depakote)', class: 'Mood Stabilizer', doses: ['250mg', '500mg', '750mg', '1000mg'], routes: ['Oral'], isControlled: false },
-  // Anxiolytics - Non-controlled
+  { name: 'Carbamazepine (Tegretol)', class: 'Mood Stabilizer', doses: ['100mg', '200mg', '400mg'], routes: ['Oral'], isControlled: false },
+  { name: 'Oxcarbazepine (Trileptal)', class: 'Mood Stabilizer', doses: ['150mg', '300mg', '600mg'], routes: ['Oral'], isControlled: false },
+
+  // ── Anxiolytics – Non-controlled ──────────────────────────
   { name: 'Buspirone', class: 'Anxiolytic', doses: ['5mg', '7.5mg', '10mg', '15mg', '30mg'], routes: ['Oral'], isControlled: false },
-  { name: 'Hydroxyzine', class: 'Anxiolytic', doses: ['10mg', '25mg', '50mg'], routes: ['Oral'], isControlled: false },
-  // Benzodiazepines (Controlled)
-  { name: 'Lorazepam (Ativan)', class: 'Benzodiazepine', doses: ['0.5mg', '1mg', '2mg'], routes: ['Oral'], isControlled: true, schedule: 'Schedule IV' },
+  { name: 'Hydroxyzine HCl', class: 'Anxiolytic', doses: ['10mg', '25mg', '50mg'], routes: ['Oral'], isControlled: false },
+  { name: 'Hydroxyzine Pamoate (Vistaril)', class: 'Anxiolytic', doses: ['25mg', '50mg', '100mg'], routes: ['Oral'], isControlled: false },
+  { name: 'Gabapentin (Neurontin)', class: 'Anxiolytic / Anticonvulsant', doses: ['100mg', '300mg', '400mg', '600mg', '800mg'], routes: ['Oral'], isControlled: false },
+  { name: 'Pregabalin (Lyrica)', class: 'Anxiolytic / Anticonvulsant', doses: ['25mg', '50mg', '75mg', '100mg', '150mg', '200mg', '300mg'], routes: ['Oral'], isControlled: true, schedule: 'Schedule V' },
+
+  // ── Benzodiazepines (Controlled) ──────────────────────────
+  { name: 'Lorazepam (Ativan)', class: 'Benzodiazepine', doses: ['0.5mg', '1mg', '2mg'], routes: ['Oral', 'IM', 'IV'], isControlled: true, schedule: 'Schedule IV' },
   { name: 'Clonazepam (Klonopin)', class: 'Benzodiazepine', doses: ['0.25mg', '0.5mg', '1mg', '2mg'], routes: ['Oral'], isControlled: true, schedule: 'Schedule IV' },
   { name: 'Alprazolam (Xanax)', class: 'Benzodiazepine', doses: ['0.25mg', '0.5mg', '1mg', '2mg'], routes: ['Oral'], isControlled: true, schedule: 'Schedule IV' },
-  { name: 'Diazepam (Valium)', class: 'Benzodiazepine', doses: ['2mg', '5mg', '10mg'], routes: ['Oral'], isControlled: true, schedule: 'Schedule IV' },
-  // Stimulants (Controlled)
+  { name: 'Diazepam (Valium)', class: 'Benzodiazepine', doses: ['2mg', '5mg', '10mg'], routes: ['Oral', 'IM', 'IV'], isControlled: true, schedule: 'Schedule IV' },
+  { name: 'Chlordiazepoxide (Librium)', class: 'Benzodiazepine', doses: ['5mg', '10mg', '25mg'], routes: ['Oral'], isControlled: true, schedule: 'Schedule IV' },
+  { name: 'Midazolam (Versed)', class: 'Benzodiazepine', doses: ['1mg/mL', '2mg/mL', '5mg/mL'], routes: ['IV', 'IM', 'Intranasal'], isControlled: true, schedule: 'Schedule IV' },
+  { name: 'Temazepam (Restoril)', class: 'Benzodiazepine', doses: ['7.5mg', '15mg', '22.5mg', '30mg'], routes: ['Oral'], isControlled: true, schedule: 'Schedule IV' },
+  { name: 'Oxazepam (Serax)', class: 'Benzodiazepine', doses: ['10mg', '15mg', '30mg'], routes: ['Oral'], isControlled: true, schedule: 'Schedule IV' },
+  { name: 'Clorazepate (Tranxene)', class: 'Benzodiazepine', doses: ['3.75mg', '7.5mg', '15mg'], routes: ['Oral'], isControlled: true, schedule: 'Schedule IV' },
+
+  // ── Stimulants (Controlled) ───────────────────────────────
   { name: 'Adderall XR (Amphetamine/Dextroamphetamine)', class: 'Stimulant', doses: ['5mg', '10mg', '15mg', '20mg', '25mg', '30mg'], routes: ['Oral'], isControlled: true, schedule: 'Schedule II' },
+  { name: 'Adderall IR (Amphetamine/Dextroamphetamine)', class: 'Stimulant', doses: ['5mg', '7.5mg', '10mg', '12.5mg', '15mg', '20mg', '30mg'], routes: ['Oral'], isControlled: true, schedule: 'Schedule II' },
   { name: 'Methylphenidate ER (Concerta)', class: 'Stimulant', doses: ['18mg', '27mg', '36mg', '54mg'], routes: ['Oral'], isControlled: true, schedule: 'Schedule II' },
+  { name: 'Methylphenidate IR (Ritalin)', class: 'Stimulant', doses: ['5mg', '10mg', '20mg'], routes: ['Oral'], isControlled: true, schedule: 'Schedule II' },
   { name: 'Lisdexamfetamine (Vyvanse)', class: 'Stimulant', doses: ['10mg', '20mg', '30mg', '40mg', '50mg', '60mg', '70mg'], routes: ['Oral'], isControlled: true, schedule: 'Schedule II' },
-  // Non-stimulant ADHD
+  { name: 'Dexmethylphenidate (Focalin XR)', class: 'Stimulant', doses: ['5mg', '10mg', '15mg', '20mg', '25mg', '30mg', '35mg', '40mg'], routes: ['Oral'], isControlled: true, schedule: 'Schedule II' },
+  { name: 'Modafinil (Provigil)', class: 'Wakefulness Agent', doses: ['100mg', '200mg'], routes: ['Oral'], isControlled: true, schedule: 'Schedule IV' },
+  { name: 'Armodafinil (Nuvigil)', class: 'Wakefulness Agent', doses: ['50mg', '150mg', '200mg', '250mg'], routes: ['Oral'], isControlled: true, schedule: 'Schedule IV' },
+
+  // ── Non-stimulant ADHD ────────────────────────────────────
   { name: 'Atomoxetine (Strattera)', class: 'Non-Stimulant ADHD', doses: ['10mg', '18mg', '25mg', '40mg', '60mg', '80mg', '100mg'], routes: ['Oral'], isControlled: false },
   { name: 'Guanfacine ER (Intuniv)', class: 'Non-Stimulant ADHD', doses: ['1mg', '2mg', '3mg', '4mg'], routes: ['Oral'], isControlled: false },
-  // Sleep
+  { name: 'Clonidine ER (Kapvay)', class: 'Non-Stimulant ADHD', doses: ['0.1mg', '0.2mg'], routes: ['Oral'], isControlled: false },
+
+  // ── Sleep ─────────────────────────────────────────────────
   { name: 'Zolpidem (Ambien)', class: 'Sedative-Hypnotic', doses: ['5mg', '10mg'], routes: ['Oral'], isControlled: true, schedule: 'Schedule IV' },
+  { name: 'Zolpidem CR (Ambien CR)', class: 'Sedative-Hypnotic', doses: ['6.25mg', '12.5mg'], routes: ['Oral'], isControlled: true, schedule: 'Schedule IV' },
   { name: 'Eszopiclone (Lunesta)', class: 'Sedative-Hypnotic', doses: ['1mg', '2mg', '3mg'], routes: ['Oral'], isControlled: true, schedule: 'Schedule IV' },
   { name: 'Suvorexant (Belsomra)', class: 'Sedative-Hypnotic', doses: ['5mg', '10mg', '15mg', '20mg'], routes: ['Oral'], isControlled: true, schedule: 'Schedule IV' },
-  // PTSD specific
+  { name: 'Lemborexant (Dayvigo)', class: 'Sedative-Hypnotic', doses: ['5mg', '10mg'], routes: ['Oral'], isControlled: true, schedule: 'Schedule IV' },
+  { name: 'Ramelteon (Rozerem)', class: 'Melatonin Agonist', doses: ['8mg'], routes: ['Oral'], isControlled: false },
+  { name: 'Melatonin', class: 'Supplement / Sleep Aid', doses: ['1mg', '3mg', '5mg', '10mg'], routes: ['Oral'], isControlled: false },
+  { name: 'Doxepin (Silenor)', class: 'Sedative-Hypnotic', doses: ['3mg', '6mg'], routes: ['Oral'], isControlled: false },
+  { name: 'Tasimelteon (Hetlioz)', class: 'Melatonin Agonist', doses: ['20mg'], routes: ['Oral'], isControlled: false },
+
+  // ── PTSD / Alpha Blockers ─────────────────────────────────
   { name: 'Prazosin', class: 'Alpha-1 Blocker', doses: ['1mg', '2mg', '5mg', '10mg', '15mg', '20mg'], routes: ['Oral'], isControlled: false },
-  // Substance Use
-  { name: 'Naltrexone', class: 'Opioid Antagonist', doses: ['50mg'], routes: ['Oral'], isControlled: false },
+
+  // ── Substance Use Disorder ────────────────────────────────
+  { name: 'Naltrexone (Oral)', class: 'Opioid Antagonist', doses: ['50mg'], routes: ['Oral'], isControlled: false },
+  { name: 'Naltrexone ER (Vivitrol)', class: 'Opioid Antagonist', doses: ['380mg'], routes: ['IM'], isControlled: false },
   { name: 'Buprenorphine/Naloxone (Suboxone)', class: 'Opioid Partial Agonist', doses: ['2mg/0.5mg', '4mg/1mg', '8mg/2mg', '12mg/3mg'], routes: ['Sublingual'], isControlled: true, schedule: 'Schedule III' },
+  { name: 'Buprenorphine (Sublocade)', class: 'Opioid Partial Agonist', doses: ['100mg', '300mg'], routes: ['Subcutaneous'], isControlled: true, schedule: 'Schedule III' },
+  { name: 'Methadone', class: 'Opioid Agonist', doses: ['5mg', '10mg', '40mg'], routes: ['Oral'], isControlled: true, schedule: 'Schedule II' },
   { name: 'Acamprosate (Campral)', class: 'GABA Analog', doses: ['333mg'], routes: ['Oral'], isControlled: false },
   { name: 'Disulfiram (Antabuse)', class: 'Alcohol Deterrent', doses: ['250mg', '500mg'], routes: ['Oral'], isControlled: false },
   { name: 'Naloxone Nasal Spray (Narcan)', class: 'Opioid Antagonist', doses: ['4mg'], routes: ['Intranasal'], isControlled: false },
+  { name: 'Varenicline (Chantix)', class: 'Smoking Cessation', doses: ['0.5mg', '1mg'], routes: ['Oral'], isControlled: false },
+  { name: 'Nicotine Patch', class: 'Smoking Cessation', doses: ['7mg/24hr', '14mg/24hr', '21mg/24hr'], routes: ['Transdermal'], isControlled: false },
+  { name: 'Nicotine Gum', class: 'Smoking Cessation', doses: ['2mg', '4mg'], routes: ['Buccal'], isControlled: false },
+  { name: 'Nicotine Lozenge', class: 'Smoking Cessation', doses: ['2mg', '4mg'], routes: ['Oral'], isControlled: false },
+
+  // ══════════════════════════════════════════════════════════════
+  //  CARDIOLOGY
+  // ══════════════════════════════════════════════════════════════
+
+  // ── ACE Inhibitors ────────────────────────────────────────
+  { name: 'Lisinopril (Zestril)', class: 'ACE Inhibitor', doses: ['2.5mg', '5mg', '10mg', '20mg', '40mg'], routes: ['Oral'], isControlled: false },
+  { name: 'Enalapril (Vasotec)', class: 'ACE Inhibitor', doses: ['2.5mg', '5mg', '10mg', '20mg', '40mg'], routes: ['Oral'], isControlled: false },
+  { name: 'Ramipril (Altace)', class: 'ACE Inhibitor', doses: ['1.25mg', '2.5mg', '5mg', '10mg'], routes: ['Oral'], isControlled: false },
+  { name: 'Benazepril (Lotensin)', class: 'ACE Inhibitor', doses: ['5mg', '10mg', '20mg', '40mg'], routes: ['Oral'], isControlled: false },
+  { name: 'Quinapril (Accupril)', class: 'ACE Inhibitor', doses: ['5mg', '10mg', '20mg', '40mg'], routes: ['Oral'], isControlled: false },
+  { name: 'Captopril', class: 'ACE Inhibitor', doses: ['12.5mg', '25mg', '50mg', '100mg'], routes: ['Oral'], isControlled: false },
+
+  // ── ARBs ──────────────────────────────────────────────────
+  { name: 'Losartan (Cozaar)', class: 'ARB', doses: ['25mg', '50mg', '100mg'], routes: ['Oral'], isControlled: false },
+  { name: 'Valsartan (Diovan)', class: 'ARB', doses: ['40mg', '80mg', '160mg', '320mg'], routes: ['Oral'], isControlled: false },
+  { name: 'Olmesartan (Benicar)', class: 'ARB', doses: ['5mg', '20mg', '40mg'], routes: ['Oral'], isControlled: false },
+  { name: 'Irbesartan (Avapro)', class: 'ARB', doses: ['75mg', '150mg', '300mg'], routes: ['Oral'], isControlled: false },
+  { name: 'Candesartan (Atacand)', class: 'ARB', doses: ['4mg', '8mg', '16mg', '32mg'], routes: ['Oral'], isControlled: false },
+  { name: 'Telmisartan (Micardis)', class: 'ARB', doses: ['20mg', '40mg', '80mg'], routes: ['Oral'], isControlled: false },
+
+  // ── ARNI ──────────────────────────────────────────────────
+  { name: 'Sacubitril/Valsartan (Entresto)', class: 'ARNI', doses: ['24mg/26mg', '49mg/51mg', '97mg/103mg'], routes: ['Oral'], isControlled: false },
+
+  // ── Beta Blockers ─────────────────────────────────────────
+  { name: 'Metoprolol Succinate ER (Toprol XL)', class: 'Beta Blocker', doses: ['25mg', '50mg', '100mg', '200mg'], routes: ['Oral'], isControlled: false },
+  { name: 'Metoprolol Tartrate (Lopressor)', class: 'Beta Blocker', doses: ['25mg', '50mg', '100mg'], routes: ['Oral', 'IV'], isControlled: false },
+  { name: 'Atenolol (Tenormin)', class: 'Beta Blocker', doses: ['25mg', '50mg', '100mg'], routes: ['Oral'], isControlled: false },
+  { name: 'Carvedilol (Coreg)', class: 'Beta Blocker', doses: ['3.125mg', '6.25mg', '12.5mg', '25mg'], routes: ['Oral'], isControlled: false },
+  { name: 'Propranolol (Inderal)', class: 'Beta Blocker', doses: ['10mg', '20mg', '40mg', '60mg', '80mg'], routes: ['Oral'], isControlled: false },
+  { name: 'Propranolol LA (Inderal LA)', class: 'Beta Blocker', doses: ['60mg', '80mg', '120mg', '160mg'], routes: ['Oral'], isControlled: false },
+  { name: 'Bisoprolol (Zebeta)', class: 'Beta Blocker', doses: ['2.5mg', '5mg', '10mg'], routes: ['Oral'], isControlled: false },
+  { name: 'Nebivolol (Bystolic)', class: 'Beta Blocker', doses: ['2.5mg', '5mg', '10mg', '20mg', '40mg'], routes: ['Oral'], isControlled: false },
+  { name: 'Labetalol (Trandate)', class: 'Beta Blocker', doses: ['100mg', '200mg', '300mg'], routes: ['Oral', 'IV'], isControlled: false },
+  { name: 'Sotalol (Betapace)', class: 'Beta Blocker / Antiarrhythmic', doses: ['80mg', '120mg', '160mg', '240mg'], routes: ['Oral'], isControlled: false },
+
+  // ── Calcium Channel Blockers ──────────────────────────────
+  { name: 'Amlodipine (Norvasc)', class: 'Calcium Channel Blocker', doses: ['2.5mg', '5mg', '10mg'], routes: ['Oral'], isControlled: false },
+  { name: 'Nifedipine ER (Procardia XL)', class: 'Calcium Channel Blocker', doses: ['30mg', '60mg', '90mg'], routes: ['Oral'], isControlled: false },
+  { name: 'Diltiazem CD (Cardizem CD)', class: 'Calcium Channel Blocker', doses: ['120mg', '180mg', '240mg', '300mg', '360mg'], routes: ['Oral'], isControlled: false },
+  { name: 'Verapamil SR (Calan SR)', class: 'Calcium Channel Blocker', doses: ['120mg', '180mg', '240mg', '360mg'], routes: ['Oral'], isControlled: false },
+  { name: 'Felodipine (Plendil)', class: 'Calcium Channel Blocker', doses: ['2.5mg', '5mg', '10mg'], routes: ['Oral'], isControlled: false },
+
+  // ── Diuretics ─────────────────────────────────────────────
+  { name: 'Hydrochlorothiazide (HCTZ)', class: 'Thiazide Diuretic', doses: ['12.5mg', '25mg', '50mg'], routes: ['Oral'], isControlled: false },
+  { name: 'Chlorthalidone', class: 'Thiazide-like Diuretic', doses: ['12.5mg', '25mg', '50mg'], routes: ['Oral'], isControlled: false },
+  { name: 'Indapamide (Lozol)', class: 'Thiazide-like Diuretic', doses: ['1.25mg', '2.5mg'], routes: ['Oral'], isControlled: false },
+  { name: 'Furosemide (Lasix)', class: 'Loop Diuretic', doses: ['20mg', '40mg', '80mg'], routes: ['Oral', 'IV'], isControlled: false },
+  { name: 'Bumetanide (Bumex)', class: 'Loop Diuretic', doses: ['0.5mg', '1mg', '2mg'], routes: ['Oral', 'IV'], isControlled: false },
+  { name: 'Torsemide (Demadex)', class: 'Loop Diuretic', doses: ['5mg', '10mg', '20mg', '100mg'], routes: ['Oral', 'IV'], isControlled: false },
+  { name: 'Spironolactone (Aldactone)', class: 'Potassium-Sparing Diuretic', doses: ['25mg', '50mg', '100mg'], routes: ['Oral'], isControlled: false },
+  { name: 'Eplerenone (Inspra)', class: 'Potassium-Sparing Diuretic', doses: ['25mg', '50mg'], routes: ['Oral'], isControlled: false },
+  { name: 'Triamterene/HCTZ (Dyazide)', class: 'Combination Diuretic', doses: ['37.5mg/25mg', '75mg/50mg'], routes: ['Oral'], isControlled: false },
+  { name: 'Metolazone (Zaroxolyn)', class: 'Thiazide-like Diuretic', doses: ['2.5mg', '5mg', '10mg'], routes: ['Oral'], isControlled: false },
+  { name: 'Acetazolamide (Diamox)', class: 'Carbonic Anhydrase Inhibitor', doses: ['125mg', '250mg', '500mg'], routes: ['Oral', 'IV'], isControlled: false },
+
+  // ── Antiarrhythmics ───────────────────────────────────────
+  { name: 'Amiodarone (Cordarone)', class: 'Antiarrhythmic', doses: ['100mg', '200mg', '400mg'], routes: ['Oral', 'IV'], isControlled: false },
+  { name: 'Flecainide (Tambocor)', class: 'Antiarrhythmic', doses: ['50mg', '100mg', '150mg'], routes: ['Oral'], isControlled: false },
+  { name: 'Dronedarone (Multaq)', class: 'Antiarrhythmic', doses: ['400mg'], routes: ['Oral'], isControlled: false },
+  { name: 'Digoxin (Lanoxin)', class: 'Cardiac Glycoside', doses: ['0.0625mg', '0.125mg', '0.25mg'], routes: ['Oral', 'IV'], isControlled: false },
+  { name: 'Adenosine (Adenocard)', class: 'Antiarrhythmic', doses: ['6mg', '12mg'], routes: ['IV'], isControlled: false },
+
+  // ── Nitrates / Antianginals ───────────────────────────────
+  { name: 'Nitroglycerin SL', class: 'Nitrate', doses: ['0.3mg', '0.4mg', '0.6mg'], routes: ['Sublingual'], isControlled: false },
+  { name: 'Isosorbide Mononitrate ER (Imdur)', class: 'Nitrate', doses: ['30mg', '60mg', '120mg'], routes: ['Oral'], isControlled: false },
+  { name: 'Isosorbide Dinitrate (Isordil)', class: 'Nitrate', doses: ['5mg', '10mg', '20mg', '30mg', '40mg'], routes: ['Oral'], isControlled: false },
+  { name: 'Ranolazine (Ranexa)', class: 'Antianginal', doses: ['500mg', '1000mg'], routes: ['Oral'], isControlled: false },
+
+  // ── Statins / Lipid Agents ────────────────────────────────
+  { name: 'Atorvastatin (Lipitor)', class: 'Statin', doses: ['10mg', '20mg', '40mg', '80mg'], routes: ['Oral'], isControlled: false },
+  { name: 'Rosuvastatin (Crestor)', class: 'Statin', doses: ['5mg', '10mg', '20mg', '40mg'], routes: ['Oral'], isControlled: false },
+  { name: 'Simvastatin (Zocor)', class: 'Statin', doses: ['5mg', '10mg', '20mg', '40mg', '80mg'], routes: ['Oral'], isControlled: false },
+  { name: 'Pravastatin (Pravachol)', class: 'Statin', doses: ['10mg', '20mg', '40mg', '80mg'], routes: ['Oral'], isControlled: false },
+  { name: 'Lovastatin (Mevacor)', class: 'Statin', doses: ['10mg', '20mg', '40mg'], routes: ['Oral'], isControlled: false },
+  { name: 'Pitavastatin (Livalo)', class: 'Statin', doses: ['1mg', '2mg', '4mg'], routes: ['Oral'], isControlled: false },
+  { name: 'Ezetimibe (Zetia)', class: 'Cholesterol Absorption Inhibitor', doses: ['10mg'], routes: ['Oral'], isControlled: false },
+  { name: 'Ezetimibe/Simvastatin (Vytorin)', class: 'Combination Lipid Agent', doses: ['10mg/10mg', '10mg/20mg', '10mg/40mg', '10mg/80mg'], routes: ['Oral'], isControlled: false },
+  { name: 'Fenofibrate (Tricor)', class: 'Fibrate', doses: ['48mg', '145mg'], routes: ['Oral'], isControlled: false },
+  { name: 'Gemfibrozil (Lopid)', class: 'Fibrate', doses: ['600mg'], routes: ['Oral'], isControlled: false },
+  { name: 'Icosapent Ethyl (Vascepa)', class: 'Omega-3 Fatty Acid', doses: ['1g'], routes: ['Oral'], isControlled: false },
+  { name: 'Evolocumab (Repatha)', class: 'PCSK9 Inhibitor', doses: ['140mg/mL'], routes: ['Subcutaneous'], isControlled: false },
+  { name: 'Alirocumab (Praluent)', class: 'PCSK9 Inhibitor', doses: ['75mg/mL', '150mg/mL'], routes: ['Subcutaneous'], isControlled: false },
+
+  // ── Anticoagulants ────────────────────────────────────────
+  { name: 'Warfarin (Coumadin)', class: 'Anticoagulant', doses: ['1mg', '2mg', '2.5mg', '3mg', '4mg', '5mg', '6mg', '7.5mg', '10mg'], routes: ['Oral'], isControlled: false },
+  { name: 'Apixaban (Eliquis)', class: 'DOAC', doses: ['2.5mg', '5mg'], routes: ['Oral'], isControlled: false },
+  { name: 'Rivaroxaban (Xarelto)', class: 'DOAC', doses: ['2.5mg', '10mg', '15mg', '20mg'], routes: ['Oral'], isControlled: false },
+  { name: 'Dabigatran (Pradaxa)', class: 'DOAC', doses: ['75mg', '150mg'], routes: ['Oral'], isControlled: false },
+  { name: 'Edoxaban (Savaysa)', class: 'DOAC', doses: ['15mg', '30mg', '60mg'], routes: ['Oral'], isControlled: false },
+  { name: 'Heparin (Unfractionated)', class: 'Anticoagulant', doses: ['1000 units/mL', '5000 units/mL', '10000 units/mL'], routes: ['IV', 'Subcutaneous'], isControlled: false },
+  { name: 'Enoxaparin (Lovenox)', class: 'LMWH', doses: ['30mg', '40mg', '60mg', '80mg', '100mg', '120mg', '150mg'], routes: ['Subcutaneous'], isControlled: false },
+
+  // ── Antiplatelets ─────────────────────────────────────────
+  { name: 'Aspirin (Low-dose)', class: 'Antiplatelet', doses: ['81mg', '325mg'], routes: ['Oral'], isControlled: false },
+  { name: 'Clopidogrel (Plavix)', class: 'Antiplatelet', doses: ['75mg', '300mg'], routes: ['Oral'], isControlled: false },
+  { name: 'Ticagrelor (Brilinta)', class: 'Antiplatelet', doses: ['60mg', '90mg'], routes: ['Oral'], isControlled: false },
+  { name: 'Prasugrel (Effient)', class: 'Antiplatelet', doses: ['5mg', '10mg'], routes: ['Oral'], isControlled: false },
+  { name: 'Dipyridamole/Aspirin (Aggrenox)', class: 'Antiplatelet', doses: ['200mg/25mg'], routes: ['Oral'], isControlled: false },
+
+  // ── Vasodilators ──────────────────────────────────────────
+  { name: 'Hydralazine', class: 'Vasodilator', doses: ['10mg', '25mg', '50mg', '100mg'], routes: ['Oral', 'IV'], isControlled: false },
+  { name: 'Minoxidil (Oral)', class: 'Vasodilator', doses: ['2.5mg', '5mg', '10mg'], routes: ['Oral'], isControlled: false },
+  { name: 'Clonidine (Catapres)', class: 'Alpha-2 Agonist', doses: ['0.1mg', '0.2mg', '0.3mg'], routes: ['Oral', 'Transdermal'], isControlled: false },
+  { name: 'Doxazosin (Cardura)', class: 'Alpha-1 Blocker', doses: ['1mg', '2mg', '4mg', '8mg'], routes: ['Oral'], isControlled: false },
+  { name: 'Terazosin (Hytrin)', class: 'Alpha-1 Blocker', doses: ['1mg', '2mg', '5mg', '10mg'], routes: ['Oral'], isControlled: false },
+
+  // ══════════════════════════════════════════════════════════════
+  //  ENDOCRINOLOGY / DIABETES
+  // ══════════════════════════════════════════════════════════════
+
+  // ── Biguanides ────────────────────────────────────────────
+  { name: 'Metformin (Glucophage)', class: 'Biguanide', doses: ['500mg', '850mg', '1000mg'], routes: ['Oral'], isControlled: false },
+  { name: 'Metformin ER', class: 'Biguanide', doses: ['500mg', '750mg', '1000mg'], routes: ['Oral'], isControlled: false },
+
+  // ── Sulfonylureas ─────────────────────────────────────────
+  { name: 'Glipizide (Glucotrol)', class: 'Sulfonylurea', doses: ['2.5mg', '5mg', '10mg'], routes: ['Oral'], isControlled: false },
+  { name: 'Glimepiride (Amaryl)', class: 'Sulfonylurea', doses: ['1mg', '2mg', '4mg', '8mg'], routes: ['Oral'], isControlled: false },
+  { name: 'Glyburide (DiaBeta)', class: 'Sulfonylurea', doses: ['1.25mg', '2.5mg', '5mg'], routes: ['Oral'], isControlled: false },
+
+  // ── SGLT2 Inhibitors ──────────────────────────────────────
+  { name: 'Empagliflozin (Jardiance)', class: 'SGLT2 Inhibitor', doses: ['10mg', '25mg'], routes: ['Oral'], isControlled: false },
+  { name: 'Dapagliflozin (Farxiga)', class: 'SGLT2 Inhibitor', doses: ['5mg', '10mg'], routes: ['Oral'], isControlled: false },
+  { name: 'Canagliflozin (Invokana)', class: 'SGLT2 Inhibitor', doses: ['100mg', '300mg'], routes: ['Oral'], isControlled: false },
+
+  // ── DPP-4 Inhibitors ──────────────────────────────────────
+  { name: 'Sitagliptin (Januvia)', class: 'DPP-4 Inhibitor', doses: ['25mg', '50mg', '100mg'], routes: ['Oral'], isControlled: false },
+  { name: 'Linagliptin (Tradjenta)', class: 'DPP-4 Inhibitor', doses: ['5mg'], routes: ['Oral'], isControlled: false },
+  { name: 'Saxagliptin (Onglyza)', class: 'DPP-4 Inhibitor', doses: ['2.5mg', '5mg'], routes: ['Oral'], isControlled: false },
+
+  // ── GLP-1 Receptor Agonists ───────────────────────────────
+  { name: 'Semaglutide (Ozempic)', class: 'GLP-1 Agonist', doses: ['0.25mg', '0.5mg', '1mg', '2mg'], routes: ['Subcutaneous'], isControlled: false },
+  { name: 'Semaglutide (Rybelsus)', class: 'GLP-1 Agonist', doses: ['3mg', '7mg', '14mg'], routes: ['Oral'], isControlled: false },
+  { name: 'Semaglutide (Wegovy)', class: 'GLP-1 Agonist', doses: ['0.25mg', '0.5mg', '1mg', '1.7mg', '2.4mg'], routes: ['Subcutaneous'], isControlled: false },
+  { name: 'Liraglutide (Victoza)', class: 'GLP-1 Agonist', doses: ['0.6mg', '1.2mg', '1.8mg'], routes: ['Subcutaneous'], isControlled: false },
+  { name: 'Dulaglutide (Trulicity)', class: 'GLP-1 Agonist', doses: ['0.75mg', '1.5mg', '3mg', '4.5mg'], routes: ['Subcutaneous'], isControlled: false },
+  { name: 'Exenatide ER (Bydureon)', class: 'GLP-1 Agonist', doses: ['2mg'], routes: ['Subcutaneous'], isControlled: false },
+  { name: 'Tirzepatide (Mounjaro)', class: 'GIP/GLP-1 Agonist', doses: ['2.5mg', '5mg', '7.5mg', '10mg', '12.5mg', '15mg'], routes: ['Subcutaneous'], isControlled: false },
+
+  // ── Thiazolidinediones ────────────────────────────────────
+  { name: 'Pioglitazone (Actos)', class: 'Thiazolidinedione', doses: ['15mg', '30mg', '45mg'], routes: ['Oral'], isControlled: false },
+
+  // ── Insulins ──────────────────────────────────────────────
+  { name: 'Insulin Glargine (Lantus)', class: 'Long-Acting Insulin', doses: ['100 units/mL'], routes: ['Subcutaneous'], isControlled: false },
+  { name: 'Insulin Glargine U-300 (Toujeo)', class: 'Long-Acting Insulin', doses: ['300 units/mL'], routes: ['Subcutaneous'], isControlled: false },
+  { name: 'Insulin Degludec (Tresiba)', class: 'Ultra Long-Acting Insulin', doses: ['100 units/mL', '200 units/mL'], routes: ['Subcutaneous'], isControlled: false },
+  { name: 'Insulin Detemir (Levemir)', class: 'Long-Acting Insulin', doses: ['100 units/mL'], routes: ['Subcutaneous'], isControlled: false },
+  { name: 'Insulin NPH (Humulin N)', class: 'Intermediate-Acting Insulin', doses: ['100 units/mL'], routes: ['Subcutaneous'], isControlled: false },
+  { name: 'Insulin Lispro (Humalog)', class: 'Rapid-Acting Insulin', doses: ['100 units/mL', '200 units/mL'], routes: ['Subcutaneous'], isControlled: false },
+  { name: 'Insulin Aspart (NovoLog)', class: 'Rapid-Acting Insulin', doses: ['100 units/mL'], routes: ['Subcutaneous', 'IV'], isControlled: false },
+  { name: 'Insulin Regular (Humulin R)', class: 'Short-Acting Insulin', doses: ['100 units/mL', '500 units/mL'], routes: ['Subcutaneous', 'IV'], isControlled: false },
+  { name: 'Insulin 70/30 (Humulin 70/30)', class: 'Premixed Insulin', doses: ['100 units/mL'], routes: ['Subcutaneous'], isControlled: false },
+
+  // ── Thyroid ───────────────────────────────────────────────
+  { name: 'Levothyroxine (Synthroid)', class: 'Thyroid Hormone', doses: ['25mcg', '50mcg', '75mcg', '88mcg', '100mcg', '112mcg', '125mcg', '137mcg', '150mcg', '175mcg', '200mcg', '300mcg'], routes: ['Oral'], isControlled: false },
+  { name: 'Liothyronine (Cytomel)', class: 'Thyroid Hormone', doses: ['5mcg', '25mcg', '50mcg'], routes: ['Oral'], isControlled: false },
+  { name: 'Methimazole (Tapazole)', class: 'Antithyroid', doses: ['5mg', '10mg', '20mg'], routes: ['Oral'], isControlled: false },
+  { name: 'Propylthiouracil (PTU)', class: 'Antithyroid', doses: ['50mg'], routes: ['Oral'], isControlled: false },
+
+  // ── Corticosteroids (Systemic) ────────────────────────────
+  { name: 'Prednisone', class: 'Corticosteroid', doses: ['1mg', '2.5mg', '5mg', '10mg', '20mg', '50mg'], routes: ['Oral'], isControlled: false },
+  { name: 'Prednisolone', class: 'Corticosteroid', doses: ['5mg', '15mg/5mL'], routes: ['Oral'], isControlled: false },
+  { name: 'Methylprednisolone (Medrol)', class: 'Corticosteroid', doses: ['4mg', '8mg', '16mg', '32mg'], routes: ['Oral'], isControlled: false },
+  { name: 'Methylprednisolone (Solu-Medrol)', class: 'Corticosteroid', doses: ['40mg', '125mg', '500mg', '1g'], routes: ['IV', 'IM'], isControlled: false },
+  { name: 'Dexamethasone (Decadron)', class: 'Corticosteroid', doses: ['0.5mg', '0.75mg', '1mg', '1.5mg', '4mg', '6mg'], routes: ['Oral', 'IV', 'IM'], isControlled: false },
+  { name: 'Hydrocortisone (Cortef)', class: 'Corticosteroid', doses: ['5mg', '10mg', '20mg'], routes: ['Oral'], isControlled: false },
+  { name: 'Fludrocortisone (Florinef)', class: 'Mineralocorticoid', doses: ['0.1mg'], routes: ['Oral'], isControlled: false },
+
+  // ── Bone / Calcium ────────────────────────────────────────
+  { name: 'Alendronate (Fosamax)', class: 'Bisphosphonate', doses: ['5mg', '10mg', '35mg', '70mg'], routes: ['Oral'], isControlled: false },
+  { name: 'Risedronate (Actonel)', class: 'Bisphosphonate', doses: ['5mg', '35mg', '150mg'], routes: ['Oral'], isControlled: false },
+  { name: 'Zoledronic Acid (Reclast)', class: 'Bisphosphonate', doses: ['5mg/100mL'], routes: ['IV'], isControlled: false },
+  { name: 'Denosumab (Prolia)', class: 'RANK Ligand Inhibitor', doses: ['60mg/mL'], routes: ['Subcutaneous'], isControlled: false },
+  { name: 'Calcium Carbonate', class: 'Mineral Supplement', doses: ['500mg', '600mg', '1000mg', '1250mg'], routes: ['Oral'], isControlled: false },
+  { name: 'Vitamin D3 (Cholecalciferol)', class: 'Vitamin', doses: ['400 IU', '1000 IU', '2000 IU', '5000 IU', '50000 IU'], routes: ['Oral'], isControlled: false },
+
+  // ══════════════════════════════════════════════════════════════
+  //  PULMONOLOGY / RESPIRATORY
+  // ══════════════════════════════════════════════════════════════
+
+  // ── Short-Acting Bronchodilators ──────────────────────────
+  { name: 'Albuterol HFA (ProAir / Ventolin)', class: 'SABA', doses: ['90mcg/actuation'], routes: ['Inhalation'], isControlled: false },
+  { name: 'Albuterol Nebulizer Solution', class: 'SABA', doses: ['0.63mg/3mL', '1.25mg/3mL', '2.5mg/3mL'], routes: ['Nebulization'], isControlled: false },
+  { name: 'Ipratropium (Atrovent HFA)', class: 'SAMA', doses: ['17mcg/actuation'], routes: ['Inhalation'], isControlled: false },
+  { name: 'Ipratropium/Albuterol (DuoNeb)', class: 'SAMA/SABA Combo', doses: ['0.5mg/2.5mg per 3mL'], routes: ['Nebulization'], isControlled: false },
+  { name: 'Levalbuterol (Xopenex)', class: 'SABA', doses: ['0.31mg/3mL', '0.63mg/3mL', '1.25mg/3mL'], routes: ['Nebulization'], isControlled: false },
+
+  // ── Long-Acting Bronchodilators ───────────────────────────
+  { name: 'Tiotropium (Spiriva HandiHaler)', class: 'LAMA', doses: ['18mcg'], routes: ['Inhalation'], isControlled: false },
+  { name: 'Tiotropium (Spiriva Respimat)', class: 'LAMA', doses: ['1.25mcg', '2.5mcg'], routes: ['Inhalation'], isControlled: false },
+  { name: 'Umeclidinium (Incruse Ellipta)', class: 'LAMA', doses: ['62.5mcg'], routes: ['Inhalation'], isControlled: false },
+  { name: 'Salmeterol (Serevent)', class: 'LABA', doses: ['50mcg'], routes: ['Inhalation'], isControlled: false },
+  { name: 'Formoterol (Perforomist)', class: 'LABA', doses: ['20mcg/2mL'], routes: ['Nebulization'], isControlled: false },
+  { name: 'Umeclidinium/Vilanterol (Anoro Ellipta)', class: 'LAMA/LABA Combo', doses: ['62.5mcg/25mcg'], routes: ['Inhalation'], isControlled: false },
+
+  // ── Inhaled Corticosteroids ───────────────────────────────
+  { name: 'Fluticasone (Flovent HFA)', class: 'Inhaled Corticosteroid', doses: ['44mcg', '110mcg', '220mcg'], routes: ['Inhalation'], isControlled: false },
+  { name: 'Budesonide (Pulmicort)', class: 'Inhaled Corticosteroid', doses: ['0.25mg/2mL', '0.5mg/2mL', '1mg/2mL'], routes: ['Nebulization'], isControlled: false },
+  { name: 'Beclomethasone (QVAR RediHaler)', class: 'Inhaled Corticosteroid', doses: ['40mcg', '80mcg'], routes: ['Inhalation'], isControlled: false },
+  { name: 'Mometasone (Asmanex)', class: 'Inhaled Corticosteroid', doses: ['110mcg', '220mcg'], routes: ['Inhalation'], isControlled: false },
+  { name: 'Ciclesonide (Alvesco)', class: 'Inhaled Corticosteroid', doses: ['80mcg', '160mcg'], routes: ['Inhalation'], isControlled: false },
+
+  // ── ICS / LABA Combos ─────────────────────────────────────
+  { name: 'Fluticasone/Salmeterol (Advair Diskus)', class: 'ICS/LABA', doses: ['100/50mcg', '250/50mcg', '500/50mcg'], routes: ['Inhalation'], isControlled: false },
+  { name: 'Budesonide/Formoterol (Symbicort)', class: 'ICS/LABA', doses: ['80/4.5mcg', '160/4.5mcg'], routes: ['Inhalation'], isControlled: false },
+  { name: 'Fluticasone/Vilanterol (Breo Ellipta)', class: 'ICS/LABA', doses: ['100/25mcg', '200/25mcg'], routes: ['Inhalation'], isControlled: false },
+  { name: 'Mometasone/Formoterol (Dulera)', class: 'ICS/LABA', doses: ['100/5mcg', '200/5mcg'], routes: ['Inhalation'], isControlled: false },
+
+  // ── Triple-Therapy Inhalers ───────────────────────────────
+  { name: 'Fluticasone/Umeclidinium/Vilanterol (Trelegy Ellipta)', class: 'ICS/LAMA/LABA', doses: ['100/62.5/25mcg', '200/62.5/25mcg'], routes: ['Inhalation'], isControlled: false },
+
+  // ── Leukotriene Modifiers ─────────────────────────────────
+  { name: 'Montelukast (Singulair)', class: 'Leukotriene Modifier', doses: ['4mg', '5mg', '10mg'], routes: ['Oral'], isControlled: false },
+  { name: 'Zafirlukast (Accolate)', class: 'Leukotriene Modifier', doses: ['10mg', '20mg'], routes: ['Oral'], isControlled: false },
+
+  // ── Other Respiratory ─────────────────────────────────────
+  { name: 'Theophylline ER', class: 'Methylxanthine', doses: ['100mg', '200mg', '300mg', '400mg', '450mg', '600mg'], routes: ['Oral'], isControlled: false },
+  { name: 'Roflumilast (Daliresp)', class: 'PDE4 Inhibitor', doses: ['500mcg'], routes: ['Oral'], isControlled: false },
+  { name: 'Guaifenesin (Mucinex)', class: 'Expectorant', doses: ['200mg', '400mg', '600mg', '1200mg'], routes: ['Oral'], isControlled: false },
+  { name: 'Benzonatate (Tessalon Perles)', class: 'Antitussive', doses: ['100mg', '200mg'], routes: ['Oral'], isControlled: false },
+  { name: 'Dextromethorphan/Guaifenesin (Mucinex DM)', class: 'Antitussive/Expectorant', doses: ['30mg/600mg', '60mg/1200mg'], routes: ['Oral'], isControlled: false },
+  { name: 'Codeine/Guaifenesin', class: 'Antitussive/Expectorant', doses: ['10mg/100mg per 5mL'], routes: ['Oral'], isControlled: true, schedule: 'Schedule V' },
+  { name: 'Promethazine/Codeine', class: 'Antitussive', doses: ['6.25mg/10mg per 5mL'], routes: ['Oral'], isControlled: true, schedule: 'Schedule V' },
+
+  // ══════════════════════════════════════════════════════════════
+  //  GASTROENTEROLOGY
+  // ══════════════════════════════════════════════════════════════
+
+  // ── PPIs ──────────────────────────────────────────────────
+  { name: 'Omeprazole (Prilosec)', class: 'Proton Pump Inhibitor', doses: ['10mg', '20mg', '40mg'], routes: ['Oral'], isControlled: false },
+  { name: 'Pantoprazole (Protonix)', class: 'Proton Pump Inhibitor', doses: ['20mg', '40mg'], routes: ['Oral', 'IV'], isControlled: false },
+  { name: 'Esomeprazole (Nexium)', class: 'Proton Pump Inhibitor', doses: ['20mg', '40mg'], routes: ['Oral', 'IV'], isControlled: false },
+  { name: 'Lansoprazole (Prevacid)', class: 'Proton Pump Inhibitor', doses: ['15mg', '30mg'], routes: ['Oral'], isControlled: false },
+  { name: 'Rabeprazole (Aciphex)', class: 'Proton Pump Inhibitor', doses: ['20mg'], routes: ['Oral'], isControlled: false },
+  { name: 'Dexlansoprazole (Dexilant)', class: 'Proton Pump Inhibitor', doses: ['30mg', '60mg'], routes: ['Oral'], isControlled: false },
+
+  // ── H2 Blockers ───────────────────────────────────────────
+  { name: 'Famotidine (Pepcid)', class: 'H2 Blocker', doses: ['10mg', '20mg', '40mg'], routes: ['Oral', 'IV'], isControlled: false },
+  { name: 'Ranitidine (Zantac)', class: 'H2 Blocker', doses: ['150mg', '300mg'], routes: ['Oral'], isControlled: false },
+
+  // ── Antacids / GI Protectants ─────────────────────────────
+  { name: 'Sucralfate (Carafate)', class: 'GI Protectant', doses: ['1g'], routes: ['Oral'], isControlled: false },
+  { name: 'Calcium Carbonate/Simethicone (Tums)', class: 'Antacid', doses: ['500mg', '750mg', '1000mg'], routes: ['Oral'], isControlled: false },
+  { name: 'Aluminum/Magnesium Hydroxide (Maalox)', class: 'Antacid', doses: ['200mg/200mg per 5mL'], routes: ['Oral'], isControlled: false },
+  { name: 'Bismuth Subsalicylate (Pepto-Bismol)', class: 'Antidiarrheal/GI Protectant', doses: ['262mg', '524mg'], routes: ['Oral'], isControlled: false },
+
+  // ── Antiemetics ───────────────────────────────────────────
+  { name: 'Ondansetron (Zofran)', class: 'Antiemetic', doses: ['4mg', '8mg'], routes: ['Oral', 'IV', 'ODT'], isControlled: false },
+  { name: 'Promethazine (Phenergan)', class: 'Antiemetic', doses: ['12.5mg', '25mg', '50mg'], routes: ['Oral', 'IM', 'Rectal'], isControlled: false },
+  { name: 'Metoclopramide (Reglan)', class: 'Prokinetic / Antiemetic', doses: ['5mg', '10mg'], routes: ['Oral', 'IV', 'IM'], isControlled: false },
+  { name: 'Prochlorperazine (Compazine)', class: 'Antiemetic', doses: ['5mg', '10mg', '25mg'], routes: ['Oral', 'IM', 'IV', 'Rectal'], isControlled: false },
+  { name: 'Scopolamine Patch (Transderm Scop)', class: 'Antiemetic', doses: ['1.5mg/72hr'], routes: ['Transdermal'], isControlled: false },
+  { name: 'Granisetron (Kytril)', class: 'Antiemetic', doses: ['1mg', '2mg'], routes: ['Oral', 'IV'], isControlled: false },
+  { name: 'Meclizine (Antivert)', class: 'Antiemetic / Antivertigo', doses: ['12.5mg', '25mg', '50mg'], routes: ['Oral'], isControlled: false },
+
+  // ── Laxatives ─────────────────────────────────────────────
+  { name: 'Polyethylene Glycol 3350 (MiraLAX)', class: 'Osmotic Laxative', doses: ['17g'], routes: ['Oral'], isControlled: false },
+  { name: 'Docusate Sodium (Colace)', class: 'Stool Softener', doses: ['100mg', '250mg'], routes: ['Oral'], isControlled: false },
+  { name: 'Senna (Senokot)', class: 'Stimulant Laxative', doses: ['8.6mg', '17.2mg'], routes: ['Oral'], isControlled: false },
+  { name: 'Bisacodyl (Dulcolax)', class: 'Stimulant Laxative', doses: ['5mg', '10mg'], routes: ['Oral', 'Rectal'], isControlled: false },
+  { name: 'Lactulose', class: 'Osmotic Laxative', doses: ['10g/15mL', '20g/30mL'], routes: ['Oral'], isControlled: false },
+  { name: 'Psyllium (Metamucil)', class: 'Bulk-Forming Laxative', doses: ['3.4g'], routes: ['Oral'], isControlled: false },
+  { name: 'Linaclotide (Linzess)', class: 'Guanylate Cyclase-C Agonist', doses: ['72mcg', '145mcg', '290mcg'], routes: ['Oral'], isControlled: false },
+  { name: 'Lubiprostone (Amitiza)', class: 'Chloride Channel Activator', doses: ['8mcg', '24mcg'], routes: ['Oral'], isControlled: false },
+
+  // ── Antidiarrheals ────────────────────────────────────────
+  { name: 'Loperamide (Imodium)', class: 'Antidiarrheal', doses: ['2mg'], routes: ['Oral'], isControlled: false },
+  { name: 'Diphenoxylate/Atropine (Lomotil)', class: 'Antidiarrheal', doses: ['2.5mg/0.025mg'], routes: ['Oral'], isControlled: true, schedule: 'Schedule V' },
+
+  // ── IBD ───────────────────────────────────────────────────
+  { name: 'Mesalamine (Asacol HD)', class: '5-ASA', doses: ['400mg', '800mg'], routes: ['Oral'], isControlled: false },
+  { name: 'Sulfasalazine (Azulfidine)', class: '5-ASA / DMARD', doses: ['500mg'], routes: ['Oral'], isControlled: false },
+
+  // ── Hepatology ────────────────────────────────────────────
+  { name: 'Ursodiol (Actigall)', class: 'Bile Acid', doses: ['250mg', '300mg', '500mg'], routes: ['Oral'], isControlled: false },
+  { name: 'Rifaximin (Xifaxan)', class: 'Antibiotic (GI)', doses: ['200mg', '550mg'], routes: ['Oral'], isControlled: false },
+
+  // ══════════════════════════════════════════════════════════════
+  //  INFECTIOUS DISEASE
+  // ══════════════════════════════════════════════════════════════
+
+  // ── Penicillins ───────────────────────────────────────────
+  { name: 'Amoxicillin', class: 'Penicillin', doses: ['250mg', '500mg', '875mg'], routes: ['Oral'], isControlled: false },
+  { name: 'Amoxicillin/Clavulanate (Augmentin)', class: 'Penicillin/Beta-lactamase Inhibitor', doses: ['250mg/125mg', '500mg/125mg', '875mg/125mg'], routes: ['Oral'], isControlled: false },
+  { name: 'Ampicillin', class: 'Penicillin', doses: ['250mg', '500mg', '1g', '2g'], routes: ['Oral', 'IV', 'IM'], isControlled: false },
+  { name: 'Ampicillin/Sulbactam (Unasyn)', class: 'Penicillin/Beta-lactamase Inhibitor', doses: ['1.5g', '3g'], routes: ['IV', 'IM'], isControlled: false },
+  { name: 'Piperacillin/Tazobactam (Zosyn)', class: 'Extended-Spectrum Penicillin', doses: ['2.25g', '3.375g', '4.5g'], routes: ['IV'], isControlled: false },
+  { name: 'Penicillin VK', class: 'Penicillin', doses: ['250mg', '500mg'], routes: ['Oral'], isControlled: false },
+  { name: 'Dicloxacillin', class: 'Penicillin', doses: ['250mg', '500mg'], routes: ['Oral'], isControlled: false },
+  { name: 'Nafcillin', class: 'Penicillin', doses: ['1g', '2g'], routes: ['IV'], isControlled: false },
+
+  // ── Cephalosporins ────────────────────────────────────────
+  { name: 'Cephalexin (Keflex)', class: 'Cephalosporin (1st Gen)', doses: ['250mg', '500mg', '750mg'], routes: ['Oral'], isControlled: false },
+  { name: 'Cefazolin (Ancef)', class: 'Cephalosporin (1st Gen)', doses: ['500mg', '1g', '2g'], routes: ['IV', 'IM'], isControlled: false },
+  { name: 'Cefuroxime (Ceftin)', class: 'Cephalosporin (2nd Gen)', doses: ['250mg', '500mg'], routes: ['Oral'], isControlled: false },
+  { name: 'Cefdinir (Omnicef)', class: 'Cephalosporin (3rd Gen)', doses: ['300mg'], routes: ['Oral'], isControlled: false },
+  { name: 'Cefpodoxime (Vantin)', class: 'Cephalosporin (3rd Gen)', doses: ['100mg', '200mg'], routes: ['Oral'], isControlled: false },
+  { name: 'Ceftriaxone (Rocephin)', class: 'Cephalosporin (3rd Gen)', doses: ['250mg', '500mg', '1g', '2g'], routes: ['IV', 'IM'], isControlled: false },
+  { name: 'Ceftazidime (Fortaz)', class: 'Cephalosporin (3rd Gen)', doses: ['500mg', '1g', '2g'], routes: ['IV', 'IM'], isControlled: false },
+  { name: 'Cefepime (Maxipime)', class: 'Cephalosporin (4th Gen)', doses: ['1g', '2g'], routes: ['IV', 'IM'], isControlled: false },
+  { name: 'Ceftaroline (Teflaro)', class: 'Cephalosporin (5th Gen)', doses: ['600mg'], routes: ['IV'], isControlled: false },
+
+  // ── Carbapenems ───────────────────────────────────────────
+  { name: 'Meropenem (Merrem)', class: 'Carbapenem', doses: ['500mg', '1g', '2g'], routes: ['IV'], isControlled: false },
+  { name: 'Ertapenem (Invanz)', class: 'Carbapenem', doses: ['1g'], routes: ['IV', 'IM'], isControlled: false },
+  { name: 'Imipenem/Cilastatin (Primaxin)', class: 'Carbapenem', doses: ['250mg', '500mg'], routes: ['IV'], isControlled: false },
+
+  // ── Fluoroquinolones ──────────────────────────────────────
+  { name: 'Ciprofloxacin (Cipro)', class: 'Fluoroquinolone', doses: ['250mg', '500mg', '750mg'], routes: ['Oral', 'IV'], isControlled: false },
+  { name: 'Levofloxacin (Levaquin)', class: 'Fluoroquinolone', doses: ['250mg', '500mg', '750mg'], routes: ['Oral', 'IV'], isControlled: false },
+  { name: 'Moxifloxacin (Avelox)', class: 'Fluoroquinolone', doses: ['400mg'], routes: ['Oral', 'IV'], isControlled: false },
+
+  // ── Macrolides ────────────────────────────────────────────
+  { name: 'Azithromycin (Zithromax)', class: 'Macrolide', doses: ['250mg', '500mg'], routes: ['Oral', 'IV'], isControlled: false },
+  { name: 'Clarithromycin (Biaxin)', class: 'Macrolide', doses: ['250mg', '500mg'], routes: ['Oral'], isControlled: false },
+  { name: 'Erythromycin', class: 'Macrolide', doses: ['250mg', '333mg', '500mg'], routes: ['Oral', 'IV'], isControlled: false },
+
+  // ── Tetracyclines ─────────────────────────────────────────
+  { name: 'Doxycycline (Vibramycin)', class: 'Tetracycline', doses: ['50mg', '100mg', '200mg'], routes: ['Oral', 'IV'], isControlled: false },
+  { name: 'Minocycline (Minocin)', class: 'Tetracycline', doses: ['50mg', '75mg', '100mg'], routes: ['Oral'], isControlled: false },
+  { name: 'Tetracycline', class: 'Tetracycline', doses: ['250mg', '500mg'], routes: ['Oral'], isControlled: false },
+
+  // ── Sulfonamides ──────────────────────────────────────────
+  { name: 'Sulfamethoxazole/Trimethoprim (Bactrim)', class: 'Sulfonamide', doses: ['400mg/80mg', '800mg/160mg'], routes: ['Oral', 'IV'], isControlled: false },
+
+  // ── Glycopeptides ─────────────────────────────────────────
+  { name: 'Vancomycin (IV)', class: 'Glycopeptide', doses: ['500mg', '750mg', '1g', '1.25g', '1.5g', '1.75g', '2g'], routes: ['IV'], isControlled: false },
+  { name: 'Vancomycin (Oral)', class: 'Glycopeptide', doses: ['125mg', '250mg'], routes: ['Oral'], isControlled: false },
+
+  // ── Aminoglycosides ───────────────────────────────────────
+  { name: 'Gentamicin', class: 'Aminoglycoside', doses: ['40mg/mL', '80mg/2mL'], routes: ['IV', 'IM'], isControlled: false },
+  { name: 'Tobramycin', class: 'Aminoglycoside', doses: ['40mg/mL', '80mg/2mL'], routes: ['IV', 'IM', 'Inhalation'], isControlled: false },
+  { name: 'Amikacin', class: 'Aminoglycoside', doses: ['250mg/mL', '500mg/2mL'], routes: ['IV', 'IM'], isControlled: false },
+
+  // ── Lincosamides / Oxazolidinones / Others ────────────────
+  { name: 'Clindamycin (Cleocin)', class: 'Lincosamide', doses: ['150mg', '300mg', '450mg'], routes: ['Oral', 'IV'], isControlled: false },
+  { name: 'Linezolid (Zyvox)', class: 'Oxazolidinone', doses: ['600mg'], routes: ['Oral', 'IV'], isControlled: false },
+  { name: 'Daptomycin (Cubicin)', class: 'Lipopeptide', doses: ['350mg', '500mg'], routes: ['IV'], isControlled: false },
+  { name: 'Nitrofurantoin (Macrobid)', class: 'Nitrofuran', doses: ['100mg'], routes: ['Oral'], isControlled: false },
+  { name: 'Fosfomycin (Monurol)', class: 'Phosphonic Acid', doses: ['3g'], routes: ['Oral'], isControlled: false },
+  { name: 'Metronidazole (Flagyl)', class: 'Nitroimidazole', doses: ['250mg', '500mg'], routes: ['Oral', 'IV'], isControlled: false },
+  { name: 'Trimethoprim (Primsol)', class: 'Dihydrofolate Reductase Inhibitor', doses: ['100mg'], routes: ['Oral'], isControlled: false },
+  { name: 'Colistimethate (Colistin)', class: 'Polymyxin', doses: ['150mg'], routes: ['IV', 'Inhalation'], isControlled: false },
+  { name: 'Tigecycline (Tygacil)', class: 'Glycylcycline', doses: ['50mg'], routes: ['IV'], isControlled: false },
+
+  // ── Antifungals ───────────────────────────────────────────
+  { name: 'Fluconazole (Diflucan)', class: 'Antifungal (Azole)', doses: ['50mg', '100mg', '150mg', '200mg', '400mg'], routes: ['Oral', 'IV'], isControlled: false },
+  { name: 'Itraconazole (Sporanox)', class: 'Antifungal (Azole)', doses: ['100mg', '200mg'], routes: ['Oral'], isControlled: false },
+  { name: 'Voriconazole (Vfend)', class: 'Antifungal (Azole)', doses: ['50mg', '200mg'], routes: ['Oral', 'IV'], isControlled: false },
+  { name: 'Posaconazole (Noxafil)', class: 'Antifungal (Azole)', doses: ['100mg', '200mg/5mL'], routes: ['Oral', 'IV'], isControlled: false },
+  { name: 'Nystatin', class: 'Antifungal (Polyene)', doses: ['100000 units/mL'], routes: ['Oral'], isControlled: false },
+  { name: 'Amphotericin B (Liposomal — AmBisome)', class: 'Antifungal (Polyene)', doses: ['50mg'], routes: ['IV'], isControlled: false },
+  { name: 'Micafungin (Mycamine)', class: 'Antifungal (Echinocandin)', doses: ['50mg', '100mg', '150mg'], routes: ['IV'], isControlled: false },
+  { name: 'Caspofungin (Cancidas)', class: 'Antifungal (Echinocandin)', doses: ['50mg', '70mg'], routes: ['IV'], isControlled: false },
+  { name: 'Terbinafine (Lamisil)', class: 'Antifungal', doses: ['250mg'], routes: ['Oral'], isControlled: false },
+  { name: 'Griseofulvin', class: 'Antifungal', doses: ['125mg', '250mg', '500mg'], routes: ['Oral'], isControlled: false },
+  { name: 'Clotrimazole Troche', class: 'Antifungal (Topical/Oral)', doses: ['10mg'], routes: ['Oral'], isControlled: false },
+
+  // ── Antivirals ────────────────────────────────────────────
+  { name: 'Acyclovir (Zovirax)', class: 'Antiviral', doses: ['200mg', '400mg', '800mg'], routes: ['Oral', 'IV'], isControlled: false },
+  { name: 'Valacyclovir (Valtrex)', class: 'Antiviral', doses: ['500mg', '1g'], routes: ['Oral'], isControlled: false },
+  { name: 'Oseltamivir (Tamiflu)', class: 'Antiviral (Neuraminidase Inhibitor)', doses: ['30mg', '45mg', '75mg'], routes: ['Oral'], isControlled: false },
+  { name: 'Baloxavir (Xofluza)', class: 'Antiviral (Cap-dependent Endonuclease Inhibitor)', doses: ['20mg', '40mg', '80mg'], routes: ['Oral'], isControlled: false },
+  { name: 'Famciclovir (Famvir)', class: 'Antiviral', doses: ['125mg', '250mg', '500mg'], routes: ['Oral'], isControlled: false },
+  { name: 'Ganciclovir (Cytovene)', class: 'Antiviral', doses: ['250mg', '500mg'], routes: ['Oral', 'IV'], isControlled: false },
+  { name: 'Valganciclovir (Valcyte)', class: 'Antiviral', doses: ['450mg'], routes: ['Oral'], isControlled: false },
+  { name: 'Remdesivir (Veklury)', class: 'Antiviral', doses: ['100mg'], routes: ['IV'], isControlled: false },
+  { name: 'Nirmatrelvir/Ritonavir (Paxlovid)', class: 'Antiviral (Protease Inhibitor)', doses: ['150mg/100mg'], routes: ['Oral'], isControlled: false },
+
+  // ── Antimalarials ─────────────────────────────────────────
+  { name: 'Hydroxychloroquine (Plaquenil)', class: 'Antimalarial / DMARD', doses: ['200mg', '400mg'], routes: ['Oral'], isControlled: false },
+
+  // ── Antiparasitics ────────────────────────────────────────
+  { name: 'Ivermectin (Stromectol)', class: 'Antiparasitic', doses: ['3mg'], routes: ['Oral'], isControlled: false },
+  { name: 'Albendazole', class: 'Antiparasitic', doses: ['200mg'], routes: ['Oral'], isControlled: false },
+  { name: 'Permethrin 5% Cream', class: 'Antiparasitic (Topical)', doses: ['60g'], routes: ['Topical'], isControlled: false },
+
+  // ══════════════════════════════════════════════════════════════
+  //  PAIN MANAGEMENT / ANALGESICS
+  // ══════════════════════════════════════════════════════════════
+
+  // ── Non-Opioid Analgesics ─────────────────────────────────
+  { name: 'Acetaminophen (Tylenol)', class: 'Analgesic / Antipyretic', doses: ['325mg', '500mg', '650mg', '1000mg'], routes: ['Oral', 'IV', 'Rectal'], isControlled: false },
+  { name: 'Ibuprofen (Advil / Motrin)', class: 'NSAID', doses: ['200mg', '400mg', '600mg', '800mg'], routes: ['Oral', 'IV'], isControlled: false },
+  { name: 'Naproxen (Aleve / Naprosyn)', class: 'NSAID', doses: ['220mg', '250mg', '375mg', '500mg'], routes: ['Oral'], isControlled: false },
+  { name: 'Meloxicam (Mobic)', class: 'NSAID', doses: ['7.5mg', '15mg'], routes: ['Oral'], isControlled: false },
+  { name: 'Diclofenac (Voltaren)', class: 'NSAID', doses: ['25mg', '50mg', '75mg', '100mg'], routes: ['Oral', 'Topical'], isControlled: false },
+  { name: 'Celecoxib (Celebrex)', class: 'COX-2 Inhibitor', doses: ['50mg', '100mg', '200mg', '400mg'], routes: ['Oral'], isControlled: false },
+  { name: 'Ketorolac (Toradol)', class: 'NSAID', doses: ['10mg', '15mg', '30mg', '60mg'], routes: ['Oral', 'IV', 'IM'], isControlled: false },
+  { name: 'Indomethacin (Indocin)', class: 'NSAID', doses: ['25mg', '50mg', '75mg'], routes: ['Oral', 'Rectal'], isControlled: false },
+  { name: 'Piroxicam (Feldene)', class: 'NSAID', doses: ['10mg', '20mg'], routes: ['Oral'], isControlled: false },
+  { name: 'Etodolac', class: 'NSAID', doses: ['200mg', '300mg', '400mg', '500mg'], routes: ['Oral'], isControlled: false },
+
+  // ── Muscle Relaxants ──────────────────────────────────────
+  { name: 'Cyclobenzaprine (Flexeril)', class: 'Muscle Relaxant', doses: ['5mg', '10mg'], routes: ['Oral'], isControlled: false },
+  { name: 'Methocarbamol (Robaxin)', class: 'Muscle Relaxant', doses: ['500mg', '750mg'], routes: ['Oral'], isControlled: false },
+  { name: 'Tizanidine (Zanaflex)', class: 'Muscle Relaxant', doses: ['2mg', '4mg', '6mg'], routes: ['Oral'], isControlled: false },
+  { name: 'Baclofen', class: 'Muscle Relaxant', doses: ['5mg', '10mg', '20mg'], routes: ['Oral'], isControlled: false },
+  { name: 'Metaxalone (Skelaxin)', class: 'Muscle Relaxant', doses: ['400mg', '800mg'], routes: ['Oral'], isControlled: false },
+  { name: 'Carisoprodol (Soma)', class: 'Muscle Relaxant', doses: ['250mg', '350mg'], routes: ['Oral'], isControlled: true, schedule: 'Schedule IV' },
+  { name: 'Dantrolene (Dantrium)', class: 'Muscle Relaxant', doses: ['25mg', '50mg', '100mg'], routes: ['Oral', 'IV'], isControlled: false },
+
+  // ── Neuropathic Pain ──────────────────────────────────────
+  { name: 'Lidocaine Patch 5% (Lidoderm)', class: 'Local Anesthetic', doses: ['5%'], routes: ['Topical'], isControlled: false },
+  { name: 'Capsaicin Cream', class: 'Topical Analgesic', doses: ['0.025%', '0.075%'], routes: ['Topical'], isControlled: false },
+  { name: 'Carbamazepine (Tegretol)', class: 'Anticonvulsant / Neuropathic Pain', doses: ['100mg', '200mg', '400mg'], routes: ['Oral'], isControlled: false },
+
+  // ── Opioid Analgesics (Controlled) ────────────────────────
+  { name: 'Tramadol (Ultram)', class: 'Opioid Analgesic', doses: ['50mg', '100mg'], routes: ['Oral'], isControlled: true, schedule: 'Schedule IV' },
+  { name: 'Tramadol ER', class: 'Opioid Analgesic', doses: ['100mg', '200mg', '300mg'], routes: ['Oral'], isControlled: true, schedule: 'Schedule IV' },
+  { name: 'Hydrocodone/Acetaminophen (Norco)', class: 'Opioid Analgesic', doses: ['5mg/325mg', '7.5mg/325mg', '10mg/325mg'], routes: ['Oral'], isControlled: true, schedule: 'Schedule II' },
+  { name: 'Oxycodone IR', class: 'Opioid Analgesic', doses: ['5mg', '10mg', '15mg', '20mg', '30mg'], routes: ['Oral'], isControlled: true, schedule: 'Schedule II' },
+  { name: 'Oxycodone/Acetaminophen (Percocet)', class: 'Opioid Analgesic', doses: ['2.5mg/325mg', '5mg/325mg', '7.5mg/325mg', '10mg/325mg'], routes: ['Oral'], isControlled: true, schedule: 'Schedule II' },
+  { name: 'Oxycodone ER (OxyContin)', class: 'Opioid Analgesic', doses: ['10mg', '15mg', '20mg', '30mg', '40mg', '60mg', '80mg'], routes: ['Oral'], isControlled: true, schedule: 'Schedule II' },
+  { name: 'Morphine Sulfate IR', class: 'Opioid Analgesic', doses: ['15mg', '30mg'], routes: ['Oral'], isControlled: true, schedule: 'Schedule II' },
+  { name: 'Morphine Sulfate ER (MS Contin)', class: 'Opioid Analgesic', doses: ['15mg', '30mg', '60mg', '100mg', '200mg'], routes: ['Oral'], isControlled: true, schedule: 'Schedule II' },
+  { name: 'Hydromorphone (Dilaudid)', class: 'Opioid Analgesic', doses: ['2mg', '4mg', '8mg'], routes: ['Oral', 'IV'], isControlled: true, schedule: 'Schedule II' },
+  { name: 'Fentanyl Patch (Duragesic)', class: 'Opioid Analgesic', doses: ['12mcg/hr', '25mcg/hr', '50mcg/hr', '75mcg/hr', '100mcg/hr'], routes: ['Transdermal'], isControlled: true, schedule: 'Schedule II' },
+  { name: 'Fentanyl Citrate (Injectable)', class: 'Opioid Analgesic', doses: ['50mcg/mL', '100mcg/2mL'], routes: ['IV', 'IM'], isControlled: true, schedule: 'Schedule II' },
+  { name: 'Tapentadol (Nucynta)', class: 'Opioid Analgesic', doses: ['50mg', '75mg', '100mg'], routes: ['Oral'], isControlled: true, schedule: 'Schedule II' },
+  { name: 'Codeine/Acetaminophen (Tylenol #3)', class: 'Opioid Analgesic', doses: ['30mg/300mg'], routes: ['Oral'], isControlled: true, schedule: 'Schedule III' },
+  { name: 'Butorphanol (Stadol) Nasal Spray', class: 'Opioid Analgesic', doses: ['1mg/spray'], routes: ['Intranasal'], isControlled: true, schedule: 'Schedule IV' },
+
+  // ── Migraine ──────────────────────────────────────────────
+  { name: 'Sumatriptan (Imitrex)', class: 'Triptan', doses: ['25mg', '50mg', '100mg', '6mg/0.5mL'], routes: ['Oral', 'Subcutaneous', 'Intranasal'], isControlled: false },
+  { name: 'Rizatriptan (Maxalt)', class: 'Triptan', doses: ['5mg', '10mg'], routes: ['Oral', 'ODT'], isControlled: false },
+  { name: 'Zolmitriptan (Zomig)', class: 'Triptan', doses: ['2.5mg', '5mg'], routes: ['Oral', 'Intranasal'], isControlled: false },
+  { name: 'Eletriptan (Relpax)', class: 'Triptan', doses: ['20mg', '40mg'], routes: ['Oral'], isControlled: false },
+  { name: 'Ergotamine/Caffeine (Cafergot)', class: 'Ergot Alkaloid', doses: ['1mg/100mg'], routes: ['Oral'], isControlled: false },
+  { name: 'Erenumab (Aimovig)', class: 'CGRP Antagonist', doses: ['70mg/mL', '140mg/mL'], routes: ['Subcutaneous'], isControlled: false },
+  { name: 'Fremanezumab (Ajovy)', class: 'CGRP Antagonist', doses: ['225mg/1.5mL'], routes: ['Subcutaneous'], isControlled: false },
+  { name: 'Galcanezumab (Emgality)', class: 'CGRP Antagonist', doses: ['120mg/mL'], routes: ['Subcutaneous'], isControlled: false },
+  { name: 'Topiramate (Topamax)', class: 'Anticonvulsant / Migraine Prophylaxis', doses: ['25mg', '50mg', '100mg', '200mg'], routes: ['Oral'], isControlled: false },
+
+  // ══════════════════════════════════════════════════════════════
+  //  NEUROLOGY
+  // ══════════════════════════════════════════════════════════════
+
+  // ── Anticonvulsants (not already listed) ──────────────────
+  { name: 'Levetiracetam (Keppra)', class: 'Anticonvulsant', doses: ['250mg', '500mg', '750mg', '1000mg'], routes: ['Oral', 'IV'], isControlled: false },
+  { name: 'Phenytoin (Dilantin)', class: 'Anticonvulsant', doses: ['30mg', '100mg', '200mg', '300mg'], routes: ['Oral', 'IV'], isControlled: false },
+  { name: 'Fosphenytoin (Cerebyx)', class: 'Anticonvulsant', doses: ['100mg PE/2mL', '500mg PE/10mL'], routes: ['IV', 'IM'], isControlled: false },
+  { name: 'Phenobarbital', class: 'Barbiturate / Anticonvulsant', doses: ['15mg', '30mg', '60mg', '100mg'], routes: ['Oral', 'IV', 'IM'], isControlled: true, schedule: 'Schedule IV' },
+  { name: 'Lacosamide (Vimpat)', class: 'Anticonvulsant', doses: ['50mg', '100mg', '150mg', '200mg'], routes: ['Oral', 'IV'], isControlled: true, schedule: 'Schedule V' },
+  { name: 'Brivaracetam (Briviact)', class: 'Anticonvulsant', doses: ['10mg', '25mg', '50mg', '75mg', '100mg'], routes: ['Oral', 'IV'], isControlled: true, schedule: 'Schedule V' },
+  { name: 'Zonisamide (Zonegran)', class: 'Anticonvulsant', doses: ['25mg', '50mg', '100mg'], routes: ['Oral'], isControlled: false },
+  { name: 'Clobazam (Onfi)', class: 'Anticonvulsant (Benzodiazepine)', doses: ['5mg', '10mg', '20mg'], routes: ['Oral'], isControlled: true, schedule: 'Schedule IV' },
+  { name: 'Ethosuximide (Zarontin)', class: 'Anticonvulsant', doses: ['250mg'], routes: ['Oral'], isControlled: false },
+
+  // ── Parkinson's Disease ───────────────────────────────────
+  { name: 'Carbidopa/Levodopa (Sinemet)', class: 'Dopaminergic', doses: ['10mg/100mg', '25mg/100mg', '25mg/250mg'], routes: ['Oral'], isControlled: false },
+  { name: 'Carbidopa/Levodopa CR (Sinemet CR)', class: 'Dopaminergic', doses: ['25mg/100mg', '50mg/200mg'], routes: ['Oral'], isControlled: false },
+  { name: 'Pramipexole (Mirapex)', class: 'Dopamine Agonist', doses: ['0.125mg', '0.25mg', '0.5mg', '1mg', '1.5mg'], routes: ['Oral'], isControlled: false },
+  { name: 'Ropinirole (Requip)', class: 'Dopamine Agonist', doses: ['0.25mg', '0.5mg', '1mg', '2mg', '3mg', '4mg', '5mg'], routes: ['Oral'], isControlled: false },
+  { name: 'Amantadine (Symmetrel)', class: 'NMDA Antagonist / Dopaminergic', doses: ['100mg'], routes: ['Oral'], isControlled: false },
+  { name: 'Entacapone (Comtan)', class: 'COMT Inhibitor', doses: ['200mg'], routes: ['Oral'], isControlled: false },
+  { name: 'Rasagiline (Azilect)', class: 'MAO-B Inhibitor', doses: ['0.5mg', '1mg'], routes: ['Oral'], isControlled: false },
+  { name: 'Benztropine (Cogentin)', class: 'Anticholinergic', doses: ['0.5mg', '1mg', '2mg'], routes: ['Oral', 'IM', 'IV'], isControlled: false },
+  { name: 'Trihexyphenidyl (Artane)', class: 'Anticholinergic', doses: ['2mg', '5mg'], routes: ['Oral'], isControlled: false },
+
+  // ── Alzheimer's / Dementia ────────────────────────────────
+  { name: 'Donepezil (Aricept)', class: 'Cholinesterase Inhibitor', doses: ['5mg', '10mg', '23mg'], routes: ['Oral'], isControlled: false },
+  { name: 'Rivastigmine (Exelon Patch)', class: 'Cholinesterase Inhibitor', doses: ['4.6mg/24hr', '9.5mg/24hr', '13.3mg/24hr'], routes: ['Transdermal'], isControlled: false },
+  { name: 'Galantamine (Razadyne)', class: 'Cholinesterase Inhibitor', doses: ['4mg', '8mg', '12mg'], routes: ['Oral'], isControlled: false },
+  { name: 'Memantine (Namenda)', class: 'NMDA Antagonist', doses: ['5mg', '10mg'], routes: ['Oral'], isControlled: false },
+  { name: 'Memantine XR (Namenda XR)', class: 'NMDA Antagonist', doses: ['7mg', '14mg', '21mg', '28mg'], routes: ['Oral'], isControlled: false },
+
+  // ── Multiple Sclerosis ────────────────────────────────────
+  { name: 'Dimethyl Fumarate (Tecfidera)', class: 'MS Disease-Modifying', doses: ['120mg', '240mg'], routes: ['Oral'], isControlled: false },
+  { name: 'Fingolimod (Gilenya)', class: 'MS Disease-Modifying', doses: ['0.5mg'], routes: ['Oral'], isControlled: false },
+  { name: 'Ocrelizumab (Ocrevus)', class: 'MS Disease-Modifying', doses: ['300mg/10mL'], routes: ['IV'], isControlled: false },
+  { name: 'Natalizumab (Tysabri)', class: 'MS Disease-Modifying', doses: ['300mg/15mL'], routes: ['IV'], isControlled: false },
+  { name: 'Glatiramer (Copaxone)', class: 'MS Disease-Modifying', doses: ['20mg/mL', '40mg/mL'], routes: ['Subcutaneous'], isControlled: false },
+
+  // ══════════════════════════════════════════════════════════════
+  //  RHEUMATOLOGY / IMMUNOLOGY
+  // ══════════════════════════════════════════════════════════════
+  { name: 'Methotrexate', class: 'DMARD / Antimetabolite', doses: ['2.5mg', '5mg', '7.5mg', '10mg', '15mg', '20mg', '25mg'], routes: ['Oral', 'Subcutaneous', 'IM'], isControlled: false },
+  { name: 'Leflunomide (Arava)', class: 'DMARD', doses: ['10mg', '20mg'], routes: ['Oral'], isControlled: false },
+  { name: 'Adalimumab (Humira)', class: 'TNF Inhibitor', doses: ['40mg/0.8mL'], routes: ['Subcutaneous'], isControlled: false },
+  { name: 'Etanercept (Enbrel)', class: 'TNF Inhibitor', doses: ['25mg', '50mg'], routes: ['Subcutaneous'], isControlled: false },
+  { name: 'Infliximab (Remicade)', class: 'TNF Inhibitor', doses: ['100mg'], routes: ['IV'], isControlled: false },
+  { name: 'Tofacitinib (Xeljanz)', class: 'JAK Inhibitor', doses: ['5mg', '10mg', '11mg'], routes: ['Oral'], isControlled: false },
+  { name: 'Baricitinib (Olumiant)', class: 'JAK Inhibitor', doses: ['1mg', '2mg', '4mg'], routes: ['Oral'], isControlled: false },
+  { name: 'Upadacitinib (Rinvoq)', class: 'JAK Inhibitor', doses: ['15mg', '30mg', '45mg'], routes: ['Oral'], isControlled: false },
+  { name: 'Azathioprine (Imuran)', class: 'Immunosuppressant', doses: ['50mg', '75mg', '100mg'], routes: ['Oral'], isControlled: false },
+  { name: 'Mycophenolate Mofetil (CellCept)', class: 'Immunosuppressant', doses: ['250mg', '500mg'], routes: ['Oral', 'IV'], isControlled: false },
+  { name: 'Tacrolimus (Prograf)', class: 'Calcineurin Inhibitor', doses: ['0.5mg', '1mg', '5mg'], routes: ['Oral', 'IV'], isControlled: false },
+  { name: 'Cyclosporine (Neoral)', class: 'Calcineurin Inhibitor', doses: ['25mg', '50mg', '100mg'], routes: ['Oral'], isControlled: false },
+  { name: 'Colchicine (Colcrys)', class: 'Anti-inflammatory (Gout)', doses: ['0.6mg'], routes: ['Oral'], isControlled: false },
+  { name: 'Allopurinol (Zyloprim)', class: 'Xanthine Oxidase Inhibitor', doses: ['100mg', '200mg', '300mg'], routes: ['Oral'], isControlled: false },
+  { name: 'Febuxostat (Uloric)', class: 'Xanthine Oxidase Inhibitor', doses: ['40mg', '80mg'], routes: ['Oral'], isControlled: false },
+  { name: 'Probenecid', class: 'Uricosuric', doses: ['250mg', '500mg'], routes: ['Oral'], isControlled: false },
+
+  // ══════════════════════════════════════════════════════════════
+  //  NEPHROLOGY / UROLOGY
+  // ══════════════════════════════════════════════════════════════
+  { name: 'Tamsulosin (Flomax)', class: 'Alpha Blocker (BPH)', doses: ['0.4mg'], routes: ['Oral'], isControlled: false },
+  { name: 'Finasteride (Proscar)', class: '5-Alpha Reductase Inhibitor', doses: ['5mg'], routes: ['Oral'], isControlled: false },
+  { name: 'Dutasteride (Avodart)', class: '5-Alpha Reductase Inhibitor', doses: ['0.5mg'], routes: ['Oral'], isControlled: false },
+  { name: 'Sildenafil (Viagra)', class: 'PDE5 Inhibitor', doses: ['25mg', '50mg', '100mg'], routes: ['Oral'], isControlled: false },
+  { name: 'Tadalafil (Cialis)', class: 'PDE5 Inhibitor', doses: ['2.5mg', '5mg', '10mg', '20mg'], routes: ['Oral'], isControlled: false },
+  { name: 'Oxybutynin (Ditropan)', class: 'Anticholinergic (Overactive Bladder)', doses: ['5mg', '10mg', '15mg'], routes: ['Oral', 'Transdermal'], isControlled: false },
+  { name: 'Tolterodine (Detrol LA)', class: 'Anticholinergic (Overactive Bladder)', doses: ['2mg', '4mg'], routes: ['Oral'], isControlled: false },
+  { name: 'Solifenacin (Vesicare)', class: 'Anticholinergic (Overactive Bladder)', doses: ['5mg', '10mg'], routes: ['Oral'], isControlled: false },
+  { name: 'Mirabegron (Myrbetriq)', class: 'Beta-3 Agonist', doses: ['25mg', '50mg'], routes: ['Oral'], isControlled: false },
+  { name: 'Sodium Polystyrene Sulfonate (Kayexalate)', class: 'Potassium Binder', doses: ['15g', '30g', '60g'], routes: ['Oral', 'Rectal'], isControlled: false },
+  { name: 'Patiromer (Veltassa)', class: 'Potassium Binder', doses: ['8.4g', '16.8g', '25.2g'], routes: ['Oral'], isControlled: false },
+  { name: 'Sevelamer (Renvela)', class: 'Phosphate Binder', doses: ['400mg', '800mg'], routes: ['Oral'], isControlled: false },
+  { name: 'Sodium Bicarbonate', class: 'Alkalinizing Agent', doses: ['325mg', '650mg'], routes: ['Oral', 'IV'], isControlled: false },
+  { name: 'Potassium Chloride (K-Dur)', class: 'Electrolyte Supplement', doses: ['10mEq', '20mEq', '40mEq'], routes: ['Oral', 'IV'], isControlled: false },
+  { name: 'Magnesium Oxide', class: 'Electrolyte Supplement', doses: ['200mg', '400mg'], routes: ['Oral'], isControlled: false },
+  { name: 'Magnesium Sulfate', class: 'Electrolyte', doses: ['1g', '2g', '4g'], routes: ['IV', 'IM'], isControlled: false },
+
+  // ══════════════════════════════════════════════════════════════
+  //  HEMATOLOGY / ONCOLOGY (Supportive)
+  // ══════════════════════════════════════════════════════════════
+  { name: 'Ferrous Sulfate', class: 'Iron Supplement', doses: ['325mg'], routes: ['Oral'], isControlled: false },
+  { name: 'Iron Sucrose (Venofer)', class: 'IV Iron', doses: ['200mg/10mL'], routes: ['IV'], isControlled: false },
+  { name: 'Ferric Carboxymaltose (Injectafer)', class: 'IV Iron', doses: ['750mg/15mL'], routes: ['IV'], isControlled: false },
+  { name: 'Epoetin Alfa (Epogen/Procrit)', class: 'Erythropoietin', doses: ['2000 units', '3000 units', '4000 units', '10000 units', '40000 units'], routes: ['Subcutaneous', 'IV'], isControlled: false },
+  { name: 'Darbepoetin Alfa (Aranesp)', class: 'Erythropoietin', doses: ['25mcg', '40mcg', '60mcg', '100mcg', '200mcg', '300mcg'], routes: ['Subcutaneous', 'IV'], isControlled: false },
+  { name: 'Filgrastim (Neupogen)', class: 'Colony-Stimulating Factor', doses: ['300mcg', '480mcg'], routes: ['Subcutaneous', 'IV'], isControlled: false },
+  { name: 'Pegfilgrastim (Neulasta)', class: 'Colony-Stimulating Factor', doses: ['6mg/0.6mL'], routes: ['Subcutaneous'], isControlled: false },
+  { name: 'Vitamin B12 (Cyanocobalamin)', class: 'Vitamin', doses: ['100mcg', '250mcg', '500mcg', '1000mcg'], routes: ['Oral', 'IM', 'Subcutaneous'], isControlled: false },
+  { name: 'Folic Acid', class: 'Vitamin', doses: ['0.4mg', '0.8mg', '1mg', '5mg'], routes: ['Oral'], isControlled: false },
+  { name: 'Phytonadione (Vitamin K)', class: 'Vitamin', doses: ['1mg', '2.5mg', '5mg', '10mg'], routes: ['Oral', 'IV', 'Subcutaneous'], isControlled: false },
+  { name: 'Tranexamic Acid (Lysteda)', class: 'Antifibrinolytic', doses: ['650mg', '1g'], routes: ['Oral', 'IV'], isControlled: false },
+  { name: 'Aminocaproic Acid (Amicar)', class: 'Antifibrinolytic', doses: ['500mg', '1g'], routes: ['Oral', 'IV'], isControlled: false },
+
+  // ══════════════════════════════════════════════════════════════
+  //  ALLERGY / ENT / DERMATOLOGY
+  // ══════════════════════════════════════════════════════════════
+
+  // ── Antihistamines ────────────────────────────────────────
+  { name: 'Cetirizine (Zyrtec)', class: 'Antihistamine (2nd Gen)', doses: ['5mg', '10mg'], routes: ['Oral'], isControlled: false },
+  { name: 'Loratadine (Claritin)', class: 'Antihistamine (2nd Gen)', doses: ['10mg'], routes: ['Oral'], isControlled: false },
+  { name: 'Fexofenadine (Allegra)', class: 'Antihistamine (2nd Gen)', doses: ['60mg', '180mg'], routes: ['Oral'], isControlled: false },
+  { name: 'Levocetirizine (Xyzal)', class: 'Antihistamine (2nd Gen)', doses: ['5mg'], routes: ['Oral'], isControlled: false },
+  { name: 'Diphenhydramine (Benadryl)', class: 'Antihistamine (1st Gen)', doses: ['25mg', '50mg'], routes: ['Oral', 'IV', 'IM'], isControlled: false },
+  { name: 'Chlorpheniramine', class: 'Antihistamine (1st Gen)', doses: ['4mg'], routes: ['Oral'], isControlled: false },
+
+  // ── Nasal Sprays ──────────────────────────────────────────
+  { name: 'Fluticasone Nasal (Flonase)', class: 'Intranasal Corticosteroid', doses: ['50mcg/spray'], routes: ['Intranasal'], isControlled: false },
+  { name: 'Mometasone Nasal (Nasonex)', class: 'Intranasal Corticosteroid', doses: ['50mcg/spray'], routes: ['Intranasal'], isControlled: false },
+  { name: 'Azelastine Nasal (Astelin)', class: 'Intranasal Antihistamine', doses: ['137mcg/spray'], routes: ['Intranasal'], isControlled: false },
+  { name: 'Oxymetazoline (Afrin)', class: 'Nasal Decongestant', doses: ['0.05%'], routes: ['Intranasal'], isControlled: false },
+
+  // ── Epinephrine ───────────────────────────────────────────
+  { name: 'Epinephrine Auto-Injector (EpiPen)', class: 'Sympathomimetic', doses: ['0.15mg', '0.3mg'], routes: ['IM'], isControlled: false },
+  { name: 'Epinephrine (Injectable)', class: 'Sympathomimetic', doses: ['0.1mg/mL', '1mg/mL'], routes: ['IV', 'IM', 'Subcutaneous'], isControlled: false },
+
+  // ── Topical Corticosteroids ───────────────────────────────
+  { name: 'Hydrocortisone Cream 1%', class: 'Topical Corticosteroid (Low)', doses: ['1%'], routes: ['Topical'], isControlled: false },
+  { name: 'Triamcinolone Cream (Kenalog)', class: 'Topical Corticosteroid (Medium)', doses: ['0.025%', '0.1%', '0.5%'], routes: ['Topical'], isControlled: false },
+  { name: 'Betamethasone Dipropionate (Diprolene)', class: 'Topical Corticosteroid (High)', doses: ['0.05%'], routes: ['Topical'], isControlled: false },
+  { name: 'Clobetasol Propionate (Temovate)', class: 'Topical Corticosteroid (Super-High)', doses: ['0.05%'], routes: ['Topical'], isControlled: false },
+  { name: 'Fluocinonide (Lidex)', class: 'Topical Corticosteroid (High)', doses: ['0.05%'], routes: ['Topical'], isControlled: false },
+  { name: 'Desonide (DesOwen)', class: 'Topical Corticosteroid (Low)', doses: ['0.05%'], routes: ['Topical'], isControlled: false },
+
+  // ── Topical Anti-infectives ───────────────────────────────
+  { name: 'Mupirocin (Bactroban)', class: 'Topical Antibiotic', doses: ['2%'], routes: ['Topical'], isControlled: false },
+  { name: 'Bacitracin Ointment', class: 'Topical Antibiotic', doses: ['500 units/g'], routes: ['Topical'], isControlled: false },
+  { name: 'Silver Sulfadiazine (Silvadene)', class: 'Topical Antibiotic', doses: ['1%'], routes: ['Topical'], isControlled: false },
+  { name: 'Ketoconazole Cream', class: 'Topical Antifungal', doses: ['2%'], routes: ['Topical'], isControlled: false },
+  { name: 'Clotrimazole Cream', class: 'Topical Antifungal', doses: ['1%'], routes: ['Topical'], isControlled: false },
+  { name: 'Miconazole (Monistat)', class: 'Topical Antifungal', doses: ['2%'], routes: ['Topical', 'Vaginal'], isControlled: false },
+
+  // ── Dermatology (Other) ───────────────────────────────────
+  { name: 'Tretinoin (Retin-A)', class: 'Retinoid (Topical)', doses: ['0.025%', '0.05%', '0.1%'], routes: ['Topical'], isControlled: false },
+  { name: 'Adapalene (Differin)', class: 'Retinoid (Topical)', doses: ['0.1%', '0.3%'], routes: ['Topical'], isControlled: false },
+  { name: 'Isotretinoin (Accutane)', class: 'Retinoid (Systemic)', doses: ['10mg', '20mg', '30mg', '40mg'], routes: ['Oral'], isControlled: false },
+  { name: 'Benzoyl Peroxide', class: 'Topical Acne Agent', doses: ['2.5%', '5%', '10%'], routes: ['Topical'], isControlled: false },
+  { name: 'Calcipotriene (Dovonex)', class: 'Vitamin D Analog (Topical)', doses: ['0.005%'], routes: ['Topical'], isControlled: false },
+  { name: 'Tacrolimus Ointment (Protopic)', class: 'Topical Calcineurin Inhibitor', doses: ['0.03%', '0.1%'], routes: ['Topical'], isControlled: false },
+
+  // ══════════════════════════════════════════════════════════════
+  //  OPHTHALMOLOGY
+  // ══════════════════════════════════════════════════════════════
+  { name: 'Latanoprost (Xalatan)', class: 'Prostaglandin Analog (Glaucoma)', doses: ['0.005%'], routes: ['Ophthalmic'], isControlled: false },
+  { name: 'Timolol (Timoptic)', class: 'Beta Blocker (Ophthalmic)', doses: ['0.25%', '0.5%'], routes: ['Ophthalmic'], isControlled: false },
+  { name: 'Brimonidine (Alphagan P)', class: 'Alpha-2 Agonist (Ophthalmic)', doses: ['0.1%', '0.15%', '0.2%'], routes: ['Ophthalmic'], isControlled: false },
+  { name: 'Dorzolamide/Timolol (Cosopt)', class: 'CAI/Beta Blocker (Ophthalmic)', doses: ['2%/0.5%'], routes: ['Ophthalmic'], isControlled: false },
+  { name: 'Prednisolone Acetate (Pred Forte)', class: 'Ophthalmic Corticosteroid', doses: ['1%'], routes: ['Ophthalmic'], isControlled: false },
+  { name: 'Erythromycin Ophthalmic Ointment', class: 'Ophthalmic Antibiotic', doses: ['0.5%'], routes: ['Ophthalmic'], isControlled: false },
+  { name: 'Ciprofloxacin Ophthalmic (Ciloxan)', class: 'Ophthalmic Antibiotic', doses: ['0.3%'], routes: ['Ophthalmic'], isControlled: false },
+  { name: 'Moxifloxacin Ophthalmic (Vigamox)', class: 'Ophthalmic Antibiotic', doses: ['0.5%'], routes: ['Ophthalmic'], isControlled: false },
+  { name: 'Artificial Tears (Systane)', class: 'Ophthalmic Lubricant', doses: ['15mL', '30mL'], routes: ['Ophthalmic'], isControlled: false },
+  { name: 'Cyclopentolate (Cyclogyl)', class: 'Cycloplegic / Mydriatic', doses: ['0.5%', '1%', '2%'], routes: ['Ophthalmic'], isControlled: false },
+  { name: 'Tropicamide (Mydriacyl)', class: 'Mydriatic', doses: ['0.5%', '1%'], routes: ['Ophthalmic'], isControlled: false },
+
+  // ══════════════════════════════════════════════════════════════
+  //  OB/GYN / REPRODUCTIVE HEALTH
+  // ══════════════════════════════════════════════════════════════
+  { name: 'Prenatal Vitamins', class: 'Vitamin / Supplement', doses: ['1 tablet'], routes: ['Oral'], isControlled: false },
+  { name: 'Combined Oral Contraceptive (Ethinyl Estradiol/Norgestimate)', class: 'Oral Contraceptive', doses: ['35mcg/0.25mg'], routes: ['Oral'], isControlled: false },
+  { name: 'Norethindrone (Micronor)', class: 'Progestin-Only Contraceptive', doses: ['0.35mg'], routes: ['Oral'], isControlled: false },
+  { name: 'Medroxyprogesterone (Depo-Provera)', class: 'Injectable Contraceptive', doses: ['150mg/mL'], routes: ['IM'], isControlled: false },
+  { name: 'Medroxyprogesterone (Provera)', class: 'Progestin', doses: ['2.5mg', '5mg', '10mg'], routes: ['Oral'], isControlled: false },
+  { name: 'Conjugated Estrogens (Premarin)', class: 'Estrogen', doses: ['0.3mg', '0.45mg', '0.625mg', '0.9mg', '1.25mg'], routes: ['Oral'], isControlled: false },
+  { name: 'Estradiol (Oral)', class: 'Estrogen', doses: ['0.5mg', '1mg', '2mg'], routes: ['Oral'], isControlled: false },
+  { name: 'Estradiol Patch (Vivelle-Dot)', class: 'Estrogen', doses: ['0.025mg/day', '0.0375mg/day', '0.05mg/day', '0.075mg/day', '0.1mg/day'], routes: ['Transdermal'], isControlled: false },
+  { name: 'Progesterone (Prometrium)', class: 'Progestin', doses: ['100mg', '200mg'], routes: ['Oral'], isControlled: false },
+  { name: 'Oxytocin (Pitocin)', class: 'Uterotonic', doses: ['10 units/mL', '20 units/mL'], routes: ['IV', 'IM'], isControlled: false },
+  { name: 'Misoprostol (Cytotec)', class: 'Prostaglandin', doses: ['100mcg', '200mcg'], routes: ['Oral', 'Vaginal', 'Sublingual', 'Rectal'], isControlled: false },
+  { name: 'Methylergonovine (Methergine)', class: 'Ergot Alkaloid', doses: ['0.2mg'], routes: ['Oral', 'IM'], isControlled: false },
+  { name: 'Tranexamic Acid (for Heavy Menstrual Bleeding)', class: 'Antifibrinolytic', doses: ['650mg'], routes: ['Oral'], isControlled: false },
+  { name: 'Letrozole (Femara)', class: 'Aromatase Inhibitor', doses: ['2.5mg', '5mg', '7.5mg'], routes: ['Oral'], isControlled: false },
+  { name: 'Clomiphene (Clomid)', class: 'Selective Estrogen Receptor Modulator', doses: ['50mg', '100mg'], routes: ['Oral'], isControlled: false },
+  { name: 'Terconazole (Terazol)', class: 'Antifungal (Vaginal)', doses: ['0.4%', '0.8%', '80mg'], routes: ['Vaginal'], isControlled: false },
+  { name: 'Fluconazole (single-dose for VVC)', class: 'Antifungal (Azole)', doses: ['150mg'], routes: ['Oral'], isControlled: false },
+
+  // ══════════════════════════════════════════════════════════════
+  //  EMERGENCY / CRITICAL CARE
+  // ══════════════════════════════════════════════════════════════
+  { name: 'Atropine', class: 'Anticholinergic', doses: ['0.5mg', '1mg'], routes: ['IV', 'IM', 'ET'], isControlled: false },
+  { name: 'Vasopressin', class: 'Vasopressor', doses: ['20 units/mL', '40 units'], routes: ['IV'], isControlled: false },
+  { name: 'Norepinephrine (Levophed)', class: 'Vasopressor', doses: ['1mg/mL', '4mg/4mL'], routes: ['IV'], isControlled: false },
+  { name: 'Dopamine', class: 'Vasopressor / Inotrope', doses: ['200mg/5mL', '400mg/5mL', '800mg/5mL'], routes: ['IV'], isControlled: false },
+  { name: 'Dobutamine', class: 'Inotrope', doses: ['250mg/20mL'], routes: ['IV'], isControlled: false },
+  { name: 'Phenylephrine (Injectable)', class: 'Alpha-1 Agonist', doses: ['10mg/mL'], routes: ['IV'], isControlled: false },
+  { name: 'Milrinone (Primacor)', class: 'PDE3 Inhibitor / Inotrope', doses: ['1mg/mL'], routes: ['IV'], isControlled: false },
+  { name: 'Sodium Nitroprusside (Nipride)', class: 'Vasodilator', doses: ['50mg'], routes: ['IV'], isControlled: false },
+  { name: 'Nicardipine (Cardene)', class: 'Calcium Channel Blocker (IV)', doses: ['2.5mg/mL'], routes: ['IV'], isControlled: false },
+  { name: 'Clevidipine (Cleviprex)', class: 'Calcium Channel Blocker (IV)', doses: ['0.5mg/mL'], routes: ['IV'], isControlled: false },
+  { name: 'Esmolol (Brevibloc)', class: 'Ultra-Short-Acting Beta Blocker', doses: ['10mg/mL', '250mg/mL'], routes: ['IV'], isControlled: false },
+  { name: 'Amiodarone (IV)', class: 'Antiarrhythmic (IV)', doses: ['150mg/3mL', '450mg/9mL'], routes: ['IV'], isControlled: false },
+  { name: 'Lidocaine (Injectable)', class: 'Local Anesthetic / Antiarrhythmic', doses: ['1%', '2%', '10mg/mL', '20mg/mL'], routes: ['IV', 'Local Infiltration'], isControlled: false },
+  { name: 'Naloxone (Injectable — Narcan)', class: 'Opioid Antagonist', doses: ['0.4mg/mL', '1mg/mL'], routes: ['IV', 'IM', 'Subcutaneous'], isControlled: false },
+  { name: 'Flumazenil (Romazicon)', class: 'Benzodiazepine Antagonist', doses: ['0.1mg/mL'], routes: ['IV'], isControlled: false },
+  { name: 'Activated Charcoal', class: 'Adsorbent', doses: ['25g', '50g'], routes: ['Oral'], isControlled: false },
+  { name: 'Dextrose 50% (D50)', class: 'Carbohydrate', doses: ['25g/50mL'], routes: ['IV'], isControlled: false },
+  { name: 'Glucagon', class: 'Hyperglycemic Agent', doses: ['1mg'], routes: ['IM', 'IV', 'Subcutaneous'], isControlled: false },
+  { name: 'Calcium Gluconate (Injectable)', class: 'Electrolyte', doses: ['1g/10mL'], routes: ['IV'], isControlled: false },
+  { name: 'Calcium Chloride (Injectable)', class: 'Electrolyte', doses: ['1g/10mL'], routes: ['IV'], isControlled: false },
+  { name: 'Normal Saline (0.9% NaCl)', class: 'IV Fluid', doses: ['250mL', '500mL', '1000mL'], routes: ['IV'], isControlled: false },
+  { name: 'Lactated Ringer\'s Solution', class: 'IV Fluid', doses: ['500mL', '1000mL'], routes: ['IV'], isControlled: false },
+  { name: 'Dextrose 5% in Water (D5W)', class: 'IV Fluid', doses: ['250mL', '500mL', '1000mL'], routes: ['IV'], isControlled: false },
+  { name: 'Albumin 5%', class: 'Colloid', doses: ['250mL', '500mL'], routes: ['IV'], isControlled: false },
+  { name: 'Albumin 25%', class: 'Colloid', doses: ['50mL', '100mL'], routes: ['IV'], isControlled: false },
+  { name: 'Mannitol 20%', class: 'Osmotic Diuretic', doses: ['250mL', '500mL'], routes: ['IV'], isControlled: false },
+
+  // ── Anesthesia / Sedation ─────────────────────────────────
+  { name: 'Propofol (Diprivan)', class: 'General Anesthetic', doses: ['10mg/mL'], routes: ['IV'], isControlled: false },
+  { name: 'Ketamine (Ketalar)', class: 'Dissociative Anesthetic', doses: ['10mg/mL', '50mg/mL', '100mg/mL'], routes: ['IV', 'IM'], isControlled: true, schedule: 'Schedule III' },
+  { name: 'Etomidate (Amidate)', class: 'General Anesthetic', doses: ['2mg/mL'], routes: ['IV'], isControlled: false },
+  { name: 'Succinylcholine (Anectine)', class: 'Depolarizing Neuromuscular Blocker', doses: ['20mg/mL'], routes: ['IV', 'IM'], isControlled: false },
+  { name: 'Rocuronium (Zemuron)', class: 'Non-Depolarizing Neuromuscular Blocker', doses: ['10mg/mL'], routes: ['IV'], isControlled: false },
+  { name: 'Vecuronium (Norcuron)', class: 'Non-Depolarizing Neuromuscular Blocker', doses: ['10mg', '20mg'], routes: ['IV'], isControlled: false },
+  { name: 'Sugammadex (Bridion)', class: 'Neuromuscular Reversal', doses: ['200mg/2mL', '500mg/5mL'], routes: ['IV'], isControlled: false },
+  { name: 'Neostigmine', class: 'Cholinesterase Inhibitor (Reversal)', doses: ['0.5mg/mL', '1mg/mL'], routes: ['IV'], isControlled: false },
+  { name: 'Glycopyrrolate (Robinul)', class: 'Anticholinergic', doses: ['0.2mg/mL'], routes: ['IV', 'IM'], isControlled: false },
+  { name: 'Dexmedetomidine (Precedex)', class: 'Alpha-2 Agonist (Sedation)', doses: ['100mcg/mL', '200mcg/2mL'], routes: ['IV'], isControlled: false },
+  { name: 'Bupivacaine', class: 'Local Anesthetic', doses: ['0.25%', '0.5%'], routes: ['Local Infiltration', 'Epidural'], isControlled: false },
+  { name: 'Ropivacaine', class: 'Local Anesthetic', doses: ['0.2%', '0.5%', '0.75%', '1%'], routes: ['Local Infiltration', 'Epidural'], isControlled: false },
+
+  // ══════════════════════════════════════════════════════════════
+  //  VACCINES (Teaching Hospital Formulary)
+  // ══════════════════════════════════════════════════════════════
+  { name: 'Influenza Vaccine (Fluzone / Fluarix)', class: 'Vaccine', doses: ['0.5mL'], routes: ['IM'], isControlled: false },
+  { name: 'Influenza Vaccine High-Dose (Fluzone HD)', class: 'Vaccine', doses: ['0.7mL'], routes: ['IM'], isControlled: false },
+  { name: 'COVID-19 Vaccine (Moderna, updated)', class: 'Vaccine', doses: ['0.5mL'], routes: ['IM'], isControlled: false },
+  { name: 'COVID-19 Vaccine (Pfizer-BioNTech, updated)', class: 'Vaccine', doses: ['0.3mL'], routes: ['IM'], isControlled: false },
+  { name: 'Tdap (Boostrix / Adacel)', class: 'Vaccine', doses: ['0.5mL'], routes: ['IM'], isControlled: false },
+  { name: 'Td (Tenivac)', class: 'Vaccine', doses: ['0.5mL'], routes: ['IM'], isControlled: false },
+  { name: 'Pneumococcal PCV20 (Prevnar 20)', class: 'Vaccine', doses: ['0.5mL'], routes: ['IM'], isControlled: false },
+  { name: 'Pneumococcal PPSV23 (Pneumovax 23)', class: 'Vaccine', doses: ['0.5mL'], routes: ['IM', 'Subcutaneous'], isControlled: false },
+  { name: 'Hepatitis A (Havrix)', class: 'Vaccine', doses: ['0.5mL', '1mL'], routes: ['IM'], isControlled: false },
+  { name: 'Hepatitis B (Engerix-B)', class: 'Vaccine', doses: ['0.5mL', '1mL'], routes: ['IM'], isControlled: false },
+  { name: 'Hepatitis A+B (Twinrix)', class: 'Vaccine', doses: ['1mL'], routes: ['IM'], isControlled: false },
+  { name: 'Shingles (Shingrix)', class: 'Vaccine', doses: ['0.5mL'], routes: ['IM'], isControlled: false },
+  { name: 'HPV (Gardasil 9)', class: 'Vaccine', doses: ['0.5mL'], routes: ['IM'], isControlled: false },
+  { name: 'MMR (M-M-R II)', class: 'Vaccine', doses: ['0.5mL'], routes: ['Subcutaneous'], isControlled: false },
+  { name: 'Varicella (Varivax)', class: 'Vaccine', doses: ['0.5mL'], routes: ['Subcutaneous'], isControlled: false },
+  { name: 'Meningococcal ACWY (Menactra / Menveo)', class: 'Vaccine', doses: ['0.5mL'], routes: ['IM'], isControlled: false },
+  { name: 'Meningococcal B (Bexsero / Trumenba)', class: 'Vaccine', doses: ['0.5mL'], routes: ['IM'], isControlled: false },
+  { name: 'RSV (Arexvy / Abrysvo)', class: 'Vaccine', doses: ['0.5mL'], routes: ['IM'], isControlled: false },
+  { name: 'Polio (IPV — IPOL)', class: 'Vaccine', doses: ['0.5mL'], routes: ['IM', 'Subcutaneous'], isControlled: false },
+  { name: 'Rotavirus (RotaTeq)', class: 'Vaccine', doses: ['2mL'], routes: ['Oral'], isControlled: false },
+  { name: 'BCG Vaccine', class: 'Vaccine', doses: ['0.1mL'], routes: ['Intradermal'], isControlled: false },
+
+  // ══════════════════════════════════════════════════════════════
+  //  MISCELLANEOUS / OTC ESSENTIALS
+  // ══════════════════════════════════════════════════════════════
+  { name: 'Pseudoephedrine (Sudafed)', class: 'Decongestant', doses: ['30mg', '60mg', '120mg', '240mg'], routes: ['Oral'], isControlled: false },
+  { name: 'Phenylephrine (Oral Decongestant)', class: 'Decongestant', doses: ['10mg'], routes: ['Oral'], isControlled: false },
+  { name: 'Dextromethorphan (Delsym)', class: 'Antitussive', doses: ['10mg/5mL', '30mg/5mL'], routes: ['Oral'], isControlled: false },
+  { name: 'Docusate/Senna (Peri-Colace)', class: 'Stool Softener/Stimulant Laxative', doses: ['50mg/8.6mg'], routes: ['Oral'], isControlled: false },
+  { name: 'Zinc Sulfate', class: 'Mineral Supplement', doses: ['220mg'], routes: ['Oral'], isControlled: false },
+  { name: 'Multivitamin (Daily)', class: 'Vitamin / Supplement', doses: ['1 tablet'], routes: ['Oral'], isControlled: false },
+  { name: 'Fish Oil (Omega-3)', class: 'Supplement', doses: ['1000mg', '1200mg'], routes: ['Oral'], isControlled: false },
+  { name: 'Probiotic (Lactobacillus)', class: 'Supplement', doses: ['1 capsule'], routes: ['Oral'], isControlled: false },
+  { name: 'Thiamine (Vitamin B1)', class: 'Vitamin', doses: ['100mg', '250mg', '500mg'], routes: ['Oral', 'IV', 'IM'], isControlled: false },
+  { name: 'Pyridoxine (Vitamin B6)', class: 'Vitamin', doses: ['25mg', '50mg', '100mg'], routes: ['Oral'], isControlled: false },
 ];
 
 // ========== LAB ORDER DATABASE ==========
