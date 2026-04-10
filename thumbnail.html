@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=1280, height=720" />
+<title>MindCare EHR — Thumbnail</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    width: 1280px;
+    height: 720px;
+    overflow: hidden;
+    font-family: 'Inter', -apple-system, sans-serif;
+    background: linear-gradient(145deg, #0a1628 0%, #0d2444 30%, #1b3d6e 70%, #0055a8 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+
+  /* Subtle grid pattern overlay */
+  body::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+    background-size: 40px 40px;
+    pointer-events: none;
+  }
+
+  /* Glow orbs */
+  .orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: 0.15;
+    pointer-events: none;
+  }
+  .orb-1 { width: 400px; height: 400px; background: #3b82f6; top: -100px; right: -50px; }
+  .orb-2 { width: 300px; height: 300px; background: #8b5cf6; bottom: -80px; left: -40px; }
+  .orb-3 { width: 200px; height: 200px; background: #06b6d4; top: 50%; left: 50%; transform: translate(-50%, -50%); opacity: 0.08; }
+
+  .container {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    gap: 60px;
+    padding: 0 80px;
+    width: 100%;
+  }
+
+  /* Left side — branding */
+  .brand {
+    flex: 1;
+    max-width: 520px;
+  }
+
+  .logo-row {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 32px;
+  }
+  .logo-icon {
+    width: 56px; height: 56px;
+    border-radius: 14px;
+    background: rgba(255,255,255,0.1);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255,255,255,0.15);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 28px;
+  }
+  .logo-text {
+    color: #fff;
+  }
+  .logo-text h1 {
+    font-size: 26px;
+    font-weight: 900;
+    letter-spacing: -0.5px;
+    line-height: 1.1;
+  }
+  .logo-text .sub {
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2.5px;
+    color: rgba(255,255,255,0.4);
+    margin-top: 3px;
+  }
+
+  .headline {
+    font-size: 42px;
+    font-weight: 900;
+    color: #fff;
+    line-height: 1.15;
+    letter-spacing: -1px;
+    margin-bottom: 16px;
+  }
+  .headline span {
+    background: linear-gradient(135deg, #60a5fa, #a78bfa);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .tagline {
+    font-size: 16px;
+    color: rgba(255,255,255,0.55);
+    line-height: 1.6;
+    font-weight: 500;
+    margin-bottom: 28px;
+  }
+
+  /* Feature pills */
+  .features {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .pill {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 14px;
+    border-radius: 20px;
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.1);
+    color: rgba(255,255,255,0.75);
+    font-size: 12px;
+    font-weight: 600;
+    backdrop-filter: blur(8px);
+  }
+  .pill .icon { font-size: 14px; }
+
+  /* Right side — mock UI preview */
+  .preview {
+    flex: 0 0 560px;
+    height: 420px;
+    border-radius: 16px;
+    background: #fff;
+    box-shadow: 0 30px 80px rgba(0,0,0,0.4), 0 0 0 1px rgba(255,255,255,0.08);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+  }
+
+  /* Mini topbar */
+  .preview-topbar {
+    height: 36px;
+    background: linear-gradient(135deg, #0d2444, #1b3d6e);
+    display: flex;
+    align-items: center;
+    padding: 0 14px;
+    gap: 8px;
+    flex-shrink: 0;
+  }
+  .dot { width: 8px; height: 8px; border-radius: 50%; }
+  .dot-r { background: #ef4444; }
+  .dot-y { background: #f59e0b; }
+  .dot-g { background: #10b981; }
+  .topbar-title {
+    margin-left: 8px;
+    color: rgba(255,255,255,0.7);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+  }
+
+  /* Preview body */
+  .preview-body {
+    flex: 1;
+    display: flex;
+    overflow: hidden;
+  }
+
+  /* Mini sidebar */
+  .mini-sidebar {
+    width: 48px;
+    background: #0f172a;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 12px;
+    gap: 10px;
+    flex-shrink: 0;
+  }
+  .mini-nav {
+    width: 28px; height: 28px;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    cursor: default;
+  }
+  .mini-nav.active {
+    background: rgba(59,130,246,0.2);
+  }
+
+  /* Main area */
+  .mini-main {
+    flex: 1;
+    background: #f0f4f8;
+    padding: 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    overflow: hidden;
+  }
+
+  .mini-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .mini-header h3 {
+    font-size: 13px;
+    font-weight: 800;
+    color: #1e293b;
+    letter-spacing: -0.3px;
+  }
+  .mini-header .badge {
+    font-size: 8px;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 10px;
+    background: #dcfce7;
+    color: #065f46;
+  }
+
+  /* Stats row */
+  .stats-row {
+    display: flex;
+    gap: 8px;
+  }
+  .stat-card {
+    flex: 1;
+    background: #fff;
+    border-radius: 8px;
+    padding: 10px;
+    border: 1px solid #e2e8f0;
+  }
+  .stat-card .num {
+    font-size: 18px;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+  }
+  .stat-card .lbl {
+    font-size: 8px;
+    color: #64748b;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+  }
+
+  /* Mini table */
+  .mini-table {
+    background: #fff;
+    border-radius: 8px;
+    border: 1px solid #e2e8f0;
+    overflow: hidden;
+    flex: 1;
+  }
+  .mini-table-head {
+    display: flex;
+    padding: 6px 10px;
+    background: #f8fafc;
+    border-bottom: 1px solid #e2e8f0;
+    gap: 8px;
+  }
+  .mini-table-head span {
+    font-size: 8px;
+    font-weight: 700;
+    color: #64748b;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  .mini-table-row {
+    display: flex;
+    padding: 7px 10px;
+    border-bottom: 1px solid #f1f5f9;
+    align-items: center;
+    gap: 8px;
+  }
+  .mini-table-row .name {
+    font-size: 10px;
+    font-weight: 700;
+    color: #1e293b;
+    flex: 1;
+  }
+  .mini-table-row .meta {
+    font-size: 9px;
+    color: #64748b;
+  }
+  .mini-table-row .tbadge {
+    font-size: 7px;
+    font-weight: 700;
+    padding: 2px 6px;
+    border-radius: 8px;
+  }
+  .bg-blue { background: #eff6ff; color: #1d4ed8; }
+  .bg-green { background: #dcfce7; color: #065f46; }
+  .bg-amber { background: #fef3c7; color: #92400e; }
+  .bg-purple { background: #f3e8ff; color: #6b21a8; }
+
+  /* Bottom bar */
+  .bottom-bar {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .hipaa {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: rgba(255,255,255,0.3);
+    font-size: 10px;
+    font-weight: 600;
+  }
+  .hipaa .lock { font-size: 12px; }
+  .version {
+    color: rgba(255,255,255,0.2);
+    font-size: 10px;
+    font-weight: 600;
+  }
+</style>
+</head>
+<body>
+  <div class="orb orb-1"></div>
+  <div class="orb orb-2"></div>
+  <div class="orb orb-3"></div>
+
+  <div class="container">
+    <!-- Left: Branding -->
+    <div class="brand">
+      <div class="logo-row">
+        <div class="logo-icon">🧠</div>
+        <div class="logo-text">
+          <h1>MindCare</h1>
+          <div class="sub">Outpatient EHR</div>
+        </div>
+      </div>
+
+      <div class="headline">
+        Modern Psychiatric<br /><span>Electronic Health Records</span>
+      </div>
+
+      <p class="tagline">
+        A comprehensive outpatient mental health EHR system built for academic teaching hospitals. Clinical documentation, e-prescribing, telehealth, and patient engagement — all in one platform.
+      </p>
+
+      <div class="features">
+        <div class="pill"><span class="icon">📋</span> Chart Management</div>
+        <div class="pill"><span class="icon">💊</span> E-Prescribing (EPCS)</div>
+        <div class="pill"><span class="icon">📹</span> Telehealth</div>
+        <div class="pill"><span class="icon">📊</span> PHQ-9 / GAD-7</div>
+        <div class="pill"><span class="icon">💬</span> Patient Portal</div>
+        <div class="pill"><span class="icon">🔬</span> Lab Orders</div>
+        <div class="pill"><span class="icon">📈</span> Analytics</div>
+        <div class="pill"><span class="icon">🛡️</span> Break-the-Glass</div>
+      </div>
+    </div>
+
+    <!-- Right: Mock UI Preview -->
+    <div class="preview">
+      <div class="preview-topbar">
+        <div class="dot dot-r"></div>
+        <div class="dot dot-y"></div>
+        <div class="dot dot-g"></div>
+        <span class="topbar-title">🧠 MindCare — Dashboard</span>
+      </div>
+      <div class="preview-body">
+        <div class="mini-sidebar">
+          <div class="mini-nav active">📊</div>
+          <div class="mini-nav">📅</div>
+          <div class="mini-nav">👥</div>
+          <div class="mini-nav">📨</div>
+          <div class="mini-nav">💊</div>
+          <div class="mini-nav">📹</div>
+          <div class="mini-nav">💬</div>
+          <div class="mini-nav">📈</div>
+        </div>
+        <div class="mini-main">
+          <div class="mini-header">
+            <h3>📊 Dashboard</h3>
+            <span class="badge">● Live</span>
+          </div>
+
+          <div class="stats-row">
+            <div class="stat-card">
+              <div class="num" style="color:#3b82f6">24</div>
+              <div class="lbl">Patients Today</div>
+            </div>
+            <div class="stat-card">
+              <div class="num" style="color:#8b5cf6">8</div>
+              <div class="lbl">Telehealth</div>
+            </div>
+            <div class="stat-card">
+              <div class="num" style="color:#10b981">12</div>
+              <div class="lbl">Rx Pending</div>
+            </div>
+            <div class="stat-card">
+              <div class="num" style="color:#f59e0b">3</div>
+              <div class="lbl">Urgent</div>
+            </div>
+          </div>
+
+          <div class="mini-table">
+            <div class="mini-table-head">
+              <span style="flex:1">Patient</span>
+              <span>Time</span>
+              <span>Type</span>
+              <span>Status</span>
+            </div>
+            <div class="mini-table-row">
+              <span class="name">James Anderson</span>
+              <span class="meta">9:00 AM</span>
+              <span class="tbadge bg-blue">Follow-up</span>
+              <span class="tbadge bg-green">Checked In</span>
+            </div>
+            <div class="mini-table-row">
+              <span class="name">Maria Garcia</span>
+              <span class="meta">9:30 AM</span>
+              <span class="tbadge bg-purple">Telehealth</span>
+              <span class="tbadge bg-amber">Waiting</span>
+            </div>
+            <div class="mini-table-row">
+              <span class="name">Robert Chen</span>
+              <span class="meta">10:00 AM</span>
+              <span class="tbadge bg-blue">Med Check</span>
+              <span class="tbadge bg-green">Checked In</span>
+            </div>
+            <div class="mini-table-row">
+              <span class="name">Ashley Kim</span>
+              <span class="meta">10:30 AM</span>
+              <span class="tbadge bg-purple">Telehealth</span>
+              <span class="tbadge bg-amber">Scheduled</span>
+            </div>
+            <div class="mini-table-row">
+              <span class="name">Dorothy Wilson</span>
+              <span class="meta">11:00 AM</span>
+              <span class="tbadge bg-blue">Intake</span>
+              <span class="tbadge bg-green">Confirmed</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="bottom-bar">
+    <div class="hipaa">
+      <span class="lock">🔒</span> HIPAA Compliant · 256-bit Encryption · Academic Medical Center
+    </div>
+    <div class="version">v2.4.1</div>
+  </div>
+</body>
+</html>
