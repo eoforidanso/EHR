@@ -47,6 +47,7 @@ export default function Sidebar() {
 
   const chartLinks = [
     { key: 'summary',       icon: '📋', label: 'Chart Summary' },
+    { key: 'encounters',    icon: '🗒️', label: 'Encounters' },
     { key: 'demographics',  icon: '👤', label: 'Demographics' },
     { key: 'allergies',     icon: '⚠️', label: 'Allergies' },
     { key: 'problems',      icon: '🩺', label: 'Problem List' },
@@ -138,20 +139,19 @@ export default function Sidebar() {
             {navItem('/telehealth',   '📹', 'Telehealth')}
             {isPrescriber && navItem('/prescribe', '💊', 'E-Prescribe')}
             {navItem('/smart-phrases','⚡', 'Smart Phrases')}
-            {navItem('/admin-toolkit','🗂️', 'Admin Toolkit')}
+            {navItem('/patient-chat', '💬', 'Patient Chat')}
           </ul>
         </div>
       )}
 
-      {isAdmin && (
-        <div className="sidebar-section">
-          <div className="sidebar-section-title">Administration</div>
-          <ul className="sidebar-nav">
-            {navItem('/btg-audit', '🔓', 'BTG Audit Log')}
-            {navItem('/admin-toolkit','🗂️', 'Admin Toolkit')}
-          </ul>
-        </div>
-      )}
+      {/* Admin Toolkit — all roles */}
+      <div className="sidebar-section">
+        <div className="sidebar-section-title">Administration</div>
+        <ul className="sidebar-nav">
+          {navItem('/admin-toolkit','🗂️', 'Admin Toolkit')}
+          {isAdmin && navItem('/btg-audit', '🔓', 'BTG Audit Log')}
+        </ul>
+      </div>
 
       <div className="sidebar-user">
         <div className="sidebar-user-card">

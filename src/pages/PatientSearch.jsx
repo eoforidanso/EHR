@@ -1,12 +1,26 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { usePatient } from '../contexts/PatientContext';
+import { useAuth } from '../contexts/AuthContext';
+
+const VISIT_TYPES = [
+  'Follow-Up', 'Office Visit', 'Telehealth', 'Walk-In',
+  'Psychiatric Evaluation', 'Medication Management',
+  'Crisis Intervention', 'Urgent Care', 'Initial Evaluation',
+];
 
 export default function PatientSearch() {
-  const { patients, selectPatient } = usePatient();
+  const { patients, selectPatient, addEncounter } = usePatient();
+  const { currentUser } = useAuth();
   const [search, setSearch] = useState('');
   const navigate = useNavigate();
   const inputRef = useRef(null);
+
+  // New encounter modal state
+  const [encounterModal, setEncounterModal] = useState(null); // patient object | null
+  const today = new Date().toISOString().slice(0, 10);
+  const nowTime = new Date().toTimeString().slice(0, 5);
+  const [encForm, setEncForm] = useState({});
 
   useEffect(() => { inputRef.current?.focus(); }, []);
 
@@ -25,6 +39,34 @@ export default function PatientSearch() {
   const handleSelect = (patient) => {
     selectPatient(patient.id);
     navigate(`/chart/${patient.id}/summary`);
+  };
+
+  const openEncounterModal = (e, patient) => {
+    e.stopPropagation();
+    selectPatient(patient.id);
+    setEncForm({
+      date: today,
+      time: nowTime,
+      type: 'Follow-Up',
+      chiefComplaint: '',
+      status: 'In Progress',
+      provider: currentUser?.id || '',
+      providerName: currentUser?.name || '',
+      subjective: '', objective: '', assessment: '', plan: '',
+      diagnoses: [],
+    });
+    setEncounterModal(patient);
+  };
+
+  const saveEncounter = () => {
+    if (!encForm.chiefComplaint.trim()) return;
+    addEncounter(encounterModal.id, encForm);
+    setEncounterModal(null);
+    navigate(`/chart/${encounterModal.id}/encounters`);
+  };
+
+  const cancelEncounter = () => {
+    setEncounterModal(null);
   };
 
   return (
@@ -85,7 +127,7 @@ export default function PatientSearch() {
                     <th>Insurance</th>
                     <th>Last Visit</th>
                     <th>Flags</th>
-                    <th style={{ width: 100 }}>Action</th>
+                    <th style={{ width: 180 }}>Actions</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -123,9 +165,15 @@ export default function PatientSearch() {
                       </div>
                     </td>
                     <td>
-                      <button className="btn btn-sm btn-primary" onClick={(e) => { e.stopPropagation(); handleSelect(p); }}>
-                        Open Chart
-                      </button>
+                      <div style={{ display: 'flex', gap: 6 }}>
+                        <button className="btn btn-sm btn-primary" onClick={(e) => { e.stopPropagation(); handleSelect(p); }}>
+                          Open Chart
+                        </button>
+                        <button className="btn btn-sm" style={{ background: 'var(--success)', color: 'white', border: 'none' }}
+                          onClick={(e) => openEncounterModal(e, p)}>
+                          + Encounter
+                        </button>
+                      </div>
                     </td>
                   </tr>
                 ))}
@@ -135,6 +183,109 @@ export default function PatientSearch() {
           )}
         </div>
       </div>
+
+      {/* New Encounter Modal */}
+      {encounterModal && (
+        <div style={{
+          position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.5)',
+          display: 'flex', alignItems: 'center', justifyContent: 'center',
+          zIndex: 1000, padding: 24,
+        }}>
+          <div style={{
+            background: 'var(--surface)', borderRadius: 12, width: '100%', maxWidth: 680,
+            maxHeight: '90vh', overflow: 'auto', boxShadow: '0 20px 60px rgba(0,0,0,0.35)',
+          }}>
+            {/* Modal header */}
+            <div style={{
+              padding: '16px 20px', borderBottom: '1px solid var(--border)',
+              display: 'flex', justifyContent: 'space-between', alignItems: 'center',
+              position: 'sticky', top: 0, background: 'var(--surface)', zIndex: 1,
+            }}>
+              <div>
+                <div style={{ fontWeight: 800, fontSize: 16 }}>📝 New Encounter</div>
+                <div className="text-sm text-muted">
+                  {encounterModal.lastName}, {encounterModal.firstName} · MRN {encounterModal.mrn}
+                </div>
+              </div>
+              <button onClick={cancelEncounter}
+                style={{ background: 'none', border: 'none', fontSize: 20, cursor: 'pointer', color: 'var(--text-muted)' }}>✕</button>
+            </div>
+
+            {/* Modal body */}
+            <div style={{ padding: '20px' }}>
+              {/* Date / Time / Type / Status */}
+              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 2fr 1fr', gap: 12, marginBottom: 14 }}>
+                <div>
+                  <label className="form-label">Date</label>
+                  <input className="form-input" type="date" value={encForm.date}
+                    onChange={(e) => setEncForm((p) => ({ ...p, date: e.target.value }))} />
+                </div>
+                <div>
+                  <label className="form-label">Time</label>
+                  <input className="form-input" type="time" value={encForm.time}
+                    onChange={(e) => setEncForm((p) => ({ ...p, time: e.target.value }))} />
+                </div>
+                <div>
+                  <label className="form-label">Visit Type</label>
+                  <select className="form-input" value={encForm.type}
+                    onChange={(e) => setEncForm((p) => ({ ...p, type: e.target.value }))}>
+                    {VISIT_TYPES.map((t) => <option key={t}>{t}</option>)}
+                  </select>
+                </div>
+                <div>
+                  <label className="form-label">Status</label>
+                  <select className="form-input" value={encForm.status}
+                    onChange={(e) => setEncForm((p) => ({ ...p, status: e.target.value }))}>
+                    <option>In Progress</option>
+                    <option>Completed</option>
+                    <option>Pending Co-Sign</option>
+                  </select>
+                </div>
+              </div>
+
+              {/* Chief Complaint */}
+              <div style={{ marginBottom: 14 }}>
+                <label className="form-label">Chief Complaint <span style={{ color: 'var(--danger)' }}>*</span></label>
+                <input className="form-input" type="text"
+                  placeholder="e.g., Follow-up — medication management"
+                  value={encForm.chiefComplaint}
+                  onChange={(e) => setEncForm((p) => ({ ...p, chiefComplaint: e.target.value }))} />
+              </div>
+
+              {/* SOAP notes */}
+              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 12, marginBottom: 14 }}>
+                {[
+                  { label: 'S — Subjective', key: 'subjective', ph: "Patient's reported symptoms, history..." },
+                  { label: 'O — Objective', key: 'objective', ph: 'Exam findings, vitals, test results...' },
+                  { label: 'A — Assessment', key: 'assessment', ph: 'Clinical impression / diagnoses...' },
+                  { label: 'P — Plan', key: 'plan', ph: 'Treatment plan, orders, follow-up...' },
+                ].map(({ label, key, ph }) => (
+                  <div key={key}>
+                    <label className="form-label">{label}</label>
+                    <textarea className="form-input" rows={4} placeholder={ph}
+                      value={encForm[key]}
+                      onChange={(e) => setEncForm((p) => ({ ...p, [key]: e.target.value }))}
+                      style={{ resize: 'vertical' }} />
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Modal footer */}
+            <div style={{
+              padding: '12px 20px', borderTop: '1px solid var(--border)',
+              display: 'flex', justifyContent: 'flex-end', gap: 10,
+              position: 'sticky', bottom: 0, background: 'var(--surface)',
+            }}>
+              <button className="btn" onClick={cancelEncounter}>Cancel</button>
+              <button className="btn btn-primary" onClick={saveEncounter}
+                disabled={!encForm.chiefComplaint?.trim()}>
+                💾 Save &amp; Open Encounter
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

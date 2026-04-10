@@ -15,6 +15,7 @@ import SmartPhrases from './pages/SmartPhrases';
 import BTGAuditLog from './pages/BTGAuditLog';
 import HealthAdminToolkit from './pages/HealthAdminToolkit';
 import GoToSession from './pages/GoToSession';
+import PatientChat from './pages/PatientChat';
 
 import Sidebar from './components/Sidebar';
 import Header from './components/Header';
@@ -63,6 +64,7 @@ export default function App() {
             <Route path="/smart-phrases" element={<SmartPhrases />} />
             <Route path="/btg-audit" element={<BTGAuditLog />} />
             <Route path="/admin-toolkit" element={<HealthAdminToolkit />} />
+            <Route path="/patient-chat" element={<PatientChat />} />
             <Route path="/session/:aptId" element={<GoToSession />} />
             <Route path="/" element={<Navigate to="/dashboard" replace />} />
           </Route>

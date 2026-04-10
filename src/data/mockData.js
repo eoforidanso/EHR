@@ -5,45 +5,48 @@ import { v4 as uuidv4 } from 'uuid';
 export const users = [
   {
     id: 'u1',
-    username: 'dr.martinez',
+    username: 'dr.chris',
     password: 'Pass123!',
-    firstName: 'Elena',
-    lastName: 'Martinez',
+    firstName: 'Chris',
+    lastName: 'L.',
     role: 'prescriber',
     credentials: 'MD, PhD',
     specialty: 'Psychiatry',
     npi: '1234567890',
     deaNumber: 'FM1234567',
-    email: 'elena.martinez@mindcare.health',
+    email: 'chris.l@mindcare.health',
     epcsPin: '9921',
     twoFactorEnabled: true,
   },
   {
     id: 'u2',
-    username: 'np.johnson',
+    username: 'np.joseph',
     password: 'Pass123!',
-    firstName: 'Michael',
-    lastName: 'Johnson',
+    firstName: 'Joseph',
+    lastName: '',
     role: 'prescriber',
     credentials: 'PMHNP-BC',
     specialty: 'Psychiatric Mental Health',
     npi: '0987654321',
     deaNumber: 'FJ9876543',
-    email: 'michael.johnson@mindcare.health',
+    email: 'joseph@mindcare.health',
     epcsPin: '4456',
     twoFactorEnabled: true,
   },
   {
     id: 'u3',
-    username: 'sarah.desk',
+    username: 'irina.s',
     password: 'Pass123!',
-    firstName: 'Sarah',
-    lastName: 'Williams',
-    role: 'front_desk',
-    credentials: '',
-    specialty: '',
-    npi: '',
-    email: 'sarah.williams@mindcare.health',
+    firstName: 'Irina',
+    lastName: 'S.',
+    role: 'prescriber',
+    credentials: 'MD',
+    specialty: 'Psychiatry',
+    npi: '1122334455',
+    deaNumber: 'FS1122334',
+    email: 'irina.s@mindcare.health',
+    epcsPin: '7743',
+    twoFactorEnabled: true,
   },
   {
     id: 'u4',
@@ -69,6 +72,14 @@ export const users = [
     npi: '',
     email: 'admin@mindcare.health',
   },
+
+  // ── Patient portal accounts ──────────────────────────────────
+  { id: 'pat-p1', username: 'james.anderson', password: 'Patient1!', firstName: 'James', lastName: 'Anderson', role: 'patient', patientId: 'p1', email: 'james.anderson@email.com' },
+  { id: 'pat-p2', username: 'maria.garcia',   password: 'Patient1!', firstName: 'Maria', lastName: 'Garcia',   role: 'patient', patientId: 'p2', email: 'maria.garcia@email.com' },
+  { id: 'pat-p3', username: 'robert.chen',    password: 'Patient1!', firstName: 'Robert', lastName: 'Chen',   role: 'patient', patientId: 'p3', email: 'robert.chen@email.com' },
+  { id: 'pat-p4', username: 'ashley.kim',     password: 'Patient1!', firstName: 'Ashley', lastName: 'Kim',    role: 'patient', patientId: 'p4', email: 'ashley.kim@email.com' },
+  { id: 'pat-p5', username: 'dorothy.wilson', password: 'Patient1!', firstName: 'Dorothy', lastName: 'Wilson', role: 'patient', patientId: 'p5', email: 'dorothy.wilson@email.com' },
+  { id: 'pat-p6', username: 'marcus.brown',   password: 'Patient1!', firstName: 'Marcus', lastName: 'Brown',  role: 'patient', patientId: 'p6', email: 'marcus.brown@email.com' },
 ];
 
 // ========== PATIENTS ==========
@@ -392,35 +403,35 @@ export const allergies = {
 // ========== PROBLEM LIST ==========
 export const problems = {
   p1: [
-    { id: 'pr1', code: 'F33.1', description: 'Major Depressive Disorder, Recurrent, Moderate', status: 'Active', onsetDate: '2020-01-15', diagnosedBy: 'Dr. Martinez' },
-    { id: 'pr2', code: 'F41.1', description: 'Generalized Anxiety Disorder', status: 'Active', onsetDate: '2020-01-15', diagnosedBy: 'Dr. Martinez' },
-    { id: 'pr3', code: 'G47.00', description: 'Insomnia, Unspecified', status: 'Active', onsetDate: '2021-06-10', diagnosedBy: 'Dr. Martinez' },
+    { id: 'pr1', code: 'F33.1', description: 'Major Depressive Disorder, Recurrent, Moderate', status: 'Active', onsetDate: '2020-01-15', diagnosedBy: 'Dr. Chris L.' },
+    { id: 'pr2', code: 'F41.1', description: 'Generalized Anxiety Disorder', status: 'Active', onsetDate: '2020-01-15', diagnosedBy: 'Dr. Chris L.' },
+    { id: 'pr3', code: 'G47.00', description: 'Insomnia, Unspecified', status: 'Active', onsetDate: '2021-06-10', diagnosedBy: 'Dr. Chris L.' },
     { id: 'pr4', code: 'E11.9', description: 'Type 2 Diabetes Mellitus', status: 'Active', onsetDate: '2018-03-20', diagnosedBy: 'Dr. Smith (PCP)' },
   ],
   p2: [
-    { id: 'pr5', code: 'F43.10', description: 'Post-Traumatic Stress Disorder', status: 'Active', onsetDate: '2022-05-01', diagnosedBy: 'Dr. Martinez' },
-    { id: 'pr6', code: 'F33.2', description: 'Major Depressive Disorder, Recurrent, Severe', status: 'Active', onsetDate: '2022-05-01', diagnosedBy: 'Dr. Martinez' },
-    { id: 'pr7', code: 'F40.10', description: 'Social Anxiety Disorder', status: 'Active', onsetDate: '2023-02-14', diagnosedBy: 'Dr. Martinez' },
+    { id: 'pr5', code: 'F43.10', description: 'Post-Traumatic Stress Disorder', status: 'Active', onsetDate: '2022-05-01', diagnosedBy: 'Dr. Chris L.' },
+    { id: 'pr6', code: 'F33.2', description: 'Major Depressive Disorder, Recurrent, Severe', status: 'Active', onsetDate: '2022-05-01', diagnosedBy: 'Dr. Chris L.' },
+    { id: 'pr7', code: 'F40.10', description: 'Social Anxiety Disorder', status: 'Active', onsetDate: '2023-02-14', diagnosedBy: 'Dr. Chris L.' },
   ],
   p3: [
-    { id: 'pr8', code: 'F10.20', description: 'Alcohol Use Disorder, Moderate', status: 'Active', onsetDate: '2019-08-15', diagnosedBy: 'NP Johnson' },
-    { id: 'pr9', code: 'F33.0', description: 'Major Depressive Disorder, Recurrent, Mild', status: 'Active', onsetDate: '2019-08-15', diagnosedBy: 'NP Johnson' },
+    { id: 'pr8', code: 'F10.20', description: 'Alcohol Use Disorder, Moderate', status: 'Active', onsetDate: '2019-08-15', diagnosedBy: 'Joseph' },
+    { id: 'pr9', code: 'F33.0', description: 'Major Depressive Disorder, Recurrent, Mild', status: 'Active', onsetDate: '2019-08-15', diagnosedBy: 'Joseph' },
     { id: 'pr10', code: 'I10', description: 'Essential Hypertension', status: 'Active', onsetDate: '2015-04-10', diagnosedBy: 'Dr. Davis (PCP)' },
-    { id: 'pr11', code: 'F17.210', description: 'Nicotine Dependence, Cigarettes', status: 'Active', onsetDate: '2010-01-01', diagnosedBy: 'NP Johnson' },
+    { id: 'pr11', code: 'F17.210', description: 'Nicotine Dependence, Cigarettes', status: 'Active', onsetDate: '2010-01-01', diagnosedBy: 'Joseph' },
   ],
   p4: [
-    { id: 'pr12', code: 'F90.2', description: 'ADHD, Combined Type', status: 'Active', onsetDate: '2015-09-01', diagnosedBy: 'NP Johnson' },
-    { id: 'pr13', code: 'F41.1', description: 'Generalized Anxiety Disorder', status: 'Active', onsetDate: '2023-01-20', diagnosedBy: 'NP Johnson' },
+    { id: 'pr12', code: 'F90.2', description: 'ADHD, Combined Type', status: 'Active', onsetDate: '2015-09-01', diagnosedBy: 'Joseph' },
+    { id: 'pr13', code: 'F41.1', description: 'Generalized Anxiety Disorder', status: 'Active', onsetDate: '2023-01-20', diagnosedBy: 'Joseph' },
     { id: 'pr14', code: 'F50.00', description: 'Anorexia Nervosa, Unspecified', status: 'In Remission', onsetDate: '2019-06-15', diagnosedBy: 'Dr. Park (PCP)' },
   ],
   p5: [
-    { id: 'pr15', code: 'F32.2', description: 'Major Depressive Disorder, Single Episode, Severe', status: 'Active', onsetDate: '2025-12-01', diagnosedBy: 'Dr. Martinez' },
-    { id: 'pr16', code: 'F41.0', description: 'Panic Disorder', status: 'Active', onsetDate: '2026-01-10', diagnosedBy: 'Dr. Martinez' },
+    { id: 'pr15', code: 'F32.2', description: 'Major Depressive Disorder, Single Episode, Severe', status: 'Active', onsetDate: '2025-12-01', diagnosedBy: 'Dr. Chris L.' },
+    { id: 'pr16', code: 'F41.0', description: 'Panic Disorder', status: 'Active', onsetDate: '2026-01-10', diagnosedBy: 'Dr. Chris L.' },
     { id: 'pr17', code: 'G30.9', description: 'Alzheimers Disease, Unspecified (Early Onset)', status: 'Active', onsetDate: '2025-06-15', diagnosedBy: 'Dr. Brown (PCP)' },
   ],
   p6: [
-    { id: 'pr18', code: 'F31.31', description: 'Bipolar Disorder, Current Episode Depressed, Mild', status: 'Active', onsetDate: '2021-03-10', diagnosedBy: 'Dr. Martinez' },
-    { id: 'pr19', code: 'F41.1', description: 'Generalized Anxiety Disorder', status: 'Active', onsetDate: '2021-03-10', diagnosedBy: 'Dr. Martinez' },
+    { id: 'pr18', code: 'F31.31', description: 'Bipolar Disorder, Current Episode Depressed, Mild', status: 'Active', onsetDate: '2021-03-10', diagnosedBy: 'Dr. Chris L.' },
+    { id: 'pr19', code: 'F41.1', description: 'Generalized Anxiety Disorder', status: 'Active', onsetDate: '2021-03-10', diagnosedBy: 'Dr. Chris L.' },
     { id: 'pr20', code: 'N94.3', description: 'Premenstrual Dysphoric Disorder', status: 'Active', onsetDate: '2022-08-05', diagnosedBy: 'Dr. Taylor (PCP)' },
   ],
 };
@@ -454,32 +465,112 @@ export const vitals = {
 // ========== MEDICATIONS / PRESCRIPTIONS ==========
 export const medications = {
   p1: [
-    { id: 'm1', name: 'Sertraline (Zoloft)', dose: '100mg', route: 'Oral', frequency: 'Once daily', startDate: '2020-02-01', prescriber: 'Dr. Elena Martinez', status: 'Active', refillsLeft: 3, isControlled: false, schedule: null, pharmacy: 'CVS Pharmacy - Main St', lastFilled: '2026-03-15', sig: 'Take 1 tablet by mouth once daily in the morning' },
-    { id: 'm2', name: 'Trazodone', dose: '50mg', route: 'Oral', frequency: 'Once daily at bedtime', startDate: '2021-07-01', prescriber: 'Dr. Elena Martinez', status: 'Active', refillsLeft: 2, isControlled: false, schedule: null, pharmacy: 'CVS Pharmacy - Main St', lastFilled: '2026-03-15', sig: 'Take 1 tablet by mouth at bedtime as needed for insomnia' },
-    { id: 'm3', name: 'Metformin', dose: '500mg', route: 'Oral', frequency: 'Twice daily', startDate: '2018-04-01', prescriber: 'Dr. Robert Smith (PCP)', status: 'Active', refillsLeft: 5, isControlled: false, schedule: null, pharmacy: 'CVS Pharmacy - Main St', lastFilled: '2026-03-01', sig: 'Take 1 tablet by mouth twice daily with meals' },
+    { id: 'm1', name: 'Sertraline (Zoloft)', dose: '100mg', route: 'Oral', frequency: 'Once daily', startDate: '2020-02-01', prescriber: 'Dr. Chris L.', status: 'Active', refillsLeft: 3, isControlled: false, schedule: null, pharmacy: 'CVS Pharmacy - Main St', lastFilled: '2026-03-15', sig: 'Take 1 tablet by mouth once daily in the morning', rxHistory: [
+      { date: '2026-03-15', prescribedBy: 'Dr. Chris L.', pharmacy: 'CVS Pharmacy - Main St', qty: 90, refillNumber: 7, type: 'Refill', note: '90-day supply' },
+      { date: '2025-12-15', prescribedBy: 'Dr. Chris L.', pharmacy: 'CVS Pharmacy - Main St', qty: 90, refillNumber: 6, type: 'Refill', note: '' },
+      { date: '2025-09-15', prescribedBy: 'Dr. Chris L.', pharmacy: 'CVS Pharmacy - Main St', qty: 90, refillNumber: 5, type: 'Refill', note: '' },
+      { date: '2025-06-15', prescribedBy: 'Dr. Chris L.', pharmacy: 'CVS Pharmacy - Main St', qty: 90, refillNumber: 4, type: 'Refill', note: '' },
+      { date: '2020-02-01', prescribedBy: 'Dr. Chris L.', pharmacy: 'CVS Pharmacy - Main St', qty: 30, refillNumber: 0, type: 'New Prescription', note: 'Initial prescription for depression' },
+    ] },
+    { id: 'm2', name: 'Trazodone', dose: '50mg', route: 'Oral', frequency: 'Once daily at bedtime', startDate: '2021-07-01', prescriber: 'Dr. Chris L.', status: 'Active', refillsLeft: 2, isControlled: false, schedule: null, pharmacy: 'CVS Pharmacy - Main St', lastFilled: '2026-03-15', sig: 'Take 1 tablet by mouth at bedtime as needed for insomnia', rxHistory: [
+      { date: '2026-03-15', prescribedBy: 'Dr. Chris L.', pharmacy: 'CVS Pharmacy - Main St', qty: 30, refillNumber: 4, type: 'Refill', note: '' },
+      { date: '2025-12-01', prescribedBy: 'Dr. Chris L.', pharmacy: 'CVS Pharmacy - Main St', qty: 30, refillNumber: 3, type: 'Refill', note: '' },
+      { date: '2025-08-01', prescribedBy: 'Dr. Chris L.', pharmacy: 'CVS Pharmacy - Main St', qty: 30, refillNumber: 2, type: 'Refill', note: '' },
+      { date: '2021-07-01', prescribedBy: 'Dr. Chris L.', pharmacy: 'CVS Pharmacy - Main St', qty: 30, refillNumber: 0, type: 'New Prescription', note: 'Added for insomnia management' },
+    ] },
+    { id: 'm3', name: 'Metformin', dose: '500mg', route: 'Oral', frequency: 'Twice daily', startDate: '2018-04-01', prescriber: 'Dr. Robert Smith (PCP)', status: 'Active', refillsLeft: 5, isControlled: false, schedule: null, pharmacy: 'CVS Pharmacy - Main St', lastFilled: '2026-03-01', sig: 'Take 1 tablet by mouth twice daily with meals', rxHistory: [
+      { date: '2026-03-01', prescribedBy: 'Dr. Robert Smith (PCP)', pharmacy: 'CVS Pharmacy - Main St', qty: 90, refillNumber: 10, type: 'Refill', note: '90-day supply' },
+      { date: '2025-12-01', prescribedBy: 'Dr. Robert Smith (PCP)', pharmacy: 'CVS Pharmacy - Main St', qty: 90, refillNumber: 9, type: 'Refill', note: '' },
+      { date: '2025-09-01', prescribedBy: 'Dr. Robert Smith (PCP)', pharmacy: 'CVS Pharmacy - Main St', qty: 90, refillNumber: 8, type: 'Refill', note: '' },
+      { date: '2018-04-01', prescribedBy: 'Dr. Robert Smith (PCP)', pharmacy: 'CVS Pharmacy - Main St', qty: 30, refillNumber: 0, type: 'New Prescription', note: 'Initiated for Type 2 Diabetes management' },
+    ] },
   ],
   p2: [
-    { id: 'm4', name: 'Venlafaxine XR (Effexor XR)', dose: '150mg', route: 'Oral', frequency: 'Once daily', startDate: '2022-06-01', prescriber: 'Dr. Elena Martinez', status: 'Active', refillsLeft: 4, isControlled: false, schedule: null, pharmacy: 'Walgreens - 5th Ave', lastFilled: '2026-03-20', sig: 'Take 1 capsule by mouth once daily with food' },
-    { id: 'm5', name: 'Prazosin', dose: '2mg', route: 'Oral', frequency: 'Once daily at bedtime', startDate: '2022-08-15', prescriber: 'Dr. Elena Martinez', status: 'Active', refillsLeft: 3, isControlled: false, schedule: null, pharmacy: 'Walgreens - 5th Ave', lastFilled: '2026-03-20', sig: 'Take 1 tablet by mouth at bedtime for nightmares' },
-    { id: 'm6', name: 'Hydroxyzine', dose: '25mg', route: 'Oral', frequency: 'Every 6 hours as needed', startDate: '2023-01-10', prescriber: 'Dr. Elena Martinez', status: 'Active', refillsLeft: 2, isControlled: false, schedule: null, pharmacy: 'Walgreens - 5th Ave', lastFilled: '2026-02-28', sig: 'Take 1 tablet by mouth every 6 hours as needed for anxiety' },
+    { id: 'm4', name: 'Venlafaxine XR (Effexor XR)', dose: '150mg', route: 'Oral', frequency: 'Once daily', startDate: '2022-06-01', prescriber: 'Dr. Chris L.', status: 'Active', refillsLeft: 4, isControlled: false, schedule: null, pharmacy: 'Walgreens - 5th Ave', lastFilled: '2026-03-20', sig: 'Take 1 capsule by mouth once daily with food', rxHistory: [
+      { date: '2026-03-20', prescribedBy: 'Dr. Chris L.', pharmacy: 'Walgreens - 5th Ave', qty: 90, refillNumber: 5, type: 'Refill', note: '90-day supply' },
+      { date: '2025-12-20', prescribedBy: 'Dr. Chris L.', pharmacy: 'Walgreens - 5th Ave', qty: 90, refillNumber: 4, type: 'Refill', note: '' },
+      { date: '2025-09-20', prescribedBy: 'Dr. Chris L.', pharmacy: 'Walgreens - 5th Ave', qty: 90, refillNumber: 3, type: 'Refill', note: '' },
+      { date: '2022-09-01', prescribedBy: 'Dr. Chris L.', pharmacy: 'Walgreens - 5th Ave', qty: 30, refillNumber: 1, type: 'Refill', note: 'Dose increased from 75mg to 150mg' },
+      { date: '2022-06-01', prescribedBy: 'Dr. Chris L.', pharmacy: 'Walgreens - 5th Ave', qty: 30, refillNumber: 0, type: 'New Prescription', note: 'Started at 75mg for titration' },
+    ] },
+    { id: 'm5', name: 'Prazosin', dose: '2mg', route: 'Oral', frequency: 'Once daily at bedtime', startDate: '2022-08-15', prescriber: 'Dr. Chris L.', status: 'Active', refillsLeft: 3, isControlled: false, schedule: null, pharmacy: 'Walgreens - 5th Ave', lastFilled: '2026-03-20', sig: 'Take 1 tablet by mouth at bedtime for nightmares', rxHistory: [
+      { date: '2026-03-20', prescribedBy: 'Dr. Chris L.', pharmacy: 'Walgreens - 5th Ave', qty: 30, refillNumber: 4, type: 'Refill', note: '' },
+      { date: '2025-12-20', prescribedBy: 'Dr. Chris L.', pharmacy: 'Walgreens - 5th Ave', qty: 30, refillNumber: 3, type: 'Refill', note: '' },
+      { date: '2025-09-20', prescribedBy: 'Dr. Chris L.', pharmacy: 'Walgreens - 5th Ave', qty: 30, refillNumber: 2, type: 'Refill', note: '' },
+      { date: '2022-08-15', prescribedBy: 'Dr. Chris L.', pharmacy: 'Walgreens - 5th Ave', qty: 30, refillNumber: 0, type: 'New Prescription', note: 'For PTSD-related nightmares' },
+    ] },
+    { id: 'm6', name: 'Hydroxyzine', dose: '25mg', route: 'Oral', frequency: 'Every 6 hours as needed', startDate: '2023-01-10', prescriber: 'Dr. Chris L.', status: 'Active', refillsLeft: 2, isControlled: false, schedule: null, pharmacy: 'Walgreens - 5th Ave', lastFilled: '2026-02-28', sig: 'Take 1 tablet by mouth every 6 hours as needed for anxiety', rxHistory: [
+      { date: '2026-02-28', prescribedBy: 'Dr. Chris L.', pharmacy: 'Walgreens - 5th Ave', qty: 30, refillNumber: 2, type: 'Refill', note: '' },
+      { date: '2025-10-01', prescribedBy: 'Dr. Chris L.', pharmacy: 'Walgreens - 5th Ave', qty: 30, refillNumber: 1, type: 'Refill', note: '' },
+      { date: '2023-01-10', prescribedBy: 'Dr. Chris L.', pharmacy: 'Walgreens - 5th Ave', qty: 30, refillNumber: 0, type: 'New Prescription', note: 'Added for PRN anxiety relief' },
+    ] },
   ],
   p3: [
-    { id: 'm7', name: 'Naltrexone', dose: '50mg', route: 'Oral', frequency: 'Once daily', startDate: '2020-01-15', prescriber: 'NP Michael Johnson', status: 'Active', refillsLeft: 5, isControlled: false, schedule: null, pharmacy: 'Rite Aid - Center St', lastFilled: '2026-03-10', sig: 'Take 1 tablet by mouth once daily' },
-    { id: 'm8', name: 'Bupropion XL (Wellbutrin XL)', dose: '300mg', route: 'Oral', frequency: 'Once daily', startDate: '2020-01-15', prescriber: 'NP Michael Johnson', status: 'Active', refillsLeft: 4, isControlled: false, schedule: null, pharmacy: 'Rite Aid - Center St', lastFilled: '2026-03-10', sig: 'Take 1 tablet by mouth once daily in the morning' },
-    { id: 'm9', name: 'Lisinopril', dose: '20mg', route: 'Oral', frequency: 'Once daily', startDate: '2015-05-01', prescriber: 'Dr. William Davis (PCP)', status: 'Active', refillsLeft: 6, isControlled: false, schedule: null, pharmacy: 'Rite Aid - Center St', lastFilled: '2026-03-01', sig: 'Take 1 tablet by mouth once daily' },
+    { id: 'm7', name: 'Naltrexone', dose: '50mg', route: 'Oral', frequency: 'Once daily', startDate: '2020-01-15', prescriber: 'NP Michael Johnson', status: 'Active', refillsLeft: 5, isControlled: false, schedule: null, pharmacy: 'Rite Aid - Center St', lastFilled: '2026-03-10', sig: 'Take 1 tablet by mouth once daily', rxHistory: [
+      { date: '2026-03-10', prescribedBy: 'NP Michael Johnson', pharmacy: 'Rite Aid - Center St', qty: 90, refillNumber: 6, type: 'Refill', note: '90-day supply' },
+      { date: '2025-12-10', prescribedBy: 'NP Michael Johnson', pharmacy: 'Rite Aid - Center St', qty: 30, refillNumber: 5, type: 'Refill', note: '' },
+      { date: '2025-09-10', prescribedBy: 'NP Michael Johnson', pharmacy: 'Rite Aid - Center St', qty: 30, refillNumber: 4, type: 'Refill', note: '' },
+      { date: '2020-01-15', prescribedBy: 'NP Michael Johnson', pharmacy: 'Rite Aid - Center St', qty: 30, refillNumber: 0, type: 'New Prescription', note: 'Initiated for alcohol use disorder (AUD) treatment' },
+    ] },
+    { id: 'm8', name: 'Bupropion XL (Wellbutrin XL)', dose: '300mg', route: 'Oral', frequency: 'Once daily', startDate: '2020-01-15', prescriber: 'NP Michael Johnson', status: 'Active', refillsLeft: 4, isControlled: false, schedule: null, pharmacy: 'Rite Aid - Center St', lastFilled: '2026-03-10', sig: 'Take 1 tablet by mouth once daily in the morning', rxHistory: [
+      { date: '2026-03-10', prescribedBy: 'NP Michael Johnson', pharmacy: 'Rite Aid - Center St', qty: 30, refillNumber: 5, type: 'Refill', note: '' },
+      { date: '2025-12-10', prescribedBy: 'NP Michael Johnson', pharmacy: 'Rite Aid - Center St', qty: 30, refillNumber: 4, type: 'Refill', note: '' },
+      { date: '2020-04-15', prescribedBy: 'NP Michael Johnson', pharmacy: 'Rite Aid - Center St', qty: 30, refillNumber: 1, type: 'Refill', note: 'Dose increased from 150mg to 300mg' },
+      { date: '2020-01-15', prescribedBy: 'NP Michael Johnson', pharmacy: 'Rite Aid - Center St', qty: 30, refillNumber: 0, type: 'New Prescription', note: 'Started at 150mg for depression; also supports smoking cessation' },
+    ] },
+    { id: 'm9', name: 'Lisinopril', dose: '20mg', route: 'Oral', frequency: 'Once daily', startDate: '2015-05-01', prescriber: 'Dr. William Davis (PCP)', status: 'Active', refillsLeft: 6, isControlled: false, schedule: null, pharmacy: 'Rite Aid - Center St', lastFilled: '2026-03-01', sig: 'Take 1 tablet by mouth once daily', rxHistory: [
+      { date: '2026-03-01', prescribedBy: 'Dr. William Davis (PCP)', pharmacy: 'Rite Aid - Center St', qty: 90, refillNumber: 12, type: 'Refill', note: '90-day supply' },
+      { date: '2025-12-01', prescribedBy: 'Dr. William Davis (PCP)', pharmacy: 'Rite Aid - Center St', qty: 90, refillNumber: 11, type: 'Refill', note: '' },
+      { date: '2025-09-01', prescribedBy: 'Dr. William Davis (PCP)', pharmacy: 'Rite Aid - Center St', qty: 90, refillNumber: 10, type: 'Refill', note: '' },
+      { date: '2015-05-01', prescribedBy: 'Dr. William Davis (PCP)', pharmacy: 'Rite Aid - Center St', qty: 30, refillNumber: 0, type: 'New Prescription', note: 'Initiated for hypertension management' },
+    ] },
   ],
   p4: [
-    { id: 'm10', name: 'Adderall XR (Amphetamine/Dextroamphetamine)', dose: '20mg', route: 'Oral', frequency: 'Once daily in the morning', startDate: '2023-03-01', prescriber: 'NP Michael Johnson', status: 'Active', refillsLeft: 0, isControlled: true, schedule: 'Schedule II', pharmacy: 'CVS Pharmacy - College Ave', lastFilled: '2026-03-25', sig: 'Take 1 capsule by mouth once daily in the morning' },
-    { id: 'm11', name: 'Buspirone', dose: '15mg', route: 'Oral', frequency: 'Twice daily', startDate: '2023-02-01', prescriber: 'NP Michael Johnson', status: 'Active', refillsLeft: 3, isControlled: false, schedule: null, pharmacy: 'CVS Pharmacy - College Ave', lastFilled: '2026-03-15', sig: 'Take 1 tablet by mouth twice daily' },
+    { id: 'm10', name: 'Adderall XR (Amphetamine/Dextroamphetamine)', dose: '20mg', route: 'Oral', frequency: 'Once daily in the morning', startDate: '2023-03-01', prescriber: 'NP Michael Johnson', status: 'Active', refillsLeft: 0, isControlled: true, schedule: 'Schedule II', pharmacy: 'CVS Pharmacy - College Ave', lastFilled: '2026-03-25', sig: 'Take 1 capsule by mouth once daily in the morning', rxHistory: [
+      { date: '2026-03-25', prescribedBy: 'NP Michael Johnson', pharmacy: 'CVS Pharmacy - College Ave', qty: 30, refillNumber: 36, type: 'Written Rx', note: 'Monthly CII — no refills' },
+      { date: '2026-02-25', prescribedBy: 'NP Michael Johnson', pharmacy: 'CVS Pharmacy - College Ave', qty: 30, refillNumber: 35, type: 'Written Rx', note: 'Monthly CII — no refills' },
+      { date: '2026-01-25', prescribedBy: 'NP Michael Johnson', pharmacy: 'CVS Pharmacy - College Ave', qty: 30, refillNumber: 34, type: 'Written Rx', note: 'Monthly CII — no refills' },
+      { date: '2023-03-01', prescribedBy: 'NP Michael Johnson', pharmacy: 'CVS Pharmacy - College Ave', qty: 30, refillNumber: 0, type: 'New Prescription', note: 'Initiated for ADHD; titrated from 10mg' },
+    ] },
+    { id: 'm11', name: 'Buspirone', dose: '15mg', route: 'Oral', frequency: 'Twice daily', startDate: '2023-02-01', prescriber: 'NP Michael Johnson', status: 'Active', refillsLeft: 3, isControlled: false, schedule: null, pharmacy: 'CVS Pharmacy - College Ave', lastFilled: '2026-03-15', sig: 'Take 1 tablet by mouth twice daily', rxHistory: [
+      { date: '2026-03-15', prescribedBy: 'NP Michael Johnson', pharmacy: 'CVS Pharmacy - College Ave', qty: 60, refillNumber: 3, type: 'Refill', note: '' },
+      { date: '2025-12-15', prescribedBy: 'NP Michael Johnson', pharmacy: 'CVS Pharmacy - College Ave', qty: 60, refillNumber: 2, type: 'Refill', note: '' },
+      { date: '2025-06-01', prescribedBy: 'NP Michael Johnson', pharmacy: 'CVS Pharmacy - College Ave', qty: 60, refillNumber: 1, type: 'Refill', note: 'Dose increased from 10mg to 15mg' },
+      { date: '2023-02-01', prescribedBy: 'NP Michael Johnson', pharmacy: 'CVS Pharmacy - College Ave', qty: 60, refillNumber: 0, type: 'New Prescription', note: 'For generalized anxiety disorder' },
+    ] },
   ],
   p5: [
-    { id: 'm12', name: 'Mirtazapine (Remeron)', dose: '30mg', route: 'Oral', frequency: 'Once daily at bedtime', startDate: '2026-01-01', prescriber: 'Dr. Elena Martinez', status: 'Active', refillsLeft: 5, isControlled: false, schedule: null, pharmacy: 'Walmart Pharmacy', lastFilled: '2026-03-20', sig: 'Take 1 tablet by mouth at bedtime' },
-    { id: 'm13', name: 'Lorazepam (Ativan)', dose: '0.5mg', route: 'Oral', frequency: 'Twice daily as needed', startDate: '2026-01-15', prescriber: 'Dr. Elena Martinez', status: 'Active', refillsLeft: 1, isControlled: true, schedule: 'Schedule IV', pharmacy: 'Walmart Pharmacy', lastFilled: '2026-03-01', sig: 'Take 1 tablet by mouth twice daily as needed for acute anxiety' },
-    { id: 'm14', name: 'Donepezil (Aricept)', dose: '10mg', route: 'Oral', frequency: 'Once daily at bedtime', startDate: '2025-07-01', prescriber: 'Dr. Thomas Brown (PCP)', status: 'Active', refillsLeft: 4, isControlled: false, schedule: null, pharmacy: 'Walmart Pharmacy', lastFilled: '2026-03-15', sig: 'Take 1 tablet by mouth at bedtime' },
+    { id: 'm12', name: 'Mirtazapine (Remeron)', dose: '30mg', route: 'Oral', frequency: 'Once daily at bedtime', startDate: '2026-01-01', prescriber: 'Dr. Chris L.', status: 'Active', refillsLeft: 5, isControlled: false, schedule: null, pharmacy: 'Walmart Pharmacy', lastFilled: '2026-03-20', sig: 'Take 1 tablet by mouth at bedtime', rxHistory: [
+      { date: '2026-03-20', prescribedBy: 'Dr. Chris L.', pharmacy: 'Walmart Pharmacy', qty: 30, refillNumber: 2, type: 'Refill', note: '' },
+      { date: '2026-02-01', prescribedBy: 'Dr. Chris L.', pharmacy: 'Walmart Pharmacy', qty: 30, refillNumber: 1, type: 'Refill', note: 'Dose increased from 15mg to 30mg' },
+      { date: '2026-01-01', prescribedBy: 'Dr. Chris L.', pharmacy: 'Walmart Pharmacy', qty: 30, refillNumber: 0, type: 'New Prescription', note: 'Started at 15mg for depression and insomnia' },
+    ] },
+    { id: 'm13', name: 'Lorazepam (Ativan)', dose: '0.5mg', route: 'Oral', frequency: 'Twice daily as needed', startDate: '2026-01-15', prescriber: 'Dr. Chris L.', status: 'Active', refillsLeft: 1, isControlled: true, schedule: 'Schedule IV', pharmacy: 'Walmart Pharmacy', lastFilled: '2026-03-01', sig: 'Take 1 tablet by mouth twice daily as needed for acute anxiety', rxHistory: [
+      { date: '2026-03-01', prescribedBy: 'Dr. Chris L.', pharmacy: 'Walmart Pharmacy', qty: 30, refillNumber: 2, type: 'Written Rx', note: 'CIV — limited supply per PDMP guidelines' },
+      { date: '2026-02-01', prescribedBy: 'Dr. Chris L.', pharmacy: 'Walmart Pharmacy', qty: 30, refillNumber: 1, type: 'Written Rx', note: '' },
+      { date: '2026-01-15', prescribedBy: 'Dr. Chris L.', pharmacy: 'Walmart Pharmacy', qty: 30, refillNumber: 0, type: 'New Prescription', note: 'Short-term for acute anxiety; review in 90 days' },
+    ] },
+    { id: 'm14', name: 'Donepezil (Aricept)', dose: '10mg', route: 'Oral', frequency: 'Once daily at bedtime', startDate: '2025-07-01', prescriber: 'Dr. Thomas Brown (PCP)', status: 'Active', refillsLeft: 4, isControlled: false, schedule: null, pharmacy: 'Walmart Pharmacy', lastFilled: '2026-03-15', sig: 'Take 1 tablet by mouth at bedtime', rxHistory: [
+      { date: '2026-03-15', prescribedBy: 'Dr. Thomas Brown (PCP)', pharmacy: 'Walmart Pharmacy', qty: 30, refillNumber: 3, type: 'Refill', note: '' },
+      { date: '2025-12-15', prescribedBy: 'Dr. Thomas Brown (PCP)', pharmacy: 'Walmart Pharmacy', qty: 30, refillNumber: 2, type: 'Refill', note: '' },
+      { date: '2025-10-01', prescribedBy: 'Dr. Thomas Brown (PCP)', pharmacy: 'Walmart Pharmacy', qty: 30, refillNumber: 1, type: 'Refill', note: 'Dose increased from 5mg to 10mg' },
+      { date: '2025-07-01', prescribedBy: 'Dr. Thomas Brown (PCP)', pharmacy: 'Walmart Pharmacy', qty: 30, refillNumber: 0, type: 'New Prescription', note: 'Initiated for mild cognitive impairment / early Alzheimer\'s — started at 5mg' },
+    ] },
   ],
   p6: [
-    { id: 'm15', name: 'Lamotrigine (Lamictal)', dose: '200mg', route: 'Oral', frequency: 'Once daily', startDate: '2021-06-01', prescriber: 'Dr. Elena Martinez', status: 'Active', refillsLeft: 5, isControlled: false, schedule: null, pharmacy: 'Walgreens - Oak Park', lastFilled: '2026-03-25', sig: 'Take 1 tablet by mouth once daily' },
-    { id: 'm16', name: 'Quetiapine (Seroquel)', dose: '100mg', route: 'Oral', frequency: 'Once daily at bedtime', startDate: '2021-09-15', prescriber: 'Dr. Elena Martinez', status: 'Active', refillsLeft: 3, isControlled: false, schedule: null, pharmacy: 'Walgreens - Oak Park', lastFilled: '2026-03-25', sig: 'Take 1 tablet by mouth at bedtime' },
+    { id: 'm15', name: 'Lamotrigine (Lamictal)', dose: '200mg', route: 'Oral', frequency: 'Once daily', startDate: '2021-06-01', prescriber: 'Dr. Chris L.', status: 'Active', refillsLeft: 5, isControlled: false, schedule: null, pharmacy: 'Walgreens - Oak Park', lastFilled: '2026-03-25', sig: 'Take 1 tablet by mouth once daily', rxHistory: [
+      { date: '2026-03-25', prescribedBy: 'Dr. Chris L.', pharmacy: 'Walgreens - Oak Park', qty: 90, refillNumber: 5, type: 'Refill', note: '90-day supply' },
+      { date: '2025-12-25', prescribedBy: 'Dr. Chris L.', pharmacy: 'Walgreens - Oak Park', qty: 90, refillNumber: 4, type: 'Refill', note: '' },
+      { date: '2025-09-25', prescribedBy: 'Dr. Chris L.', pharmacy: 'Walgreens - Oak Park', qty: 90, refillNumber: 3, type: 'Refill', note: '' },
+      { date: '2021-09-01', prescribedBy: 'Dr. Chris L.', pharmacy: 'Walgreens - Oak Park', qty: 30, refillNumber: 1, type: 'Refill', note: 'Dose titrated to 200mg per protocol' },
+      { date: '2021-06-01', prescribedBy: 'Dr. Chris L.', pharmacy: 'Walgreens - Oak Park', qty: 30, refillNumber: 0, type: 'New Prescription', note: 'Titration start at 25mg for bipolar I disorder' },
+    ] },
+    { id: 'm16', name: 'Quetiapine (Seroquel)', dose: '100mg', route: 'Oral', frequency: 'Once daily at bedtime', startDate: '2021-09-15', prescriber: 'Dr. Chris L.', status: 'Active', refillsLeft: 3, isControlled: false, schedule: null, pharmacy: 'Walgreens - Oak Park', lastFilled: '2026-03-25', sig: 'Take 1 tablet by mouth at bedtime', rxHistory: [
+      { date: '2026-03-25', prescribedBy: 'Dr. Chris L.', pharmacy: 'Walgreens - Oak Park', qty: 30, refillNumber: 4, type: 'Refill', note: '' },
+      { date: '2025-12-25', prescribedBy: 'Dr. Chris L.', pharmacy: 'Walgreens - Oak Park', qty: 30, refillNumber: 3, type: 'Refill', note: '' },
+      { date: '2025-09-25', prescribedBy: 'Dr. Chris L.', pharmacy: 'Walgreens - Oak Park', qty: 30, refillNumber: 2, type: 'Refill', note: '' },
+      { date: '2021-09-15', prescribedBy: 'Dr. Chris L.', pharmacy: 'Walgreens - Oak Park', qty: 30, refillNumber: 0, type: 'New Prescription', note: 'Added as mood stabilizer adjunct for bipolar I' },
+    ] },
   ],
 };
 
@@ -518,7 +609,7 @@ export const immunizations = {
 export const labResults = {
   p1: [
     {
-      id: 'lab1', orderDate: '2026-03-28', resultDate: '2026-03-30', orderedBy: 'Dr. Martinez', status: 'Final',
+      id: 'lab1', orderDate: '2026-03-28', resultDate: '2026-03-30', orderedBy: 'Dr. Chris L.', status: 'Final',
       tests: [
         { name: 'CBC w/ Differential', results: [
           { component: 'WBC', value: '7.2', unit: 'K/uL', range: '4.5-11.0', flag: '' },
@@ -550,7 +641,7 @@ export const labResults = {
   ],
   p2: [
     {
-      id: 'lab2', orderDate: '2026-03-25', resultDate: '2026-03-27', orderedBy: 'Dr. Martinez', status: 'Final',
+      id: 'lab2', orderDate: '2026-03-25', resultDate: '2026-03-27', orderedBy: 'Dr. Chris L.', status: 'Final',
       tests: [
         { name: 'TSH', results: [
           { component: 'TSH', value: '2.4', unit: 'mIU/L', range: '0.4-4.0', flag: '' },
@@ -564,7 +655,7 @@ export const labResults = {
   ],
   p3: [
     {
-      id: 'lab3', orderDate: '2026-03-20', resultDate: '2026-03-22', orderedBy: 'NP Johnson', status: 'Final',
+      id: 'lab3', orderDate: '2026-03-20', resultDate: '2026-03-22', orderedBy: 'Joseph', status: 'Final',
       tests: [
         { name: 'Hepatic Function Panel', results: [
           { component: 'ALT', value: '62', unit: 'U/L', range: '7-56', flag: 'H' },
@@ -592,67 +683,67 @@ export const labResults = {
 // ========== ASSESSMENT TOOLS / SCORES ==========
 export const assessmentScores = {
   p1: [
-    { id: 'as1', tool: 'PHQ-9', score: 14, interpretation: 'Moderately Severe Depression', date: '2026-04-02', administeredBy: 'Dr. Martinez', answers: [2,2,2,1,1,2,1,2,1] },
-    { id: 'as2', tool: 'PHQ-9', score: 18, interpretation: 'Moderately Severe Depression', date: '2026-03-05', administeredBy: 'Dr. Martinez', answers: [2,3,2,2,1,2,2,2,2] },
-    { id: 'as3', tool: 'GAD-7', score: 12, interpretation: 'Moderate Anxiety', date: '2026-04-02', administeredBy: 'Dr. Martinez', answers: [2,2,1,2,2,1,2] },
-    { id: 'as4', tool: 'GAD-7', score: 15, interpretation: 'Severe Anxiety', date: '2026-03-05', administeredBy: 'Dr. Martinez', answers: [3,2,2,2,2,2,2] },
-    { id: 'as5', tool: 'Columbia Suicide Severity Rating', score: 2, interpretation: 'Low Risk - Non-specific active suicidal thoughts', date: '2026-04-02', administeredBy: 'Dr. Martinez' },
+    { id: 'as1', tool: 'PHQ-9', score: 14, interpretation: 'Moderately Severe Depression', date: '2026-04-02', administeredBy: 'Dr. Chris L.', answers: [2,2,2,1,1,2,1,2,1] },
+    { id: 'as2', tool: 'PHQ-9', score: 18, interpretation: 'Moderately Severe Depression', date: '2026-03-05', administeredBy: 'Dr. Chris L.', answers: [2,3,2,2,1,2,2,2,2] },
+    { id: 'as3', tool: 'GAD-7', score: 12, interpretation: 'Moderate Anxiety', date: '2026-04-02', administeredBy: 'Dr. Chris L.', answers: [2,2,1,2,2,1,2] },
+    { id: 'as4', tool: 'GAD-7', score: 15, interpretation: 'Severe Anxiety', date: '2026-03-05', administeredBy: 'Dr. Chris L.', answers: [3,2,2,2,2,2,2] },
+    { id: 'as5', tool: 'Columbia Suicide Severity Rating', score: 2, interpretation: 'Low Risk - Non-specific active suicidal thoughts', date: '2026-04-02', administeredBy: 'Dr. Chris L.' },
   ],
   p2: [
-    { id: 'as6', tool: 'PHQ-9', score: 22, interpretation: 'Severe Depression', date: '2026-04-05', administeredBy: 'Dr. Martinez', answers: [3,3,3,2,2,3,2,2,2] },
-    { id: 'as7', tool: 'PCL-5', score: 52, interpretation: 'Probable PTSD (cutoff: 31-33)', date: '2026-04-05', administeredBy: 'Dr. Martinez' },
-    { id: 'as8', tool: 'Columbia Suicide Severity Rating', score: 3, interpretation: 'Moderate Risk - Active suicidal ideation with some intent', date: '2026-04-05', administeredBy: 'Dr. Martinez' },
-    { id: 'as9', tool: 'GAD-7', score: 18, interpretation: 'Severe Anxiety', date: '2026-04-05', administeredBy: 'Dr. Martinez', answers: [3,3,2,3,2,3,2] },
+    { id: 'as6', tool: 'PHQ-9', score: 22, interpretation: 'Severe Depression', date: '2026-04-05', administeredBy: 'Dr. Chris L.', answers: [3,3,3,2,2,3,2,2,2] },
+    { id: 'as7', tool: 'PCL-5', score: 52, interpretation: 'Probable PTSD (cutoff: 31-33)', date: '2026-04-05', administeredBy: 'Dr. Chris L.' },
+    { id: 'as8', tool: 'Columbia Suicide Severity Rating', score: 3, interpretation: 'Moderate Risk - Active suicidal ideation with some intent', date: '2026-04-05', administeredBy: 'Dr. Chris L.' },
+    { id: 'as9', tool: 'GAD-7', score: 18, interpretation: 'Severe Anxiety', date: '2026-04-05', administeredBy: 'Dr. Chris L.', answers: [3,3,2,3,2,3,2] },
   ],
   p3: [
-    { id: 'as10', tool: 'AUDIT-C', score: 7, interpretation: 'Positive for Alcohol Misuse', date: '2026-03-28', administeredBy: 'NP Johnson' },
-    { id: 'as11', tool: 'PHQ-9', score: 8, interpretation: 'Mild Depression', date: '2026-03-28', administeredBy: 'NP Johnson', answers: [1,1,1,1,1,1,1,0,1] },
-    { id: 'as12', tool: 'DAST-10', score: 3, interpretation: 'Low Level Drug Use', date: '2026-03-28', administeredBy: 'NP Johnson' },
+    { id: 'as10', tool: 'AUDIT-C', score: 7, interpretation: 'Positive for Alcohol Misuse', date: '2026-03-28', administeredBy: 'Joseph' },
+    { id: 'as11', tool: 'PHQ-9', score: 8, interpretation: 'Mild Depression', date: '2026-03-28', administeredBy: 'Joseph', answers: [1,1,1,1,1,1,1,0,1] },
+    { id: 'as12', tool: 'DAST-10', score: 3, interpretation: 'Low Level Drug Use', date: '2026-03-28', administeredBy: 'Joseph' },
   ],
   p4: [
-    { id: 'as13', tool: 'ASRS v1.1', score: 15, interpretation: 'Highly Consistent with ADHD', date: '2026-04-07', administeredBy: 'NP Johnson' },
-    { id: 'as14', tool: 'GAD-7', score: 10, interpretation: 'Moderate Anxiety', date: '2026-04-07', administeredBy: 'NP Johnson', answers: [2,1,1,2,1,2,1] },
-    { id: 'as15', tool: 'PHQ-9', score: 6, interpretation: 'Mild Depression', date: '2026-04-07', administeredBy: 'NP Johnson', answers: [1,1,0,1,1,1,0,0,1] },
+    { id: 'as13', tool: 'ASRS v1.1', score: 15, interpretation: 'Highly Consistent with ADHD', date: '2026-04-07', administeredBy: 'Joseph' },
+    { id: 'as14', tool: 'GAD-7', score: 10, interpretation: 'Moderate Anxiety', date: '2026-04-07', administeredBy: 'Joseph', answers: [2,1,1,2,1,2,1] },
+    { id: 'as15', tool: 'PHQ-9', score: 6, interpretation: 'Mild Depression', date: '2026-04-07', administeredBy: 'Joseph', answers: [1,1,0,1,1,1,0,0,1] },
   ],
   p5: [
-    { id: 'as16', tool: 'PHQ-9', score: 24, interpretation: 'Severe Depression', date: '2026-03-20', administeredBy: 'Dr. Martinez', answers: [3,3,3,3,2,3,3,2,2] },
-    { id: 'as17', tool: 'MoCA', score: 22, interpretation: 'Mild Cognitive Impairment (Normal: ≥26)', date: '2026-03-20', administeredBy: 'Dr. Martinez' },
-    { id: 'as18', tool: 'Columbia Suicide Severity Rating', score: 4, interpretation: 'High Risk - Active suicidal ideation with plan', date: '2026-03-20', administeredBy: 'Dr. Martinez' },
-    { id: 'as19', tool: 'GAD-7', score: 19, interpretation: 'Severe Anxiety', date: '2026-03-20', administeredBy: 'Dr. Martinez', answers: [3,3,3,3,2,3,2] },
+    { id: 'as16', tool: 'PHQ-9', score: 24, interpretation: 'Severe Depression', date: '2026-03-20', administeredBy: 'Dr. Chris L.', answers: [3,3,3,3,2,3,3,2,2] },
+    { id: 'as17', tool: 'MoCA', score: 22, interpretation: 'Mild Cognitive Impairment (Normal: ≥26)', date: '2026-03-20', administeredBy: 'Dr. Chris L.' },
+    { id: 'as18', tool: 'Columbia Suicide Severity Rating', score: 4, interpretation: 'High Risk - Active suicidal ideation with plan', date: '2026-03-20', administeredBy: 'Dr. Chris L.' },
+    { id: 'as19', tool: 'GAD-7', score: 19, interpretation: 'Severe Anxiety', date: '2026-03-20', administeredBy: 'Dr. Chris L.', answers: [3,3,3,3,2,3,2] },
   ],
   p6: [
-    { id: 'as20', tool: 'MDQ', score: 9, interpretation: 'Positive for Bipolar Spectrum', date: '2026-04-01', administeredBy: 'Dr. Martinez' },
-    { id: 'as21', tool: 'PHQ-9', score: 11, interpretation: 'Moderate Depression', date: '2026-04-01', administeredBy: 'Dr. Martinez', answers: [2,1,2,1,1,1,1,1,1] },
-    { id: 'as22', tool: 'GAD-7', score: 13, interpretation: 'Moderate Anxiety', date: '2026-04-01', administeredBy: 'Dr. Martinez', answers: [2,2,2,2,1,2,2] },
+    { id: 'as20', tool: 'MDQ', score: 9, interpretation: 'Positive for Bipolar Spectrum', date: '2026-04-01', administeredBy: 'Dr. Chris L.' },
+    { id: 'as21', tool: 'PHQ-9', score: 11, interpretation: 'Moderate Depression', date: '2026-04-01', administeredBy: 'Dr. Chris L.', answers: [2,1,2,1,1,1,1,1,1] },
+    { id: 'as22', tool: 'GAD-7', score: 13, interpretation: 'Moderate Anxiety', date: '2026-04-01', administeredBy: 'Dr. Chris L.', answers: [2,2,2,2,1,2,2] },
   ],
 };
 
 // ========== ORDERS ==========
 export const orders = {
   p1: [
-    { id: 'o1', type: 'Lab', description: 'CBC w/ Differential, CMP, HbA1c, Lipid Panel', status: 'Completed', orderedDate: '2026-03-28', orderedBy: 'Dr. Martinez', priority: 'Routine', notes: 'Routine monitoring - diabetes, med management' },
-    { id: 'o2', type: 'Lab', description: 'TSH, Vitamin D 25-Hydroxy', status: 'Pending', orderedDate: '2026-04-02', orderedBy: 'Dr. Martinez', priority: 'Routine', notes: 'Annual screening' },
-    { id: 'o3', type: 'Referral', description: 'Referral to CBT Therapist', status: 'Completed', orderedDate: '2026-01-15', orderedBy: 'Dr. Martinez', priority: 'Routine', notes: 'Weekly CBT for depression and anxiety' },
+    { id: 'o1', type: 'Lab', description: 'CBC w/ Differential, CMP, HbA1c, Lipid Panel', status: 'Completed', orderedDate: '2026-03-28', orderedBy: 'Dr. Chris L.', priority: 'Routine', notes: 'Routine monitoring - diabetes, med management' },
+    { id: 'o2', type: 'Lab', description: 'TSH, Vitamin D 25-Hydroxy', status: 'Pending', orderedDate: '2026-04-02', orderedBy: 'Dr. Chris L.', priority: 'Routine', notes: 'Annual screening' },
+    { id: 'o3', type: 'Referral', description: 'Referral to CBT Therapist', status: 'Completed', orderedDate: '2026-01-15', orderedBy: 'Dr. Chris L.', priority: 'Routine', notes: 'Weekly CBT for depression and anxiety' },
   ],
   p2: [
-    { id: 'o4', type: 'Lab', description: 'TSH, CBC', status: 'Completed', orderedDate: '2026-03-25', orderedBy: 'Dr. Martinez', priority: 'Routine', notes: 'Thyroid screening, baseline labs' },
-    { id: 'o5', type: 'Referral', description: 'Referral to EMDR Therapist', status: 'Active', orderedDate: '2026-04-05', orderedBy: 'Dr. Martinez', priority: 'Urgent', notes: 'EMDR therapy for PTSD' },
-    { id: 'o6', type: 'Imaging', description: 'Brain MRI w/o contrast', status: 'Pending', orderedDate: '2026-04-05', orderedBy: 'Dr. Martinez', priority: 'Routine', notes: 'R/O organic pathology given severity of symptoms' },
+    { id: 'o4', type: 'Lab', description: 'TSH, CBC', status: 'Completed', orderedDate: '2026-03-25', orderedBy: 'Dr. Chris L.', priority: 'Routine', notes: 'Thyroid screening, baseline labs' },
+    { id: 'o5', type: 'Referral', description: 'Referral to EMDR Therapist', status: 'Active', orderedDate: '2026-04-05', orderedBy: 'Dr. Chris L.', priority: 'Urgent', notes: 'EMDR therapy for PTSD' },
+    { id: 'o6', type: 'Imaging', description: 'Brain MRI w/o contrast', status: 'Pending', orderedDate: '2026-04-05', orderedBy: 'Dr. Chris L.', priority: 'Routine', notes: 'R/O organic pathology given severity of symptoms' },
   ],
   p3: [
-    { id: 'o7', type: 'Lab', description: 'Hepatic Function Panel, UDS', status: 'Completed', orderedDate: '2026-03-20', orderedBy: 'NP Johnson', priority: 'Routine', notes: 'Monitoring LFTs and compliance' },
-    { id: 'o8', type: 'Referral', description: 'Referral to AA/NA Support Group', status: 'Active', orderedDate: '2026-03-28', orderedBy: 'NP Johnson', priority: 'Routine', notes: 'Community support for alcohol use disorder' },
+    { id: 'o7', type: 'Lab', description: 'Hepatic Function Panel, UDS', status: 'Completed', orderedDate: '2026-03-20', orderedBy: 'Joseph', priority: 'Routine', notes: 'Monitoring LFTs and compliance' },
+    { id: 'o8', type: 'Referral', description: 'Referral to AA/NA Support Group', status: 'Active', orderedDate: '2026-03-28', orderedBy: 'Joseph', priority: 'Routine', notes: 'Community support for alcohol use disorder' },
   ],
   p4: [
-    { id: 'o9', type: 'Lab', description: 'CBC, CMP', status: 'Pending', orderedDate: '2026-04-07', orderedBy: 'NP Johnson', priority: 'Routine', notes: 'Baseline labs before stimulant monitoring' },
-    { id: 'o10', type: 'Prescription', description: 'Adderall XR 20mg - Refill', status: 'Pending EPCS Auth', orderedDate: '2026-04-07', orderedBy: 'NP Johnson', priority: 'Routine', notes: 'Schedule II - requires EPCS authentication' },
+    { id: 'o9', type: 'Lab', description: 'CBC, CMP', status: 'Pending', orderedDate: '2026-04-07', orderedBy: 'Joseph', priority: 'Routine', notes: 'Baseline labs before stimulant monitoring' },
+    { id: 'o10', type: 'Prescription', description: 'Adderall XR 20mg - Refill', status: 'Pending EPCS Auth', orderedDate: '2026-04-07', orderedBy: 'Joseph', priority: 'Routine', notes: 'Schedule II - requires EPCS authentication' },
   ],
   p5: [
-    { id: 'o11', type: 'Referral', description: 'Referral to Neuropsychology', status: 'Active', orderedDate: '2026-03-20', orderedBy: 'Dr. Martinez', priority: 'Urgent', notes: 'Cognitive assessment for early onset Alzheimers' },
-    { id: 'o12', type: 'Lab', description: 'BMP, TSH, B12, Folate', status: 'Pending', orderedDate: '2026-03-20', orderedBy: 'Dr. Martinez', priority: 'Routine', notes: 'R/O reversible causes of cognitive decline' },
+    { id: 'o11', type: 'Referral', description: 'Referral to Neuropsychology', status: 'Active', orderedDate: '2026-03-20', orderedBy: 'Dr. Chris L.', priority: 'Urgent', notes: 'Cognitive assessment for early onset Alzheimers' },
+    { id: 'o12', type: 'Lab', description: 'BMP, TSH, B12, Folate', status: 'Pending', orderedDate: '2026-03-20', orderedBy: 'Dr. Chris L.', priority: 'Routine', notes: 'R/O reversible causes of cognitive decline' },
   ],
   p6: [
-    { id: 'o13', type: 'Lab', description: 'Lamotrigine Level, CBC, CMP', status: 'Pending', orderedDate: '2026-04-01', orderedBy: 'Dr. Martinez', priority: 'Routine', notes: 'Therapeutic drug monitoring' },
+    { id: 'o13', type: 'Lab', description: 'Lamotrigine Level, CBC, CMP', status: 'Pending', orderedDate: '2026-04-01', orderedBy: 'Dr. Chris L.', priority: 'Routine', notes: 'Therapeutic drug monitoring' },
   ],
 };
 
@@ -660,14 +751,14 @@ export const orders = {
 export const inboxMessages = [
   { id: 'msg1', type: 'Rx Refill Request', from: 'CVS Pharmacy - Main St', to: 'u1', patient: 'p1', patientName: 'James Anderson', subject: 'Refill Request: Sertraline 100mg', body: 'Patient requesting refill of Sertraline 100mg #90. Last filled 03/15/2026. 0 refills remaining.', date: '2026-04-08', time: '09:15', read: false, priority: 'Normal', status: 'Pending' },
   { id: 'msg2', type: 'Lab Result', from: 'Quest Diagnostics', to: 'u1', patient: 'p1', patientName: 'James Anderson', subject: 'Lab Results Ready: CBC, CMP, HbA1c, Lipid Panel', body: 'Lab results are now available for review. Click to view full results.', date: '2026-04-08', time: '08:30', read: false, priority: 'Normal', status: 'Pending' },
-  { id: 'msg3', type: 'Patient Message', from: 'Maria Garcia', to: 'u1', patient: 'p2', patientName: 'Maria Garcia', subject: 'Medication Side Effects', body: 'Dr. Martinez, I have been experiencing increased dizziness and headaches since starting Prazosin. Should I continue taking it? I am also having trouble sleeping. Please advise.', date: '2026-04-07', time: '16:45', read: false, priority: 'High', status: 'Pending' },
+  { id: 'msg3', type: 'Patient Message', from: 'Maria Garcia', to: 'u1', patient: 'p2', patientName: 'Maria Garcia', subject: 'Medication Side Effects', body: 'Dr. Chris L., I have been experiencing increased dizziness and headaches since starting Prazosin. Should I continue taking it? I am also having trouble sleeping. Please advise.', date: '2026-04-07', time: '16:45', read: false, priority: 'High', status: 'Pending' },
   { id: 'msg4', type: 'Prior Authorization', from: 'Aetna Insurance', to: 'u1', patient: 'p2', patientName: 'Maria Garcia', subject: 'PA Required: Brain MRI w/o contrast', body: 'Prior authorization is required for the ordered Brain MRI. Please submit clinical documentation supporting medical necessity.', date: '2026-04-07', time: '14:20', read: true, priority: 'High', status: 'In Progress' },
   { id: 'msg5', type: 'Rx Refill Request', from: 'CVS Pharmacy - College Ave', to: 'u2', patient: 'p4', patientName: 'Emily Chen', subject: 'Refill Request: Adderall XR 20mg (Schedule II)', body: 'Patient requesting refill of Adderall XR 20mg #30. CONTROLLED SUBSTANCE - Schedule II. Requires new prescription. Last filled 03/25/2026.', date: '2026-04-08', time: '10:00', read: false, priority: 'High', status: 'Pending' },
-  { id: 'msg6', type: 'Staff Message', from: 'Sarah Williams (Front Desk)', to: 'u1', patient: null, patientName: null, subject: 'Schedule Change Request', body: 'Dr. Martinez, patient Robert Wilson called requesting to move his 04/18 appointment to 04/16. He mentioned his symptoms are worsening. Should I accommodate?', date: '2026-04-08', time: '08:00', read: false, priority: 'Normal', status: 'Pending' },
-  { id: 'msg7', type: 'Patient Message', from: 'David Thompson', to: 'u2', patient: 'p3', patientName: 'David Thompson', subject: 'Missed Dose Question', body: 'NP Johnson, I accidentally missed my Naltrexone yesterday. Should I take a double dose today or just continue as normal?', date: '2026-04-08', time: '07:30', read: false, priority: 'Normal', status: 'Pending' },
+  { id: 'msg6', type: 'Staff Message', from: 'Sarah Williams (Front Desk)', to: 'u1', patient: null, patientName: null, subject: 'Schedule Change Request', body: 'Dr. Chris L., patient Robert Wilson called requesting to move his 04/18 appointment to 04/16. He mentioned his symptoms are worsening. Should I accommodate?', date: '2026-04-08', time: '08:00', read: false, priority: 'Normal', status: 'Pending' },
+  { id: 'msg7', type: 'Patient Message', from: 'David Thompson', to: 'u2', patient: 'p3', patientName: 'David Thompson', subject: 'Missed Dose Question', body: 'Joseph, I accidentally missed my Naltrexone yesterday. Should I take a double dose today or just continue as normal?', date: '2026-04-08', time: '07:30', read: false, priority: 'Normal', status: 'Pending' },
   { id: 'msg8', type: 'Referral Update', from: 'Dr. Sarah Kim, PhD (EMDR)', to: 'u1', patient: 'p2', patientName: 'Maria Garcia', subject: 'Referral Accepted - EMDR Therapy', body: 'I am accepting the referral for Maria Garcia for EMDR therapy. First appointment scheduled for 04/15/2026 at 2:00 PM. Will send progress notes after each session.', date: '2026-04-06', time: '11:30', read: true, priority: 'Normal', status: 'Completed' },
   // Front desk messages
-  { id: 'msg9', type: 'Check-in Alert', from: 'System', to: 'u3', patient: 'p1', patientName: 'James Anderson', subject: 'Patient Checked In - 10:00 AM Appointment', body: 'James Anderson has checked in for his 10:00 AM appointment with Dr. Martinez. Insurance verified. Copay: $30 collected.', date: '2026-04-09', time: '09:45', read: false, priority: 'Normal', status: 'Pending' },
+  { id: 'msg9', type: 'Check-in Alert', from: 'System', to: 'u3', patient: 'p1', patientName: 'James Anderson', subject: 'Patient Checked In - 10:00 AM Appointment', body: 'James Anderson has checked in for his 10:00 AM appointment with Dr. Chris L.. Insurance verified. Copay: $30 collected.', date: '2026-04-09', time: '09:45', read: false, priority: 'Normal', status: 'Pending' },
   { id: 'msg10', type: 'Insurance Alert', from: 'System', to: 'u3', patient: 'p3', patientName: 'David Thompson', subject: 'Insurance Eligibility Failed', body: 'United Healthcare eligibility check failed for David Thompson. Policy may be inactive. Please verify coverage before next appointment on 04/15.', date: '2026-04-08', time: '16:00', read: false, priority: 'High', status: 'Pending' },
 ];
 
@@ -688,54 +779,54 @@ export const smartPhrases = [
 // ========== APPOINTMENTS (Today's Schedule) ==========
 export const appointments = [
   // ── Today: April 9, 2026 ──
-  { id: 'apt1', patientId: 'p1', patientName: 'James Anderson', provider: 'u1', providerName: 'Dr. Martinez', date: '2026-04-09', time: '09:00', duration: 30, type: 'Follow-Up', status: 'Checked In', reason: 'Med management - depression/anxiety', visitType: 'In-Person', room: 'Room 3' },
-  { id: 'apt2', patientId: 'p2', patientName: 'Maria Garcia', provider: 'u1', providerName: 'Dr. Martinez', date: '2026-04-09', time: '09:30', duration: 60, type: 'Follow-Up', status: 'Scheduled', reason: 'PTSD follow-up, medication review', visitType: 'Telehealth', room: 'Virtual' },
-  { id: 'apt3', patientId: 'p4', patientName: 'Emily Chen', provider: 'u2', providerName: 'NP Johnson', date: '2026-04-09', time: '10:00', duration: 30, type: 'Follow-Up', status: 'Scheduled', reason: 'ADHD follow-up, stimulant refill', visitType: 'In-Person', room: 'Room 1' },
-  { id: 'apt4', patientId: 'p6', patientName: 'Aisha Patel', provider: 'u1', providerName: 'Dr. Martinez', date: '2026-04-09', time: '10:30', duration: 30, type: 'Follow-Up', status: 'Scheduled', reason: 'Bipolar disorder management', visitType: 'Telehealth', room: 'Virtual' },
-  { id: 'apt5', patientId: null, patientName: 'New Patient - Alex Rivera', provider: 'u1', providerName: 'Dr. Martinez', date: '2026-04-09', time: '11:00', duration: 60, type: 'New Patient', status: 'Confirmed', reason: 'Initial psych evaluation - depression, anxiety', visitType: 'In-Person', room: 'Room 2' },
-  { id: 'apt6', patientId: 'p3', patientName: 'David Thompson', provider: 'u2', providerName: 'NP Johnson', date: '2026-04-09', time: '11:00', duration: 30, type: 'Follow-Up', status: 'Confirmed', reason: 'AUD management, med review', visitType: 'In-Person', room: 'Room 4' },
-  { id: 'apt7', patientId: 'p5', patientName: 'Robert Wilson', provider: 'u1', providerName: 'Dr. Martinez', date: '2026-04-09', time: '13:00', duration: 45, type: 'Follow-Up', status: 'Confirmed', reason: 'Depression/anxiety management, cognitive decline monitoring', visitType: 'In-Person', room: 'Room 3' },
-  { id: 'apt8', patientId: null, patientName: 'New Patient - Jordan Taylor', provider: 'u2', providerName: 'NP Johnson', date: '2026-04-09', time: '14:00', duration: 60, type: 'New Patient', status: 'Confirmed', reason: 'Initial evaluation - OCD symptoms', visitType: 'Telehealth', room: 'Virtual' },
+  { id: 'apt1', patientId: 'p1', patientName: 'James Anderson', provider: 'u1', providerName: 'Dr. Chris L.', date: '2026-04-09', time: '09:00', duration: 30, type: 'Follow-Up', status: 'Checked In', reason: 'Med management - depression/anxiety', visitType: 'In-Person', room: 'Room 3' },
+  { id: 'apt2', patientId: 'p2', patientName: 'Maria Garcia', provider: 'u1', providerName: 'Dr. Chris L.', date: '2026-04-09', time: '09:30', duration: 60, type: 'Follow-Up', status: 'Scheduled', reason: 'PTSD follow-up, medication review', visitType: 'Telehealth', room: 'Virtual' },
+  { id: 'apt3', patientId: 'p4', patientName: 'Emily Chen', provider: 'u2', providerName: 'Joseph', date: '2026-04-09', time: '10:00', duration: 30, type: 'Follow-Up', status: 'Scheduled', reason: 'ADHD follow-up, stimulant refill', visitType: 'In-Person', room: 'Room 1' },
+  { id: 'apt4', patientId: 'p6', patientName: 'Aisha Patel', provider: 'u1', providerName: 'Dr. Chris L.', date: '2026-04-09', time: '10:30', duration: 30, type: 'Follow-Up', status: 'Scheduled', reason: 'Bipolar disorder management', visitType: 'Telehealth', room: 'Virtual' },
+  { id: 'apt5', patientId: null, patientName: 'New Patient - Alex Rivera', provider: 'u1', providerName: 'Dr. Chris L.', date: '2026-04-09', time: '11:00', duration: 60, type: 'New Patient', status: 'Confirmed', reason: 'Initial psych evaluation - depression, anxiety', visitType: 'In-Person', room: 'Room 2' },
+  { id: 'apt6', patientId: 'p3', patientName: 'David Thompson', provider: 'u2', providerName: 'Joseph', date: '2026-04-09', time: '11:00', duration: 30, type: 'Follow-Up', status: 'Confirmed', reason: 'AUD management, med review', visitType: 'In-Person', room: 'Room 4' },
+  { id: 'apt7', patientId: 'p5', patientName: 'Robert Wilson', provider: 'u1', providerName: 'Dr. Chris L.', date: '2026-04-09', time: '13:00', duration: 45, type: 'Follow-Up', status: 'Confirmed', reason: 'Depression/anxiety management, cognitive decline monitoring', visitType: 'In-Person', room: 'Room 3' },
+  { id: 'apt8', patientId: null, patientName: 'New Patient - Jordan Taylor', provider: 'u2', providerName: 'Joseph', date: '2026-04-09', time: '14:00', duration: 60, type: 'New Patient', status: 'Confirmed', reason: 'Initial evaluation - OCD symptoms', visitType: 'Telehealth', room: 'Virtual' },
 
   // ── April 2026 (other days) ──
-  { id: 'apt9',  patientId: 'p1', patientName: 'James Anderson', provider: 'u1', providerName: 'Dr. Martinez', date: '2026-04-11', time: '09:00', duration: 30, type: 'Follow-Up', status: 'Scheduled', reason: 'Lab review — Sertraline level', visitType: 'Telehealth', room: 'Virtual' },
-  { id: 'apt10', patientId: 'p2', patientName: 'Maria Garcia', provider: 'u1', providerName: 'Dr. Martinez', date: '2026-04-14', time: '10:00', duration: 60, type: 'Follow-Up', status: 'Scheduled', reason: 'PTSD re-assessment, PCL-5', visitType: 'In-Person', room: 'Room 2' },
-  { id: 'apt11', patientId: 'p6', patientName: 'Aisha Patel', provider: 'u1', providerName: 'Dr. Martinez', date: '2026-04-16', time: '11:00', duration: 30, type: 'Follow-Up', status: 'Scheduled', reason: 'Lamotrigine titration check', visitType: 'In-Person', room: 'Room 3' },
-  { id: 'apt12', patientId: 'p3', patientName: 'David Thompson', provider: 'u2', providerName: 'NP Johnson', date: '2026-04-18', time: '14:00', duration: 30, type: 'Follow-Up', status: 'Scheduled', reason: 'AUD follow-up, naltrexone refill', visitType: 'In-Person', room: 'Room 1' },
-  { id: 'apt13', patientId: 'p4', patientName: 'Emily Chen', provider: 'u2', providerName: 'NP Johnson', date: '2026-04-21', time: '09:30', duration: 30, type: 'Follow-Up', status: 'Scheduled', reason: 'ADHD check-in, grades review', visitType: 'Telehealth', room: 'Virtual' },
-  { id: 'apt14', patientId: 'p5', patientName: 'Robert Wilson', provider: 'u1', providerName: 'Dr. Martinez', date: '2026-04-23', time: '13:00', duration: 45, type: 'Follow-Up', status: 'Scheduled', reason: 'Cognitive decline follow-up, MMSE', visitType: 'In-Person', room: 'Room 3' },
-  { id: 'apt15', patientId: null, patientName: 'New Patient - Sarah Kim', provider: 'u1', providerName: 'Dr. Martinez', date: '2026-04-25', time: '10:00', duration: 60, type: 'New Patient', status: 'Scheduled', reason: 'Initial eval — postpartum depression', visitType: 'In-Person', room: 'Room 2' },
-  { id: 'apt16', patientId: 'p1', patientName: 'James Anderson', provider: 'u1', providerName: 'Dr. Martinez', date: '2026-04-28', time: '09:00', duration: 30, type: 'Follow-Up', status: 'Scheduled', reason: 'Sertraline dose check, PHQ-9', visitType: 'In-Person', room: 'Room 3' },
-  { id: 'apt17', patientId: 'p6', patientName: 'Aisha Patel', provider: 'u1', providerName: 'Dr. Martinez', date: '2026-04-30', time: '11:00', duration: 30, type: 'Follow-Up', status: 'Scheduled', reason: 'Bipolar mgmt — mood check', visitType: 'Telehealth', room: 'Virtual' },
+  { id: 'apt9',  patientId: 'p1', patientName: 'James Anderson', provider: 'u1', providerName: 'Dr. Chris L.', date: '2026-04-11', time: '09:00', duration: 30, type: 'Follow-Up', status: 'Scheduled', reason: 'Lab review — Sertraline level', visitType: 'Telehealth', room: 'Virtual' },
+  { id: 'apt10', patientId: 'p2', patientName: 'Maria Garcia', provider: 'u1', providerName: 'Dr. Chris L.', date: '2026-04-14', time: '10:00', duration: 60, type: 'Follow-Up', status: 'Scheduled', reason: 'PTSD re-assessment, PCL-5', visitType: 'In-Person', room: 'Room 2' },
+  { id: 'apt11', patientId: 'p6', patientName: 'Aisha Patel', provider: 'u1', providerName: 'Dr. Chris L.', date: '2026-04-16', time: '11:00', duration: 30, type: 'Follow-Up', status: 'Scheduled', reason: 'Lamotrigine titration check', visitType: 'In-Person', room: 'Room 3' },
+  { id: 'apt12', patientId: 'p3', patientName: 'David Thompson', provider: 'u2', providerName: 'Joseph', date: '2026-04-18', time: '14:00', duration: 30, type: 'Follow-Up', status: 'Scheduled', reason: 'AUD follow-up, naltrexone refill', visitType: 'In-Person', room: 'Room 1' },
+  { id: 'apt13', patientId: 'p4', patientName: 'Emily Chen', provider: 'u2', providerName: 'Joseph', date: '2026-04-21', time: '09:30', duration: 30, type: 'Follow-Up', status: 'Scheduled', reason: 'ADHD check-in, grades review', visitType: 'Telehealth', room: 'Virtual' },
+  { id: 'apt14', patientId: 'p5', patientName: 'Robert Wilson', provider: 'u1', providerName: 'Dr. Chris L.', date: '2026-04-23', time: '13:00', duration: 45, type: 'Follow-Up', status: 'Scheduled', reason: 'Cognitive decline follow-up, MMSE', visitType: 'In-Person', room: 'Room 3' },
+  { id: 'apt15', patientId: null, patientName: 'New Patient - Sarah Kim', provider: 'u1', providerName: 'Dr. Chris L.', date: '2026-04-25', time: '10:00', duration: 60, type: 'New Patient', status: 'Scheduled', reason: 'Initial eval — postpartum depression', visitType: 'In-Person', room: 'Room 2' },
+  { id: 'apt16', patientId: 'p1', patientName: 'James Anderson', provider: 'u1', providerName: 'Dr. Chris L.', date: '2026-04-28', time: '09:00', duration: 30, type: 'Follow-Up', status: 'Scheduled', reason: 'Sertraline dose check, PHQ-9', visitType: 'In-Person', room: 'Room 3' },
+  { id: 'apt17', patientId: 'p6', patientName: 'Aisha Patel', provider: 'u1', providerName: 'Dr. Chris L.', date: '2026-04-30', time: '11:00', duration: 30, type: 'Follow-Up', status: 'Scheduled', reason: 'Bipolar mgmt — mood check', visitType: 'Telehealth', room: 'Virtual' },
 
   // ── May 2026 ──
-  { id: 'apt18', patientId: 'p2', patientName: 'Maria Garcia', provider: 'u1', providerName: 'Dr. Martinez', date: '2026-05-01', time: '10:00', duration: 60, type: 'Follow-Up', status: 'Scheduled', reason: 'PTSD follow-up, PE session #10', visitType: 'In-Person', room: 'Room 2' },
-  { id: 'apt19', patientId: 'p3', patientName: 'David Thompson', provider: 'u2', providerName: 'NP Johnson', date: '2026-05-02', time: '14:00', duration: 30, type: 'Follow-Up', status: 'Scheduled', reason: 'AUD management, sobriety check', visitType: 'In-Person', room: 'Room 1' },
-  { id: 'apt20', patientId: 'p4', patientName: 'Emily Chen', provider: 'u2', providerName: 'NP Johnson', date: '2026-05-05', time: '09:30', duration: 30, type: 'Follow-Up', status: 'Scheduled', reason: 'Adderall refill, weight check', visitType: 'In-Person', room: 'Room 1' },
-  { id: 'apt21', patientId: 'p1', patientName: 'James Anderson', provider: 'u1', providerName: 'Dr. Martinez', date: '2026-05-07', time: '09:00', duration: 30, type: 'Follow-Up', status: 'Scheduled', reason: 'Med management follow-up', visitType: 'Telehealth', room: 'Virtual' },
-  { id: 'apt22', patientId: 'p5', patientName: 'Robert Wilson', provider: 'u1', providerName: 'Dr. Martinez', date: '2026-05-08', time: '13:00', duration: 45, type: 'Follow-Up', status: 'Scheduled', reason: 'Depression/cognitive monitoring', visitType: 'In-Person', room: 'Room 3' },
-  { id: 'apt23', patientId: 'p6', patientName: 'Aisha Patel', provider: 'u1', providerName: 'Dr. Martinez', date: '2026-05-12', time: '11:00', duration: 30, type: 'Follow-Up', status: 'Scheduled', reason: 'Bipolar — Lamotrigine 100mg check', visitType: 'In-Person', room: 'Room 3' },
-  { id: 'apt24', patientId: null, patientName: 'New Patient - Marcus Lee', provider: 'u2', providerName: 'NP Johnson', date: '2026-05-13', time: '10:00', duration: 60, type: 'New Patient', status: 'Scheduled', reason: 'Initial eval — social anxiety', visitType: 'Telehealth', room: 'Virtual' },
-  { id: 'apt25', patientId: 'p2', patientName: 'Maria Garcia', provider: 'u1', providerName: 'Dr. Martinez', date: '2026-05-15', time: '10:00', duration: 45, type: 'Follow-Up', status: 'Scheduled', reason: 'PTSD follow-up, Prazosin review', visitType: 'In-Person', room: 'Room 2' },
-  { id: 'apt26', patientId: 'p3', patientName: 'David Thompson', provider: 'u2', providerName: 'NP Johnson', date: '2026-05-16', time: '14:00', duration: 30, type: 'Follow-Up', status: 'Scheduled', reason: 'AUD follow-up, liver panel review', visitType: 'In-Person', room: 'Room 4' },
-  { id: 'apt27', patientId: 'p1', patientName: 'James Anderson', provider: 'u1', providerName: 'Dr. Martinez', date: '2026-05-20', time: '09:00', duration: 30, type: 'Follow-Up', status: 'Scheduled', reason: 'Sertraline 150mg check-in', visitType: 'In-Person', room: 'Room 3' },
-  { id: 'apt28', patientId: 'p4', patientName: 'Emily Chen', provider: 'u2', providerName: 'NP Johnson', date: '2026-05-22', time: '09:30', duration: 30, type: 'Follow-Up', status: 'Scheduled', reason: 'ADHD semester review', visitType: 'Telehealth', room: 'Virtual' },
-  { id: 'apt29', patientId: 'p5', patientName: 'Robert Wilson', provider: 'u1', providerName: 'Dr. Martinez', date: '2026-05-27', time: '13:00', duration: 45, type: 'Follow-Up', status: 'Scheduled', reason: 'Dementia staging, caregiver meeting', visitType: 'In-Person', room: 'Room 3' },
-  { id: 'apt30', patientId: 'p6', patientName: 'Aisha Patel', provider: 'u1', providerName: 'Dr. Martinez', date: '2026-05-29', time: '11:00', duration: 30, type: 'Follow-Up', status: 'Scheduled', reason: 'Bipolar stable check, labs', visitType: 'In-Person', room: 'Room 3' },
+  { id: 'apt18', patientId: 'p2', patientName: 'Maria Garcia', provider: 'u1', providerName: 'Dr. Chris L.', date: '2026-05-01', time: '10:00', duration: 60, type: 'Follow-Up', status: 'Scheduled', reason: 'PTSD follow-up, PE session #10', visitType: 'In-Person', room: 'Room 2' },
+  { id: 'apt19', patientId: 'p3', patientName: 'David Thompson', provider: 'u2', providerName: 'Joseph', date: '2026-05-02', time: '14:00', duration: 30, type: 'Follow-Up', status: 'Scheduled', reason: 'AUD management, sobriety check', visitType: 'In-Person', room: 'Room 1' },
+  { id: 'apt20', patientId: 'p4', patientName: 'Emily Chen', provider: 'u2', providerName: 'Joseph', date: '2026-05-05', time: '09:30', duration: 30, type: 'Follow-Up', status: 'Scheduled', reason: 'Adderall refill, weight check', visitType: 'In-Person', room: 'Room 1' },
+  { id: 'apt21', patientId: 'p1', patientName: 'James Anderson', provider: 'u1', providerName: 'Dr. Chris L.', date: '2026-05-07', time: '09:00', duration: 30, type: 'Follow-Up', status: 'Scheduled', reason: 'Med management follow-up', visitType: 'Telehealth', room: 'Virtual' },
+  { id: 'apt22', patientId: 'p5', patientName: 'Robert Wilson', provider: 'u1', providerName: 'Dr. Chris L.', date: '2026-05-08', time: '13:00', duration: 45, type: 'Follow-Up', status: 'Scheduled', reason: 'Depression/cognitive monitoring', visitType: 'In-Person', room: 'Room 3' },
+  { id: 'apt23', patientId: 'p6', patientName: 'Aisha Patel', provider: 'u1', providerName: 'Dr. Chris L.', date: '2026-05-12', time: '11:00', duration: 30, type: 'Follow-Up', status: 'Scheduled', reason: 'Bipolar — Lamotrigine 100mg check', visitType: 'In-Person', room: 'Room 3' },
+  { id: 'apt24', patientId: null, patientName: 'New Patient - Marcus Lee', provider: 'u2', providerName: 'Joseph', date: '2026-05-13', time: '10:00', duration: 60, type: 'New Patient', status: 'Scheduled', reason: 'Initial eval — social anxiety', visitType: 'Telehealth', room: 'Virtual' },
+  { id: 'apt25', patientId: 'p2', patientName: 'Maria Garcia', provider: 'u1', providerName: 'Dr. Chris L.', date: '2026-05-15', time: '10:00', duration: 45, type: 'Follow-Up', status: 'Scheduled', reason: 'PTSD follow-up, Prazosin review', visitType: 'In-Person', room: 'Room 2' },
+  { id: 'apt26', patientId: 'p3', patientName: 'David Thompson', provider: 'u2', providerName: 'Joseph', date: '2026-05-16', time: '14:00', duration: 30, type: 'Follow-Up', status: 'Scheduled', reason: 'AUD follow-up, liver panel review', visitType: 'In-Person', room: 'Room 4' },
+  { id: 'apt27', patientId: 'p1', patientName: 'James Anderson', provider: 'u1', providerName: 'Dr. Chris L.', date: '2026-05-20', time: '09:00', duration: 30, type: 'Follow-Up', status: 'Scheduled', reason: 'Sertraline 150mg check-in', visitType: 'In-Person', room: 'Room 3' },
+  { id: 'apt28', patientId: 'p4', patientName: 'Emily Chen', provider: 'u2', providerName: 'Joseph', date: '2026-05-22', time: '09:30', duration: 30, type: 'Follow-Up', status: 'Scheduled', reason: 'ADHD semester review', visitType: 'Telehealth', room: 'Virtual' },
+  { id: 'apt29', patientId: 'p5', patientName: 'Robert Wilson', provider: 'u1', providerName: 'Dr. Chris L.', date: '2026-05-27', time: '13:00', duration: 45, type: 'Follow-Up', status: 'Scheduled', reason: 'Dementia staging, caregiver meeting', visitType: 'In-Person', room: 'Room 3' },
+  { id: 'apt30', patientId: 'p6', patientName: 'Aisha Patel', provider: 'u1', providerName: 'Dr. Chris L.', date: '2026-05-29', time: '11:00', duration: 30, type: 'Follow-Up', status: 'Scheduled', reason: 'Bipolar stable check, labs', visitType: 'In-Person', room: 'Room 3' },
 
   // ── June 2026 ──
-  { id: 'apt31', patientId: 'p2', patientName: 'Maria Garcia', provider: 'u1', providerName: 'Dr. Martinez', date: '2026-06-02', time: '10:00', duration: 60, type: 'Follow-Up', status: 'Scheduled', reason: 'PTSD — PE completion session', visitType: 'In-Person', room: 'Room 2' },
-  { id: 'apt32', patientId: 'p3', patientName: 'David Thompson', provider: 'u2', providerName: 'NP Johnson', date: '2026-06-03', time: '14:00', duration: 30, type: 'Follow-Up', status: 'Scheduled', reason: 'AUD 6-month milestone', visitType: 'In-Person', room: 'Room 1' },
-  { id: 'apt33', patientId: 'p1', patientName: 'James Anderson', provider: 'u1', providerName: 'Dr. Martinez', date: '2026-06-04', time: '09:00', duration: 30, type: 'Follow-Up', status: 'Scheduled', reason: 'MDD quarterly review', visitType: 'In-Person', room: 'Room 3' },
-  { id: 'apt34', patientId: 'p4', patientName: 'Emily Chen', provider: 'u2', providerName: 'NP Johnson', date: '2026-06-08', time: '09:30', duration: 30, type: 'Follow-Up', status: 'Scheduled', reason: 'ADHD summer plan, med holiday discuss', visitType: 'Telehealth', room: 'Virtual' },
-  { id: 'apt35', patientId: 'p5', patientName: 'Robert Wilson', provider: 'u1', providerName: 'Dr. Martinez', date: '2026-06-10', time: '13:00', duration: 45, type: 'Follow-Up', status: 'Scheduled', reason: 'Depression/cognitive follow-up', visitType: 'In-Person', room: 'Room 3' },
-  { id: 'apt36', patientId: 'p6', patientName: 'Aisha Patel', provider: 'u1', providerName: 'Dr. Martinez', date: '2026-06-12', time: '11:00', duration: 30, type: 'Follow-Up', status: 'Scheduled', reason: 'Bipolar mgmt, Lamotrigine level', visitType: 'In-Person', room: 'Room 3' },
-  { id: 'apt37', patientId: null, patientName: 'New Patient - Olivia Brown', provider: 'u1', providerName: 'Dr. Martinez', date: '2026-06-15', time: '10:00', duration: 60, type: 'New Patient', status: 'Scheduled', reason: 'Initial eval — panic disorder', visitType: 'In-Person', room: 'Room 2' },
-  { id: 'apt38', patientId: 'p2', patientName: 'Maria Garcia', provider: 'u1', providerName: 'Dr. Martinez', date: '2026-06-18', time: '10:00', duration: 45, type: 'Follow-Up', status: 'Scheduled', reason: 'PTSD maintenance phase', visitType: 'Telehealth', room: 'Virtual' },
-  { id: 'apt39', patientId: 'p3', patientName: 'David Thompson', provider: 'u2', providerName: 'NP Johnson', date: '2026-06-19', time: '14:00', duration: 30, type: 'Follow-Up', status: 'Scheduled', reason: 'AUD follow-up, naltrexone', visitType: 'In-Person', room: 'Room 4' },
-  { id: 'apt40', patientId: 'p1', patientName: 'James Anderson', provider: 'u1', providerName: 'Dr. Martinez', date: '2026-06-24', time: '09:00', duration: 30, type: 'Follow-Up', status: 'Scheduled', reason: 'Depression check-in, PHQ-9', visitType: 'In-Person', room: 'Room 3' },
-  { id: 'apt41', patientId: 'p4', patientName: 'Emily Chen', provider: 'u2', providerName: 'NP Johnson', date: '2026-06-26', time: '09:30', duration: 30, type: 'Follow-Up', status: 'Scheduled', reason: 'ADHD stimulant refill', visitType: 'In-Person', room: 'Room 1' },
-  { id: 'apt42', patientId: 'p5', patientName: 'Robert Wilson', provider: 'u1', providerName: 'Dr. Martinez', date: '2026-06-30', time: '13:00', duration: 45, type: 'Follow-Up', status: 'Scheduled', reason: 'Dementia monitoring, family session', visitType: 'In-Person', room: 'Room 3' },
+  { id: 'apt31', patientId: 'p2', patientName: 'Maria Garcia', provider: 'u1', providerName: 'Dr. Chris L.', date: '2026-06-02', time: '10:00', duration: 60, type: 'Follow-Up', status: 'Scheduled', reason: 'PTSD — PE completion session', visitType: 'In-Person', room: 'Room 2' },
+  { id: 'apt32', patientId: 'p3', patientName: 'David Thompson', provider: 'u2', providerName: 'Joseph', date: '2026-06-03', time: '14:00', duration: 30, type: 'Follow-Up', status: 'Scheduled', reason: 'AUD 6-month milestone', visitType: 'In-Person', room: 'Room 1' },
+  { id: 'apt33', patientId: 'p1', patientName: 'James Anderson', provider: 'u1', providerName: 'Dr. Chris L.', date: '2026-06-04', time: '09:00', duration: 30, type: 'Follow-Up', status: 'Scheduled', reason: 'MDD quarterly review', visitType: 'In-Person', room: 'Room 3' },
+  { id: 'apt34', patientId: 'p4', patientName: 'Emily Chen', provider: 'u2', providerName: 'Joseph', date: '2026-06-08', time: '09:30', duration: 30, type: 'Follow-Up', status: 'Scheduled', reason: 'ADHD summer plan, med holiday discuss', visitType: 'Telehealth', room: 'Virtual' },
+  { id: 'apt35', patientId: 'p5', patientName: 'Robert Wilson', provider: 'u1', providerName: 'Dr. Chris L.', date: '2026-06-10', time: '13:00', duration: 45, type: 'Follow-Up', status: 'Scheduled', reason: 'Depression/cognitive follow-up', visitType: 'In-Person', room: 'Room 3' },
+  { id: 'apt36', patientId: 'p6', patientName: 'Aisha Patel', provider: 'u1', providerName: 'Dr. Chris L.', date: '2026-06-12', time: '11:00', duration: 30, type: 'Follow-Up', status: 'Scheduled', reason: 'Bipolar mgmt, Lamotrigine level', visitType: 'In-Person', room: 'Room 3' },
+  { id: 'apt37', patientId: null, patientName: 'New Patient - Olivia Brown', provider: 'u1', providerName: 'Dr. Chris L.', date: '2026-06-15', time: '10:00', duration: 60, type: 'New Patient', status: 'Scheduled', reason: 'Initial eval — panic disorder', visitType: 'In-Person', room: 'Room 2' },
+  { id: 'apt38', patientId: 'p2', patientName: 'Maria Garcia', provider: 'u1', providerName: 'Dr. Chris L.', date: '2026-06-18', time: '10:00', duration: 45, type: 'Follow-Up', status: 'Scheduled', reason: 'PTSD maintenance phase', visitType: 'Telehealth', room: 'Virtual' },
+  { id: 'apt39', patientId: 'p3', patientName: 'David Thompson', provider: 'u2', providerName: 'Joseph', date: '2026-06-19', time: '14:00', duration: 30, type: 'Follow-Up', status: 'Scheduled', reason: 'AUD follow-up, naltrexone', visitType: 'In-Person', room: 'Room 4' },
+  { id: 'apt40', patientId: 'p1', patientName: 'James Anderson', provider: 'u1', providerName: 'Dr. Chris L.', date: '2026-06-24', time: '09:00', duration: 30, type: 'Follow-Up', status: 'Scheduled', reason: 'Depression check-in, PHQ-9', visitType: 'In-Person', room: 'Room 3' },
+  { id: 'apt41', patientId: 'p4', patientName: 'Emily Chen', provider: 'u2', providerName: 'Joseph', date: '2026-06-26', time: '09:30', duration: 30, type: 'Follow-Up', status: 'Scheduled', reason: 'ADHD stimulant refill', visitType: 'In-Person', room: 'Room 1' },
+  { id: 'apt42', patientId: 'p5', patientName: 'Robert Wilson', provider: 'u1', providerName: 'Dr. Chris L.', date: '2026-06-30', time: '13:00', duration: 45, type: 'Follow-Up', status: 'Scheduled', reason: 'Dementia monitoring, family session', visitType: 'In-Person', room: 'Room 3' },
 ];
 
 // ========== ENCOUNTER HISTORY ==========
@@ -818,7 +909,7 @@ export const encounterHistory = {
 // ========== BTG AUDIT LOG ==========
 export const btgAuditLog = [
   { id: 'btg1', patientId: 'p5', patientName: 'Robert Wilson', accessedBy: 'u4', accessedByName: 'Kelly Chen, RN', reason: 'Patient called in crisis - needed to verify current medications for ER communication', timestamp: '2026-04-05T14:30:00Z', approved: true },
-  { id: 'btg2', patientId: 'p6', patientName: 'Aisha Patel', accessedBy: 'u2', accessedByName: 'NP Michael Johnson', reason: 'Covering for Dr. Martinez - urgent medication question from pharmacy', timestamp: '2026-04-03T16:45:00Z', approved: true },
+  { id: 'btg2', patientId: 'p6', patientName: 'Aisha Patel', accessedBy: 'u2', accessedByName: 'NP Michael Johnson', reason: 'Covering for Dr. Chris L. - urgent medication question from pharmacy', timestamp: '2026-04-03T16:45:00Z', approved: true },
 ];
 
 // ========== MEDICATION DATABASE (for ordering) ==========
@@ -960,30 +1051,97 @@ export const pharmacies = [
 
 // ========== ILLINOIS LAB FACILITIES ==========
 export const labFacilities = [
-  // Quest Diagnostics
-  { id: 'lab1', name: 'Quest Diagnostics — Chicago Loop', chain: 'Quest Diagnostics', address: '200 W Adams St, Suite 200', city: 'Chicago', state: 'IL', zip: '60606', phone: '(312) 782-4480', fax: '(312) 782-4481', services: ['Blood Draw', 'Urine Collection', 'Drug Screening', 'Employer Testing'] },
-  { id: 'lab2', name: 'Quest Diagnostics — Streeterville', chain: 'Quest Diagnostics', address: '680 N Lake Shore Dr, Suite 820', city: 'Chicago', state: 'IL', zip: '60611', phone: '(312) 943-7400', fax: '(312) 943-7401', services: ['Blood Draw', 'Urine Collection', 'Genetic Testing', 'Drug Screening'] },
-  { id: 'lab3', name: 'Quest Diagnostics — Lincoln Park', chain: 'Quest Diagnostics', address: '2525 N Clark St', city: 'Chicago', state: 'IL', zip: '60614', phone: '(773) 281-7600', fax: '(773) 281-7601', services: ['Blood Draw', 'Urine Collection', 'Drug Screening'] },
-  { id: 'lab4', name: 'Quest Diagnostics — Skokie', chain: 'Quest Diagnostics', address: '9933 Lawler Ave, Suite 550', city: 'Skokie', state: 'IL', zip: '60077', phone: '(847) 568-2250', fax: '(847) 568-2251', services: ['Blood Draw', 'Urine Collection', 'Drug Screening', 'Employer Testing'] },
-  { id: 'lab5', name: 'Quest Diagnostics — Naperville', chain: 'Quest Diagnostics', address: '1020 E Ogden Ave, Suite 106', city: 'Naperville', state: 'IL', zip: '60563', phone: '(630) 527-6120', fax: '(630) 527-6121', services: ['Blood Draw', 'Urine Collection', 'Drug Screening'] },
-  { id: 'lab6', name: 'Quest Diagnostics — Schaumburg', chain: 'Quest Diagnostics', address: '1699 E Woodfield Rd, Suite 200', city: 'Schaumburg', state: 'IL', zip: '60173', phone: '(847) 517-3200', fax: '(847) 517-3201', services: ['Blood Draw', 'Urine Collection', 'Drug Screening', 'Employer Testing'] },
-  { id: 'lab7', name: 'Quest Diagnostics — Oak Brook', chain: 'Quest Diagnostics', address: '2011 York Rd, Suite 100', city: 'Oak Brook', state: 'IL', zip: '60523', phone: '(630) 571-8000', fax: '(630) 571-8001', services: ['Blood Draw', 'Urine Collection', 'Drug Screening'] },
-  { id: 'lab8', name: 'Quest Diagnostics — Orland Park', chain: 'Quest Diagnostics', address: '16311 S Harlem Ave', city: 'Orland Park', state: 'IL', zip: '60462', phone: '(708) 460-5510', fax: '(708) 460-5511', services: ['Blood Draw', 'Urine Collection', 'Drug Screening'] },
-  { id: 'lab9', name: 'Quest Diagnostics — Springfield', chain: 'Quest Diagnostics', address: '350 W Carpenter St, Suite 100', city: 'Springfield', state: 'IL', zip: '62702', phone: '(217) 544-9800', fax: '(217) 544-9801', services: ['Blood Draw', 'Urine Collection', 'Drug Screening', 'Employer Testing'] },
-  { id: 'lab10', name: 'Quest Diagnostics — Bloomington', chain: 'Quest Diagnostics', address: '801 N Hershey Rd, Suite A', city: 'Bloomington', state: 'IL', zip: '61704', phone: '(309) 661-6200', fax: '(309) 661-6201', services: ['Blood Draw', 'Urine Collection', 'Drug Screening'] },
-  { id: 'lab11', name: 'Quest Diagnostics — Peoria', chain: 'Quest Diagnostics', address: '5401 N Knoxville Ave', city: 'Peoria', state: 'IL', zip: '61614', phone: '(309) 589-3200', fax: '(309) 589-3201', services: ['Blood Draw', 'Urine Collection', 'Drug Screening'] },
-  { id: 'lab12', name: 'Quest Diagnostics — Rockford', chain: 'Quest Diagnostics', address: '5302 E State St, Suite 100', city: 'Rockford', state: 'IL', zip: '61108', phone: '(815) 227-6800', fax: '(815) 227-6801', services: ['Blood Draw', 'Urine Collection', 'Drug Screening', 'Employer Testing'] },
-  // LabCorp
-  { id: 'lab13', name: 'LabCorp — Chicago Downtown', chain: 'LabCorp', address: '30 N Michigan Ave, Suite 1110', city: 'Chicago', state: 'IL', zip: '60602', phone: '(312) 726-4690', fax: '(312) 726-4691', services: ['Blood Draw', 'Urine Collection', 'Genetic Testing', 'Drug Screening'] },
-  { id: 'lab14', name: 'LabCorp — River North', chain: 'LabCorp', address: '444 N Michigan Ave, Suite 710', city: 'Chicago', state: 'IL', zip: '60611', phone: '(312) 329-0102', fax: '(312) 329-0103', services: ['Blood Draw', 'Urine Collection', 'Drug Screening'] },
-  { id: 'lab15', name: 'LabCorp — Lakeview', chain: 'LabCorp', address: '3000 N Halsted St, Suite 610', city: 'Chicago', state: 'IL', zip: '60657', phone: '(773) 472-1550', fax: '(773) 472-1551', services: ['Blood Draw', 'Urine Collection', 'Drug Screening'] },
-  { id: 'lab16', name: 'LabCorp — Evanston', chain: 'LabCorp', address: '1033 University Pl, Suite 200', city: 'Evanston', state: 'IL', zip: '60201', phone: '(847) 866-3100', fax: '(847) 866-3101', services: ['Blood Draw', 'Urine Collection', 'Drug Screening'] },
-  { id: 'lab17', name: 'LabCorp — Arlington Heights', chain: 'LabCorp', address: '800 W Biesterfield Rd, Suite 206', city: 'Arlington Heights', state: 'IL', zip: '60005', phone: '(847) 394-1700', fax: '(847) 394-1701', services: ['Blood Draw', 'Urine Collection', 'Drug Screening', 'Employer Testing'] },
-  { id: 'lab18', name: 'LabCorp — Naperville', chain: 'LabCorp', address: '1550 N Route 59, Suite 120', city: 'Naperville', state: 'IL', zip: '60563', phone: '(630) 527-1770', fax: '(630) 527-1771', services: ['Blood Draw', 'Urine Collection', 'Drug Screening'] },
-  { id: 'lab19', name: 'LabCorp — Oak Lawn', chain: 'LabCorp', address: '5201 W 95th St', city: 'Oak Lawn', state: 'IL', zip: '60453', phone: '(708) 424-6200', fax: '(708) 424-6201', services: ['Blood Draw', 'Urine Collection', 'Drug Screening'] },
-  { id: 'lab20', name: 'LabCorp — Tinley Park', chain: 'LabCorp', address: '18400 S 80th Ave, Suite 200', city: 'Tinley Park', state: 'IL', zip: '60487', phone: '(708) 429-5100', fax: '(708) 429-5101', services: ['Blood Draw', 'Urine Collection', 'Drug Screening'] },
-  { id: 'lab21', name: 'LabCorp — Springfield', chain: 'LabCorp', address: '301 N Eighth St, Suite 200', city: 'Springfield', state: 'IL', zip: '62702', phone: '(217) 525-2020', fax: '(217) 525-2021', services: ['Blood Draw', 'Urine Collection', 'Drug Screening', 'Employer Testing'] },
-  { id: 'lab22', name: 'LabCorp — Champaign', chain: 'LabCorp', address: '2103 S Neil St, Suite 2', city: 'Champaign', state: 'IL', zip: '61820', phone: '(217) 351-6100', fax: '(217) 351-6101', services: ['Blood Draw', 'Urine Collection', 'Drug Screening'] },
-  { id: 'lab23', name: 'LabCorp — Rockford', chain: 'LabCorp', address: '920 N Alpine Rd, Suite 104', city: 'Rockford', state: 'IL', zip: '61107', phone: '(815) 398-4400', fax: '(815) 398-4401', services: ['Blood Draw', 'Urine Collection', 'Drug Screening'] },
-  { id: 'lab24', name: 'LabCorp — Peoria', chain: 'LabCorp', address: '7309 N University St, Suite 103', city: 'Peoria', state: 'IL', zip: '61614', phone: '(309) 693-5300', fax: '(309) 693-5301', services: ['Blood Draw', 'Urine Collection', 'Drug Screening'] },
+  // ── Quest Diagnostics ──────────────────────────────────
+  { id: 'lab1',  name: 'Quest Diagnostics — Chicago Loop',          chain: 'Quest Diagnostics', address: '200 W Adams St, Suite 200',              city: 'Chicago',         state: 'IL', zip: '60606', phone: '(312) 782-4480', fax: '(312) 782-4481', services: ['Blood Draw', 'Urine Collection', 'Drug Screening', 'Employer Testing'] },
+  { id: 'lab2',  name: 'Quest Diagnostics — Streeterville',         chain: 'Quest Diagnostics', address: '680 N Lake Shore Dr, Suite 820',          city: 'Chicago',         state: 'IL', zip: '60611', phone: '(312) 943-7400', fax: '(312) 943-7401', services: ['Blood Draw', 'Urine Collection', 'Genetic Testing', 'Drug Screening'] },
+  { id: 'lab3',  name: 'Quest Diagnostics — Lincoln Park',          chain: 'Quest Diagnostics', address: '2525 N Clark St',                         city: 'Chicago',         state: 'IL', zip: '60614', phone: '(773) 281-7600', fax: '(773) 281-7601', services: ['Blood Draw', 'Urine Collection', 'Drug Screening'] },
+  { id: 'lab4',  name: 'Quest Diagnostics — Skokie',                chain: 'Quest Diagnostics', address: '9933 Lawler Ave, Suite 550',              city: 'Skokie',          state: 'IL', zip: '60077', phone: '(847) 568-2250', fax: '(847) 568-2251', services: ['Blood Draw', 'Urine Collection', 'Drug Screening', 'Employer Testing'] },
+  { id: 'lab5',  name: 'Quest Diagnostics — Naperville',            chain: 'Quest Diagnostics', address: '1020 E Ogden Ave, Suite 106',             city: 'Naperville',      state: 'IL', zip: '60563', phone: '(630) 527-6120', fax: '(630) 527-6121', services: ['Blood Draw', 'Urine Collection', 'Drug Screening'] },
+  { id: 'lab6',  name: 'Quest Diagnostics — Schaumburg',            chain: 'Quest Diagnostics', address: '1699 E Woodfield Rd, Suite 200',          city: 'Schaumburg',      state: 'IL', zip: '60173', phone: '(847) 517-3200', fax: '(847) 517-3201', services: ['Blood Draw', 'Urine Collection', 'Drug Screening', 'Employer Testing'] },
+  { id: 'lab7',  name: 'Quest Diagnostics — Oak Brook',             chain: 'Quest Diagnostics', address: '2011 York Rd, Suite 100',                 city: 'Oak Brook',       state: 'IL', zip: '60523', phone: '(630) 571-8000', fax: '(630) 571-8001', services: ['Blood Draw', 'Urine Collection', 'Drug Screening'] },
+  { id: 'lab8',  name: 'Quest Diagnostics — Orland Park',           chain: 'Quest Diagnostics', address: '16311 S Harlem Ave',                      city: 'Orland Park',     state: 'IL', zip: '60462', phone: '(708) 460-5510', fax: '(708) 460-5511', services: ['Blood Draw', 'Urine Collection', 'Drug Screening'] },
+  { id: 'lab9',  name: 'Quest Diagnostics — Springfield',           chain: 'Quest Diagnostics', address: '350 W Carpenter St, Suite 100',           city: 'Springfield',     state: 'IL', zip: '62702', phone: '(217) 544-9800', fax: '(217) 544-9801', services: ['Blood Draw', 'Urine Collection', 'Drug Screening', 'Employer Testing'] },
+  { id: 'lab10', name: 'Quest Diagnostics — Bloomington',           chain: 'Quest Diagnostics', address: '801 N Hershey Rd, Suite A',               city: 'Bloomington',     state: 'IL', zip: '61704', phone: '(309) 661-6200', fax: '(309) 661-6201', services: ['Blood Draw', 'Urine Collection', 'Drug Screening'] },
+  { id: 'lab11', name: 'Quest Diagnostics — Peoria',                chain: 'Quest Diagnostics', address: '5401 N Knoxville Ave',                    city: 'Peoria',          state: 'IL', zip: '61614', phone: '(309) 589-3200', fax: '(309) 589-3201', services: ['Blood Draw', 'Urine Collection', 'Drug Screening'] },
+  { id: 'lab12', name: 'Quest Diagnostics — Rockford',              chain: 'Quest Diagnostics', address: '5302 E State St, Suite 100',              city: 'Rockford',        state: 'IL', zip: '61108', phone: '(815) 227-6800', fax: '(815) 227-6801', services: ['Blood Draw', 'Urine Collection', 'Drug Screening', 'Employer Testing'] },
+  { id: 'lab35', name: 'Quest Diagnostics — Aurora',                chain: 'Quest Diagnostics', address: '2000 W Galena Blvd, Suite 100',           city: 'Aurora',          state: 'IL', zip: '60506', phone: '(630) 896-7100', fax: '(630) 896-7101', services: ['Blood Draw', 'Urine Collection', 'Drug Screening'] },
+  { id: 'lab36', name: 'Quest Diagnostics — Joliet',                chain: 'Quest Diagnostics', address: '3400 Glenwood Ave, Suite A',              city: 'Joliet',          state: 'IL', zip: '60435', phone: '(815) 744-0440', fax: '(815) 744-0441', services: ['Blood Draw', 'Urine Collection', 'Drug Screening', 'Employer Testing'] },
+  { id: 'lab37', name: 'Quest Diagnostics — Elgin',                 chain: 'Quest Diagnostics', address: '1455 Larkin Ave, Suite 100',              city: 'Elgin',           state: 'IL', zip: '60123', phone: '(847) 697-3630', fax: '(847) 697-3631', services: ['Blood Draw', 'Urine Collection', 'Drug Screening'] },
+  { id: 'lab38', name: 'Quest Diagnostics — Waukegan',              chain: 'Quest Diagnostics', address: '2516 Washington St',                      city: 'Waukegan',        state: 'IL', zip: '60085', phone: '(847) 623-1191', fax: '(847) 623-1192', services: ['Blood Draw', 'Urine Collection', 'Drug Screening', 'Employer Testing'] },
+  { id: 'lab39', name: 'Quest Diagnostics — Champaign',             chain: 'Quest Diagnostics', address: '2103 S Neil St, Suite 1',                 city: 'Champaign',       state: 'IL', zip: '61820', phone: '(217) 352-5151', fax: '(217) 352-5152', services: ['Blood Draw', 'Urine Collection', 'Drug Screening'] },
+  { id: 'lab40', name: 'Quest Diagnostics — Decatur',               chain: 'Quest Diagnostics', address: '877 W Wood St',                           city: 'Decatur',         state: 'IL', zip: '62522', phone: '(217) 422-4170', fax: '(217) 422-4171', services: ['Blood Draw', 'Urine Collection', 'Drug Screening'] },
+
+  // ── LabCorp ────────────────────────────────────────────
+  { id: 'lab13', name: 'LabCorp — Chicago Downtown',                chain: 'LabCorp', address: '30 N Michigan Ave, Suite 1110',              city: 'Chicago',         state: 'IL', zip: '60602', phone: '(312) 726-4690', fax: '(312) 726-4691', services: ['Blood Draw', 'Urine Collection', 'Genetic Testing', 'Drug Screening'] },
+  { id: 'lab14', name: 'LabCorp — River North',                     chain: 'LabCorp', address: '444 N Michigan Ave, Suite 710',              city: 'Chicago',         state: 'IL', zip: '60611', phone: '(312) 329-0102', fax: '(312) 329-0103', services: ['Blood Draw', 'Urine Collection', 'Drug Screening'] },
+  { id: 'lab15', name: 'LabCorp — Lakeview',                        chain: 'LabCorp', address: '3000 N Halsted St, Suite 610',               city: 'Chicago',         state: 'IL', zip: '60657', phone: '(773) 472-1550', fax: '(773) 472-1551', services: ['Blood Draw', 'Urine Collection', 'Drug Screening'] },
+  { id: 'lab16', name: 'LabCorp — Evanston',                        chain: 'LabCorp', address: '1033 University Pl, Suite 200',              city: 'Evanston',        state: 'IL', zip: '60201', phone: '(847) 866-3100', fax: '(847) 866-3101', services: ['Blood Draw', 'Urine Collection', 'Drug Screening'] },
+  { id: 'lab17', name: 'LabCorp — Arlington Heights',               chain: 'LabCorp', address: '800 W Biesterfield Rd, Suite 206',          city: 'Arlington Heights',state: 'IL', zip: '60005', phone: '(847) 394-1700', fax: '(847) 394-1701', services: ['Blood Draw', 'Urine Collection', 'Drug Screening', 'Employer Testing'] },
+  { id: 'lab18', name: 'LabCorp — Naperville',                      chain: 'LabCorp', address: '1550 N Route 59, Suite 120',                city: 'Naperville',      state: 'IL', zip: '60563', phone: '(630) 527-1770', fax: '(630) 527-1771', services: ['Blood Draw', 'Urine Collection', 'Drug Screening'] },
+  { id: 'lab19', name: 'LabCorp — Oak Lawn',                        chain: 'LabCorp', address: '5201 W 95th St',                            city: 'Oak Lawn',        state: 'IL', zip: '60453', phone: '(708) 424-6200', fax: '(708) 424-6201', services: ['Blood Draw', 'Urine Collection', 'Drug Screening'] },
+  { id: 'lab20', name: 'LabCorp — Tinley Park',                     chain: 'LabCorp', address: '18400 S 80th Ave, Suite 200',               city: 'Tinley Park',     state: 'IL', zip: '60487', phone: '(708) 429-5100', fax: '(708) 429-5101', services: ['Blood Draw', 'Urine Collection', 'Drug Screening'] },
+  { id: 'lab21', name: 'LabCorp — Springfield',                     chain: 'LabCorp', address: '301 N Eighth St, Suite 200',                city: 'Springfield',     state: 'IL', zip: '62702', phone: '(217) 525-2020', fax: '(217) 525-2021', services: ['Blood Draw', 'Urine Collection', 'Drug Screening', 'Employer Testing'] },
+  { id: 'lab22', name: 'LabCorp — Champaign',                       chain: 'LabCorp', address: '2103 S Neil St, Suite 2',                   city: 'Champaign',       state: 'IL', zip: '61820', phone: '(217) 351-6100', fax: '(217) 351-6101', services: ['Blood Draw', 'Urine Collection', 'Drug Screening'] },
+  { id: 'lab23', name: 'LabCorp — Rockford',                        chain: 'LabCorp', address: '920 N Alpine Rd, Suite 104',                city: 'Rockford',        state: 'IL', zip: '61107', phone: '(815) 398-4400', fax: '(815) 398-4401', services: ['Blood Draw', 'Urine Collection', 'Drug Screening'] },
+  { id: 'lab24', name: 'LabCorp — Peoria',                          chain: 'LabCorp', address: '7309 N University St, Suite 103',           city: 'Peoria',          state: 'IL', zip: '61614', phone: '(309) 693-5300', fax: '(309) 693-5301', services: ['Blood Draw', 'Urine Collection', 'Drug Screening'] },
+  { id: 'lab41', name: 'LabCorp — Joliet',                          chain: 'LabCorp', address: '900 Essington Rd, Suite 200',               city: 'Joliet',          state: 'IL', zip: '60435', phone: '(815) 744-2300', fax: '(815) 744-2301', services: ['Blood Draw', 'Urine Collection', 'Drug Screening', 'Employer Testing'] },
+  { id: 'lab42', name: 'LabCorp — Aurora',                          chain: 'LabCorp', address: '1700 N Farnsworth Ave, Suite 7',            city: 'Aurora',          state: 'IL', zip: '60505', phone: '(630) 978-7040', fax: '(630) 978-7041', services: ['Blood Draw', 'Urine Collection', 'Drug Screening'] },
+  { id: 'lab43', name: 'LabCorp — Waukegan',                        chain: 'LabCorp', address: '1188 S Waukegan Rd, Suite 100',             city: 'Waukegan',        state: 'IL', zip: '60085', phone: '(847) 244-9730', fax: '(847) 244-9731', services: ['Blood Draw', 'Urine Collection', 'Drug Screening'] },
+  { id: 'lab44', name: 'LabCorp — Bolingbrook',                     chain: 'LabCorp', address: '200 S Weber Rd, Suite 111',                 city: 'Bolingbrook',     state: 'IL', zip: '60490', phone: '(630) 679-0808', fax: '(630) 679-0809', services: ['Blood Draw', 'Urine Collection', 'Drug Screening'] },
+  { id: 'lab45', name: 'LabCorp — Normal',                          chain: 'LabCorp', address: '1311 Franklin Ave, Suite A',                city: 'Normal',          state: 'IL', zip: '61761', phone: '(309) 452-8510', fax: '(309) 452-8511', services: ['Blood Draw', 'Urine Collection', 'Drug Screening'] },
+
+  // ── Hospital-Based / Reference Labs ───────────────────
+  { id: 'lab25', name: 'Northwestern Memorial Hospital Lab',         chain: 'Northwestern Medicine', address: '251 E Huron St',                    city: 'Chicago',         state: 'IL', zip: '60611', phone: '(312) 926-2000', fax: '(312) 926-2001', services: ['Full Pathology', 'Blood Draw', 'Urine', 'Genetic Testing', 'Toxicology'] },
+  { id: 'lab26', name: 'Rush University Medical Center Lab',         chain: 'Rush Health', address: '1653 W Congress Pkwy',                        city: 'Chicago',         state: 'IL', zip: '60612', phone: '(312) 942-5000', fax: '(312) 942-5001', services: ['Full Pathology', 'Blood Draw', 'Toxicology', 'Genetic Testing'] },
+  { id: 'lab27', name: 'Advocate Christ Medical Center Lab',         chain: 'Advocate Health', address: '4440 W 95th St',                           city: 'Oak Lawn',        state: 'IL', zip: '60453', phone: '(708) 684-8000', fax: '(708) 684-8001', services: ['Full Pathology', 'Blood Draw', 'Drug Screening', 'Genetic Testing'] },
+  { id: 'lab28', name: "OSF Saint Francis Medical Center Lab",       chain: 'OSF HealthCare', address: '530 NE Glen Oak Ave',                       city: 'Peoria',          state: 'IL', zip: '61637', phone: '(309) 655-2000', fax: '(309) 655-2001', services: ['Full Pathology', 'Blood Draw', 'Toxicology'] },
+  { id: 'lab29', name: 'Memorial Medical Center Lab',                chain: 'Memorial Health', address: '701 N First St',                           city: 'Springfield',     state: 'IL', zip: '62781', phone: '(217) 788-3000', fax: '(217) 788-3001', services: ['Full Pathology', 'Blood Draw', 'Drug Screening'] },
+  { id: 'lab30', name: 'SwedishAmerican Hospital Lab',               chain: 'UW Health', address: '1401 E State St',                                city: 'Rockford',        state: 'IL', zip: '61104', phone: '(815) 968-4400', fax: '(815) 968-4401', services: ['Full Pathology', 'Blood Draw', 'Toxicology'] },
+  { id: 'lab31', name: 'Carle Foundation Hospital Lab',              chain: 'Carle Health', address: '611 W Park St',                               city: 'Urbana',          state: 'IL', zip: '61801', phone: '(217) 383-3311', fax: '(217) 383-3312', services: ['Full Pathology', 'Blood Draw', 'Genetic Testing', 'Drug Screening'] },
+  { id: 'lab32', name: 'Advocate Good Samaritan Hospital Lab',       chain: 'Advocate Health', address: '3815 Highland Ave',                        city: 'Downers Grove',   state: 'IL', zip: '60515', phone: '(630) 275-5900', fax: '(630) 275-5901', services: ['Full Pathology', 'Blood Draw', 'Drug Screening'] },
+  { id: 'lab33', name: 'Edward Hospital Lab',                        chain: 'Edward-Elmhurst Health', address: '801 S Washington St',              city: 'Naperville',      state: 'IL', zip: '60540', phone: '(630) 527-3000', fax: '(630) 527-3001', services: ['Full Pathology', 'Blood Draw', 'Toxicology', 'Genetic Testing'] },
+  { id: 'lab34', name: 'Loyola University Medical Center Lab',       chain: 'Trinity Health', address: '2160 S First Ave',                          city: 'Maywood',         state: 'IL', zip: '60153', phone: '(708) 216-9000', fax: '(708) 216-9001', services: ['Full Pathology', 'Blood Draw', 'Genetic Testing', 'Toxicology'] },
+  { id: 'lab46', name: 'NorthShore University HealthSystem Lab',     chain: 'NorthShore', address: '2650 Ridge Ave',                                city: 'Evanston',        state: 'IL', zip: '60201', phone: '(847) 570-2000', fax: '(847) 570-2001', services: ['Full Pathology', 'Blood Draw', 'Genetic Testing', 'Drug Screening'] },
+  { id: 'lab47', name: 'Amita Health Saint Joseph Medical Lab',      chain: 'Amita Health', address: '333 N Madison St',                            city: 'Joliet',          state: 'IL', zip: '60435', phone: '(815) 725-7133', fax: '(815) 725-7134', services: ['Full Pathology', 'Blood Draw', 'Toxicology'] },
+  { id: 'lab48', name: 'Morris Hospital Lab',                        chain: 'Morris Hospital', address: '150 W High St',                            city: 'Morris',          state: 'IL', zip: '60450', phone: '(815) 942-2932', fax: '(815) 942-2933', services: ['Blood Draw', 'Urine Collection', 'Drug Screening'] },
+  { id: 'lab49', name: 'UnityPoint Health Methodist Lab',            chain: 'UnityPoint Health', address: '221 NE Glen Oak Ave',                    city: 'Peoria',          state: 'IL', zip: '61636', phone: '(309) 672-5522', fax: '(309) 672-5523', services: ['Full Pathology', 'Blood Draw', 'Toxicology', 'Drug Screening'] },
+
+  // ── Specialty / Toxicology ─────────────────────────────
+  { id: 'lab50', name: 'Millennium Health — Chicago',                chain: 'Millennium Health', address: '111 W Jackson Blvd, Suite 1700',          city: 'Chicago',         state: 'IL', zip: '60604', phone: '(312) 566-9900', fax: '(312) 566-9901', services: ['Urine Drug Testing', 'Toxicology', 'Oral Fluid Testing', 'PDMP Support'] },
+  { id: 'lab51', name: 'Aegis Sciences — Illinois Collection Site',  chain: 'Aegis Sciences', address: '1740 W Harrison St, Suite 200',              city: 'Chicago',         state: 'IL', zip: '60612', phone: '(312) 421-9000', fax: '(312) 421-9001', services: ['Urine Drug Testing', 'Toxicology', 'Oral Fluid Testing'] },
+  { id: 'lab52', name: 'USDTL — Drug Testing Labs (Chicago)',        chain: 'USDTL', address: '1700 S Mount Prospect Rd',                           city: 'Des Plaines',     state: 'IL', zip: '60018', phone: '(800) 235-2367', fax: '(847) 299-5600', services: ['Urine Drug Testing', 'Hair Drug Testing', 'Cord Blood Testing', 'Meconium'] },
+  { id: 'lab53', name: 'Clinical Reference Lab (CRL) — IL Drop',    chain: 'CRL', address: '601 W Diversey Pkwy, Suite 100',                        city: 'Chicago',         state: 'IL', zip: '60614', phone: '(800) 445-6917', fax: '(913) 492-2843', services: ['Urine Drug Testing', 'Blood Draw', 'Wellness Testing'] },
+  { id: 'lab54', name: 'Genoptix / NeoGenomics — Chicago',           chain: 'NeoGenomics', address: '400 N Michigan Ave, Suite 900',                 city: 'Chicago',         state: 'IL', zip: '60611', phone: '(312) 222-9100', fax: '(312) 222-9101', services: ['Genetic Testing', 'Oncology Genomics', 'Blood Draw'] },
+
+  // ── Outpatient / Retail Clinic Labs ───────────────────
+  { id: 'lab55', name: 'Walgreens Diagnostic Imaging & Lab (Wicker Park)', chain: 'Walgreens Health', address: '1372 N Milwaukee Ave',              city: 'Chicago',         state: 'IL', zip: '60622', phone: '(773) 395-6811', fax: '', services: ['Blood Draw', 'Urine Collection', 'Wellness Screening'] },
+  { id: 'lab56', name: 'CVS MinuteClinic Lab — Chicago N Clark',    chain: 'CVS MinuteClinic', address: '3101 N Clark St',                           city: 'Chicago',         state: 'IL', zip: '60657', phone: '(773) 880-7700', fax: '', services: ['Blood Draw', 'Urine Collection', 'Strep/Flu Testing'] },
+  { id: 'lab57', name: 'Immediate Care NW Indiana Lab — Calumet City', chain: 'Immediate Care', address: '1509 Torrence Ave',                        city: 'Calumet City',    state: 'IL', zip: '60409', phone: '(708) 730-4300', fax: '(708) 730-4301', services: ['Blood Draw', 'Urine Collection', 'Drug Screening', 'Employer Testing'] },
+  { id: 'lab58', name: 'Duly Health & Care Lab — Plainfield',       chain: 'Duly Health', address: '13291 S Route 59, Suite 100',                    city: 'Plainfield',      state: 'IL', zip: '60585', phone: '(815) 436-6700', fax: '(815) 436-6701', services: ['Blood Draw', 'Urine Collection', 'Drug Screening'] },
+  { id: 'lab59', name: 'Midwest Express Clinic Lab — Homer Glen',   chain: 'Midwest Express Clinic', address: '14315 S Bell Rd',                     city: 'Homer Glen',      state: 'IL', zip: '60491', phone: '(708) 364-6000', fax: '(708) 364-6001', services: ['Blood Draw', 'Urine Collection', 'Drug Screening', 'Employer Testing'] },
+  { id: 'lab60', name: 'Touchpoint Health Lab — Decatur',           chain: 'Touchpoint Health', address: '3901 N Woodford St',                       city: 'Decatur',         state: 'IL', zip: '62526', phone: '(217) 876-2831', fax: '(217) 876-2832', services: ['Blood Draw', 'Urine Collection', 'Drug Screening'] },
 ];
+
+
+// ========== ENCOUNTERS ==========
+export const encounters = {
+  p1: [
+    { id: 'enc-p1-1', patientId: 'p1', date: '2026-03-12', time: '09:00', type: 'Follow-Up', provider: 'u1', providerName: 'Dr. Chris L.', chiefComplaint: 'Persistent low mood, trouble sleeping', status: 'Completed', subjective: 'Patient reports mood has been consistently low for the past 3 weeks. Sleep onset delayed by 1-2 hrs. Appetite decreased. Denies SI.', objective: 'Alert, cooperative. Affect flat. PHQ-9: 14 (moderate depression). BP 122/78, HR 72.', assessment: 'Major Depressive Disorder, moderate � partial response to current sertraline dose.', plan: 'Increase sertraline from 100mg to 150mg daily. Repeat PHQ-9 in 4 weeks. Referred to individual therapy.', diagnoses: ['F32.1'], signedBy: 'Dr. Chris L.', signedAt: '2026-03-12T10:15:00Z' },
+    { id: 'enc-p1-2', patientId: 'p1', date: '2026-01-22', time: '09:00', type: 'Medication Management', provider: 'u1', providerName: 'Dr. Chris L.', chiefComplaint: 'Medication refill � sertraline', status: 'Completed', subjective: 'Patient doing well on sertraline 100mg. Reports mild improvement in mood and energy. No side effects.', objective: 'Alert, euthymic. PHQ-9: 10 (mild). BP 118/76.', assessment: 'MDD � improving. Continue current regimen.', plan: 'Refill sertraline 100mg #90. RTC 6 weeks.', diagnoses: ['F32.0'], signedBy: 'Dr. Chris L.', signedAt: '2026-01-22T09:50:00Z' },
+  ],
+  p2: [
+    { id: 'enc-p2-1', patientId: 'p2', date: '2026-03-20', time: '10:00', type: 'Psychiatric Evaluation', provider: 'u1', providerName: 'Dr. Chris L.', chiefComplaint: 'PTSD symptoms, nightmares worsening', status: 'Completed', subjective: 'Patient reports increase in trauma-related nightmares 4-5x/week. Hypervigilance in public places. Avoidance of crowded areas. PCL-5 score: 52.', objective: 'Anxious, guarded. Affect restricted. Maintains appropriate eye contact. Denies SI/HI.', assessment: 'PTSD � acute exacerbation. Consider PE therapy protocol.', plan: 'Start Prolonged Exposure (PE) therapy � scheduled weekly sessions. Continue prazosin 2mg QHS for nightmares. F/U 2 weeks.', diagnoses: ['F43.10'], signedBy: 'Dr. Chris L.', signedAt: '2026-03-20T11:30:00Z' },
+  ],
+  p3: [
+    { id: 'enc-p3-1', patientId: 'p3', date: '2026-02-14', time: '11:00', type: 'Follow-Up', provider: 'u2', providerName: 'Joseph', chiefComplaint: 'AUD management check-in, craving control', status: 'Completed', subjective: 'Patient reports 45 days sobriety. Occasional cravings but managing with naltrexone. Attending AA 3x/week.', objective: 'Alert, well-groomed. Cooperative. Liver function improved on labs. LFTs trending down.', assessment: 'AUD � in remission, early. Positive response to naltrexone.', plan: 'Continue naltrexone 50mg daily. Repeat LFTs in 8 weeks. Encourage AA attendance. RTC 4 weeks.', diagnoses: ['F10.20'], signedBy: 'Joseph', signedAt: '2026-02-14T11:55:00Z' },
+  ],
+  p4: [
+    { id: 'enc-p4-1', patientId: 'p4', date: '2026-03-05', time: '09:30', type: 'Follow-Up', provider: 'u2', providerName: 'Joseph', chiefComplaint: 'ADHD follow-up, school performance', status: 'Completed', subjective: 'Parent reports improvement in focus at school. Teacher feedback positive. Patient completing homework more consistently. Sleep normal.', objective: 'Alert, age-appropriate. Cooperative. Vanderbilt: 18 (improved from 28).', assessment: 'ADHD, combined type � responding well to Adderall XR.', plan: 'Continue Adderall XR 20mg daily. Medication bridge for summer pending. RTC 6 weeks.', diagnoses: ['F90.2'], signedBy: 'Joseph', signedAt: '2026-03-05T10:20:00Z' },
+  ],
+  p5: [
+    { id: 'enc-p5-1', patientId: 'p5', date: '2026-03-18', time: '13:00', type: 'Follow-Up', provider: 'u1', providerName: 'Dr. Chris L.', chiefComplaint: 'Memory concerns, depressive symptoms', status: 'Completed', subjective: 'Family reports increased forgetfulness � misplacing items, forgetting appointments. Patient minimizes. Also reports low mood, fatigue.', objective: 'MMSE: 21/30 (mild cognitive impairment). PHQ-9: 12. BP 138/84.', assessment: 'Mild cognitive impairment. Co-morbid depression may be exacerbating cognitive symptoms.', plan: 'Refer to neuropsychology for full evaluation. Start mirtazapine 7.5mg QHS for depression/sleep. Caregiver education provided.', diagnoses: ['G31.84', 'F32.1'], signedBy: 'Dr. Chris L.', signedAt: '2026-03-18T14:10:00Z' },
+  ],
+  p6: [
+    { id: 'enc-p6-1', patientId: 'p6', date: '2026-03-25', time: '11:00', type: 'Medication Management', provider: 'u1', providerName: 'Dr. Chris L.', chiefComplaint: 'Bipolar mood stabilization, lamotrigine titration', status: 'Completed', subjective: 'Patient in mixed state last month but reports improvement. Current mood is euthymic. No manic symptoms. Good sleep. Denies depressive episodes.', objective: 'Euthymic, organized thinking. Cooperative. Lamotrigine level: 8.2 mcg/mL.', assessment: 'Bipolar I � stabilized on lamotrigine titration. Level therapeutic.', plan: 'Increase lamotrigine to 200mg daily. Monitor for rash. Mood diary encouraged. RTC 4 weeks.', diagnoses: ['F31.10'], signedBy: 'Dr. Chris L.', signedAt: '2026-03-25T11:45:00Z' },
+  ],
+};

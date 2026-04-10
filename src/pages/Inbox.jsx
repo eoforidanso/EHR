@@ -159,11 +159,11 @@ export default function Inbox() {
         
         {/* Patient List Column */}
         <div style={{ background: 'var(--bg-sidebar)', overflowY: 'auto', borderRight: '1px solid var(--border)' }}>
-          <div style={{ padding: '12px', borderBottom: '1px solid var(--border)', fontSize: '12px', fontWeight: '600', color: 'var(--text-muted)', textTransform: 'uppercase' }}>
+          <div style={{ padding: '12px', borderBottom: '1px solid rgba(255,255,255,0.12)', fontSize: '12px', fontWeight: '600', color: 'rgba(255,255,255,0.55)', textTransform: 'uppercase' }}>
             Patients ({patientList.length})
           </div>
           {patientList.length === 0 ? (
-            <div style={{ padding: '20px', textAlign: 'center', color: 'var(--text-muted)', fontSize: '13px' }}>
+            <div style={{ padding: '20px', textAlign: 'center', color: 'rgba(255,255,255,0.45)', fontSize: '13px' }}>
               No patient messages
             </div>
           ) : (
@@ -173,14 +173,14 @@ export default function Inbox() {
                 onClick={() => setSelectedPatientId(pt.id)}
                 style={{
                   padding: '12px',
-                  borderBottom: '1px solid var(--border)',
+                  borderBottom: '1px solid rgba(255,255,255,0.08)',
                   cursor: 'pointer',
-                  background: selectedPatientId === pt.id ? 'rgba(30, 64, 175, 0.1)' : 'transparent',
-                  borderLeft: selectedPatientId === pt.id ? '3px solid var(--primary)' : '3px solid transparent',
+                  background: selectedPatientId === pt.id ? 'rgba(255,255,255,0.13)' : 'transparent',
+                  borderLeft: selectedPatientId === pt.id ? '3px solid #60a5fa' : '3px solid transparent',
                   transition: 'all 0.15s',
                 }}
-                onMouseEnter={(e) => e.currentTarget.style.background = 'rgba(30, 64, 175, 0.05)'}
-                onMouseLeave={(e) => e.currentTarget.style.background = selectedPatientId === pt.id ? 'rgba(30, 64, 175, 0.1)' : 'transparent'}
+                onMouseEnter={(e) => { if (selectedPatientId !== pt.id) e.currentTarget.style.background = 'rgba(255,255,255,0.06)'; }}
+                onMouseLeave={(e) => { e.currentTarget.style.background = selectedPatientId === pt.id ? 'rgba(255,255,255,0.13)' : 'transparent'; }}
               >
                 {/* Avatar + Name */}
                 <div style={{ display: 'flex', gap: '8px', alignItems: 'flex-start', marginBottom: '4px' }}>
@@ -202,10 +202,10 @@ export default function Inbox() {
                     {pt.name.charAt(0).toUpperCase()}
                   </div>
                   <div style={{ flex: 1, minWidth: 0 }}>
-                    <div style={{ fontSize: '13px', fontWeight: '600', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
+                    <div style={{ fontSize: '13px', fontWeight: '600', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis', color: '#e8f0fa' }}>
                       {pt.name}
                     </div>
-                    <div style={{ fontSize: '11px', color: 'var(--text-muted)', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
+                    <div style={{ fontSize: '11px', color: 'rgba(255,255,255,0.45)', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
                       {pt.mrn}
                     </div>
                   </div>
@@ -213,7 +213,7 @@ export default function Inbox() {
                 
                 {/* Message Count + Unread Badge */}
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: '12px' }}>
-                  <span className="text-muted">{pt.totalCount} msg{pt.totalCount !== 1 ? 's' : ''}</span>
+                  <span style={{ color: 'rgba(255,255,255,0.45)' }}>{pt.totalCount} msg{pt.totalCount !== 1 ? 's' : ''}</span>
                   {pt.unreadCount > 0 && (
                     <span style={{ background: 'var(--danger)', color: 'white', padding: '2px 6px', borderRadius: '10px', fontSize: '11px', fontWeight: '600', minWidth: '20px', textAlign: 'center' }}>
                       {pt.unreadCount}

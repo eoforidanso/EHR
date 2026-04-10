@@ -12,6 +12,7 @@ import {
   inboxMessages as inboxData,
   appointments as aptsData,
   btgAuditLog as btgData,
+  encounters as encountersData,
 } from '../data/mockData';
 
 const PatientContext = createContext(null);
@@ -31,6 +32,7 @@ export function PatientProvider({ children }) {
   const [appointments, setAppointments] = useState(aptsData);
   const [btgAuditLog, setBtgAuditLog] = useState(btgData);
   const [btgAccessGranted, setBtgAccessGranted] = useState({});
+  const [encounters, setEncounters] = useState(encountersData);
 
   const selectPatient = useCallback((patientId) => {
     const p = patientsData.find((pt) => pt.id === patientId);
@@ -72,6 +74,22 @@ export function PatientProvider({ children }) {
     }));
   }, []);
 
+  const updateMedication = useCallback((patientId, medId, updates) => {
+    setMeds((prev) => ({
+      ...prev,
+      [patientId]: (prev[patientId] || []).map((m) =>
+        m.id === medId ? { ...m, ...updates } : m
+      ),
+    }));
+  }, []);
+
+  const removeMedication = useCallback((patientId, medId) => {
+    setMeds((prev) => ({
+      ...prev,
+      [patientId]: (prev[patientId] || []).filter((m) => m.id !== medId),
+    }));
+  }, []);
+
   const addAssessment = useCallback((patientId, assessment) => {
     setAssessmentScores((prev) => ({
       ...prev,
@@ -83,6 +101,13 @@ export function PatientProvider({ children }) {
     setInboxMessages((prev) =>
       prev.map((m) => (m.id === msgId ? { ...m, status: newStatus, read: newStatus === 'Read' } : m))
     );
+  }, []);
+
+  const addInboxMessage = useCallback((message) => {
+    setInboxMessages((prev) => [
+      { ...message, id: `msg-${Date.now()}`, read: false, status: 'Unread' },
+      ...prev,
+    ]);
   }, []);
 
   const requestBTGAccess = useCallback(
@@ -118,6 +143,22 @@ export function PatientProvider({ children }) {
     );
   }, []);
 
+  const addEncounter = useCallback((patientId, encounter) => {
+    setEncounters((prev) => ({
+      ...prev,
+      [patientId]: [{ ...encounter, id: `enc-${Date.now()}` }, ...(prev[patientId] || [])],
+    }));
+  }, []);
+
+  const updateEncounter = useCallback((patientId, encounterId, updates) => {
+    setEncounters((prev) => ({
+      ...prev,
+      [patientId]: (prev[patientId] || []).map((e) =>
+        e.id === encounterId ? { ...e, ...updates } : e
+      ),
+    }));
+  }, []);
+
   return (
     <PatientContext.Provider
       value={{
@@ -132,6 +173,8 @@ export function PatientProvider({ children }) {
         addVitals,
         meds,
         addMedication,
+        updateMedication,
+        removeMedication,
         immunizations,
         labResults,
         assessmentScores,
@@ -140,8 +183,12 @@ export function PatientProvider({ children }) {
         addOrder,
         inboxMessages,
         updateMessageStatus,
+        addInboxMessage,
         appointments,
         updateAppointmentStatus,
+        encounters,
+        addEncounter,
+        updateEncounter,
         btgAuditLog,
         requestBTGAccess,
         hasBTGAccess,

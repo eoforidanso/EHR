@@ -41,6 +41,8 @@ export default function PatientBanner() {
 
         <div className="patient-banner-actions">
           <button className="pba-btn" onClick={() => navigate(`/chart/${p.id}/summary`)}>📋 Chart</button>
+          <button className="pba-btn" onClick={() => navigate(`/chart/${p.id}/encounters`)}>📝 Encounter</button>
+          <button className="pba-btn" onClick={() => navigate('/patient-chat')}>💬 Patient Chat</button>
           <button className="pba-btn" onClick={() => navigate(`/chart/${p.id}/medications`)}>💊 Meds</button>
           <button className="pba-btn" onClick={() => navigate('/schedule')}>📅 Schedule</button>
           <button className="pba-btn" onClick={() => navigate(`/chart/${p.id}/orders`)}>⚡ Orders</button>

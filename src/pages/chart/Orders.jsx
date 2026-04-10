@@ -12,6 +12,7 @@ export default function Orders({ patientId }) {
   const [form, setForm] = useState({ type: 'Lab', description: '', priority: 'Routine', notes: '' });
   const [labFacilitySearch, setLabFacilitySearch] = useState('');
   const [selectedLabFacility, setSelectedLabFacility] = useState(null);
+  const [labFacilityFocused, setLabFacilityFocused] = useState(false);
 
   const patientOrders = orders[patientId] || [];
 
@@ -76,18 +77,39 @@ export default function Orders({ patientId }) {
                     </div>
                   ) : (
                     <>
-                      <input className="form-input" value={labFacilitySearch} onChange={(e) => setLabFacilitySearch(e.target.value)} placeholder="Search Quest Diagnostics, LabCorp, or city…" />
-                      {labFacilitySearch.length > 0 && (
-                        <div style={{ position: 'absolute', top: '100%', left: 0, right: 0, zIndex: 50, maxHeight: 180, overflowY: 'auto', border: '1px solid var(--border)', borderRadius: 'var(--radius)', background: 'var(--bg-white)', boxShadow: 'var(--shadow-md)' }}>
-                          {labFacilities.filter(f => f.name.toLowerCase().includes(labFacilitySearch.toLowerCase()) || f.chain.toLowerCase().includes(labFacilitySearch.toLowerCase()) || f.city.toLowerCase().includes(labFacilitySearch.toLowerCase())).slice(0, 8).map(f => (
-                            <div key={f.id} style={{ padding: '6px 10px', cursor: 'pointer', borderBottom: '1px solid var(--border-light)', fontSize: 12 }}
+                      <input
+                        className="form-input"
+                        value={labFacilitySearch}
+                        onChange={(e) => setLabFacilitySearch(e.target.value)}
+                        onFocus={() => setLabFacilityFocused(true)}
+                        onBlur={() => setTimeout(() => setLabFacilityFocused(false), 200)}
+                        placeholder="Search or browse all Illinois labs (Quest, LabCorp…)"
+                      />
+                      {labFacilityFocused && (
+                        <div style={{ position: 'absolute', top: '100%', left: 0, right: 0, zIndex: 50, maxHeight: 220, overflowY: 'auto', border: '1px solid var(--border)', borderRadius: 'var(--radius)', background: 'var(--bg-white)', boxShadow: 'var(--shadow-md)' }}>
+                          {labFacilities.filter(f =>
+                            !labFacilitySearch ||
+                            f.name.toLowerCase().includes(labFacilitySearch.toLowerCase()) ||
+                            f.chain.toLowerCase().includes(labFacilitySearch.toLowerCase()) ||
+                            f.city.toLowerCase().includes(labFacilitySearch.toLowerCase()) ||
+                            f.address.toLowerCase().includes(labFacilitySearch.toLowerCase())
+                          ).map(f => (
+                            <div key={f.id} style={{ padding: '7px 10px', cursor: 'pointer', borderBottom: '1px solid var(--border-light)', fontSize: 12 }}
                               onMouseEnter={e => e.currentTarget.style.background = '#ecfdf5'}
                               onMouseLeave={e => e.currentTarget.style.background = ''}
-                              onClick={() => { setSelectedLabFacility(f); setLabFacilitySearch(''); }}>
+                              onClick={() => { setSelectedLabFacility(f); setLabFacilitySearch(''); setLabFacilityFocused(false); }}>
                               <div style={{ fontWeight: 600 }}>{f.name}</div>
                               <div style={{ color: 'var(--text-muted)' }}>{f.address}, {f.city} {f.zip} · {f.phone}</div>
                             </div>
                           ))}
+                          {labFacilities.filter(f =>
+                            !labFacilitySearch ||
+                            f.name.toLowerCase().includes(labFacilitySearch.toLowerCase()) ||
+                            f.chain.toLowerCase().includes(labFacilitySearch.toLowerCase()) ||
+                            f.city.toLowerCase().includes(labFacilitySearch.toLowerCase())
+                          ).length === 0 && (
+                            <div style={{ padding: 12, textAlign: 'center', color: 'var(--text-muted)', fontSize: 12 }}>No labs found</div>
+                          )}
                         </div>
                       )}
                     </>

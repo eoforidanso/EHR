@@ -12,6 +12,14 @@ export default function EPrescribe() {
   const [medSearch, setMedSearch] = useState('');
   const [patientSearch, setPatientSearch] = useState('');
   const [prescriptionPatient, setPrescriptionPatient] = useState(selectedPatient);
+
+  // Keep in sync if selectedPatient changes (e.g. navigated from chart)
+  useEffect(() => {
+    if (selectedPatient) {
+      setPrescriptionPatient(selectedPatient);
+      setPatientSearch('');
+    }
+  }, [selectedPatient?.id]);
   const [rx, setRx] = useState({
     dose: '',
     frequency: 'Once daily',
@@ -310,7 +318,7 @@ export default function EPrescribe() {
                         )}
                       </td>
                       <td>
-                        <button className="btn btn-sm btn-primary" onClick={() => handleSelectMed(m)} disabled={!prescriptionPatient}>
+                        <button className="btn btn-sm btn-primary" onClick={() => handleSelectMed(m)}>
                           Select
                         </button>
                       </td>
@@ -333,6 +341,12 @@ export default function EPrescribe() {
             </button>
           </div>
           <div className="card-body">
+            {!prescriptionPatient && (
+              <div className="alert alert-warning mb-4">
+                <strong>⚠️ No patient selected.</strong> Please select a patient above before sending this prescription.
+              </div>
+            )}
+
             {selectedMed.isControlled && (
               <div className="alert alert-warning mb-4">
                 <strong>⚠️ Controlled Substance ({selectedMed.schedule}):</strong> This medication requires EPCS (Electronic Prescribing for Controlled Substances) authentication with two-factor verification before it can be sent to the pharmacy.
@@ -462,7 +476,12 @@ export default function EPrescribe() {
 
             <div style={{ display: 'flex', gap: 12, justifyContent: 'flex-end', marginTop: 20 }}>
               <button className="btn btn-secondary" onClick={() => { setStep(1); setSelectedMed(null); }}>Cancel</button>
-              <button className="btn btn-primary btn-lg" onClick={() => handleSubmitPrescription()}>
+              <button
+                className="btn btn-primary btn-lg"
+                onClick={() => handleSubmitPrescription()}
+                disabled={!prescriptionPatient}
+                title={!prescriptionPatient ? 'Select a patient above first' : ''}
+              >
                 {selectedMed.isControlled ? '🔒 Proceed to EPCS Authentication' : '📤 Send to Pharmacy'}
               </button>
             </div>

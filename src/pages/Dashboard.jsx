@@ -100,7 +100,7 @@ export default function Dashboard() {
       {/* Stat strip */}
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(5,1fr)', gap: 14, marginBottom: 22 }}>
         {stats.map((s) => (
-          <div key={s.label} className={`stat-card ${s.color}`}>
+          <div key={s.label} className={`stat-card row ${s.color}`}>
             <div className={`stat-icon ${s.color}`}>{s.icon}</div>
             <div className="stat-info">
               <h3>{s.value}</h3>

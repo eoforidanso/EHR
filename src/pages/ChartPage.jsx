@@ -14,9 +14,11 @@ import Orders from './chart/Orders';
 import Assessments from './chart/Assessments';
 import Immunizations from './chart/Immunizations';
 import LabResults from './chart/LabResults';
+import Encounters from './chart/Encounters';
 
 const chartTabs = [
   { key: 'summary', label: '📋 Summary', component: ChartSummary },
+  { key: 'encounters', label: '🗒️ Encounters', component: Encounters },
   { key: 'demographics', label: '👤 Demographics', component: Demographics },
   { key: 'allergies', label: '⚠️ Allergies', component: Allergies },
   { key: 'problems', label: '🩺 Problems', component: ProblemList },
